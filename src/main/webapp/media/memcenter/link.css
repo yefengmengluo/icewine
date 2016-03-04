@@ -1,0 +1,582 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*-------------------------发布采购单第三版 gaoyuejiao 20150408--------------------------------*/
+.bjd_M{ width:1000px; margin:0px auto; text-align:center; font-family:"微软雅黑"; font-size:24px; color:#3c3c3c; height:120px; line-height:120px;}
+.MMIl{ min-height:110px;}
+.hypLk{ width:548px; height:28px;  border:1px solid #e6e6e6; line-height:28px; padding:0px 5px;}
+.juMkD td{ font-family: "宋体"; font-size:14px;}
+.kHbg{ width:189px; border:1px solid #eeeeee; height:28px; line-height:28px; padding:0px 5px;}
+.CGmun{ width:90px; height:28px; line-height:28px; border:1px solid #eeeeee; padding:0px 5px;}
+.OPMUy{width:90px; height:28px; line-height:28px;  border:1px solid #e6e6e6; padding:0 5px;} 
+.max-inputgao{ height:88px; line-height:28px;}
+a.kuLko{display:inline-block; float:left;  text-align:right; margin-top:7px; color:#0088cc; float:left; cursor:pointer;}
+a.kuLko:hover{ background: no-repeat 7px center;cursor:pointer; color:#ff6600; text-decoration:underline; }
+.MPoih{ margin-top:13px; margin-left:50px; min-height:25px;}
+.Pmmhu{ width:172px; border:1px solid #e6e6e6; height:28px; line-height:28px; padding:0px 5px; background:url(../images/date.png) no-repeat right center;}
+.unneed{ margin-right:10px;}
+.ymplh{ font-family:"宋体"; font-size:12px; color:#aaaaaa;}
+
+.Pomi{padding:0 37px;background-color:#ff6600; color:#fff; background-color:#ff9933; }
+.Pomi:hover{background-color:#ff9933; color:#ff661b;}
+.mPur{ margin-right:10px; color:#dfdfdfd;}
+.ukpom{ cursor:pointer;}
+.mlPk{ font-family: "宋体"; font-size:12px; color:#aaaaaa; margin-top:7px; float: left; margin-left:10px}
+.julopm{ float:left; margin-left:20px; margin-top:0px;}
+.import_btn{line-height:24px;padding-left:12px;background:url(../images/search_bj.jpg) no-repeat left 0;text-align:center;display:inline-block;font-size:12px;color:#3c3c3c;vertical-align:1px;}
+.moplkj em{height:24px;line-height:24px; background:url(../images/tjfj_btn.jpg) no-repeat right 0;padding-right:12px;display:inline-block;}
+.jhdmk{ width:180px;min-height:18px;margin-bottom:16px; background:url(../images/area_picm.png) no-repeat right center; border:1px solid #e6e6e6; cursor:pointer;padding-left: 8px;padding-bottom: 8px;padding-top: 8px;padding-right: 23px;}
+.import_btnm{line-height:24px;padding-left:12px;background:url(../images/tjfj_btn.jpg) no-repeat left 0;text-align:center;display:inline-block;font-size:12px;color:#3c3c3c;vertical-align:1px;}
+.mmoo{ color:#aaaaaa;}
+.julko{ font-family:"宋体"; line-height:30px; ext-align:left;}
+.Instructions_P{ margin:0px auto;margin-top: 50px;}
+/*-----------------------限制弹窗 gaoyuejiao20150417---------------------------*/
+.hbmnh{ margin:0px auto; margin-left:82px;margin-top:22px;}
+/*--------销售中心--收到的询价单gaoyuejiao20150506-----*/
+.mopif{height: 35px; line-height: 50px; padding-left: 10px; font-family: "宋体"; font-size: 12px;
+    color: #3c3c3c; font-weight: bold;}
+.nnmpk{ width:840px;  border: 1px solid #efefef; background:#f8f8f8; }
+.nnmpk th{  height: 42px;  }
+.hhybn{width: 840px;  border: 1px solid #eee; margin-top: 10px; border-bottom: none;}
+.hhybn  tr{border-bottom: 1px solid #eeeeee; }
+.hhybn  td{height: 80px; text-align: center; line-height: 22px;}
+.hhybn th{ text-align: left; padding-left: 20px;  padding-top:5px;line-height: 22px; }
+.moplk{
+    display: block; text-align: center;}
+.bottom_no{ border-bottom: none;}
+.koupl{ height: 48px; line-height: 45px;}
+/*----销售中心--发出的报价单20150506 gaoyuejiao----*/
+.Absev{  display: block;}
+.nulpo{  color: #ff6600; }
+.julom{  color: #aaaaaa;}
+.mloi{ height:50px; line-height: 50px;}
+.cg_inforM  .mmkiu{ line-height: 22px; padding-left: 20px;}
+.molpjf{ width:310px;  float:left;}
+.molpjf p{line-height:32px;}
+.molpjf span{ color:#757575;}
+.kplmn{ width: 259px; line-height: 22px; margin: 10px; margin-top: 0px; text-align: left;}
+.gaop-in{width: 138px; height: 30px; line-height: 30px; padding: 0px 5px; border: 1px solid  #e8e8e8;  margin-right: 10px;}
+.gao-shuy{ margin-left:-20px; margin-top: 10px;}
+.AMprP td{ padding-top: 10px; padding-bottom: 12px;}
+.AMprP th{  padding: 13px 0px;}
+.kiopi{  display: block; margin-top: 10px;}
+.lkpiu th {  width: 120px; text-align: right; font-family: 宋体; font-size: 14px!important;}
+.lkpiu .upoim{   text-align: left; text-align: left;
+    height: 50px;}
+.gao-kiuu{  width: 162px;  border: 1px solid #e8e8e8;  padding: 0px 5px;  height: 28px;  line-height: 28px; border: 1px solid #e6e6e6;}
+.yhkpo{  margin-top: 8px;  font-family: 宋体; font-size: 14px!important;}
+.hylkj{  width: 710px; padding: 10px; height: 80px; border:1px solid #e6e6e6;  color: #aaaaaa;  float: left; }
+.textbop{ text-align: center;}
+#fpytrm{width:958px; margin:0px auto; border:none!important; height:64px; border-top:none!important; text-align:right; line-height:64px;}
+.ghnmk{ float: left; margin-top: 10px;}
+/*------------销售中心---报价详情页 gaoyuejiao 20150512----------------*/
+.hypoig{  line-height: 100px;}
+.ujhgt{ margin:0px 20px; text-align: left; line-height: 22px; margin-right: 0px; }
+.hymlo{ margin-left: 20px; margin-top: 10px; margin-bottom: 10px;}
+.hymlo th{ color: #757575;}
+.hymlo td{
+    height: 32px;}
+
+.fgpu{width:958px;border:1px solid #dfdfdf;border-top:none;margin:0px auto;height:56px;}
+.joplmv{  width: 310px; height:10px;  line-height: 10px; float: left;}
+
+/*----------------采购中心---采购单管理最新版本 gaoyuejiao 20150513---------------------------*/
+
+.zd_list_g li{float:left;}
+.bold-Gao{ font-family: 宋体; font-size: 12px; font-weight: bold;}
+.gao-inpu{  width: 148px;  border: 1px solid #e6e6e6; padding: 0px 5px;
+    height: 30px; line-height: 30px;}
+.Wdate1{background:url(../images/date.png) no-repeat right 2px;}
+.lt_line_m{ margin-top: 4px; color: #3c3c3c; font-weight: bold;}
+.lt_bg{ line-height: 30px;}
+.sous_Btn{ width: 65px; height: 30px; line-height: 30px; font-family: 微软雅黑; font-size: 14px;  color: #ffffff; font-weight: bold; text-align: center; float: left; background: #ff6600;}
+.sous_Btn:hover{ background: #ea5504; color: #993300; text-decoration: none;}
+.Koplk td{ text-align: center  ;}
+.Marmaa{ margin: 22px auto 0px; }
+a.hyplkm{font-family:"SimSun";font-size:12px;color:#0088cc; display: block; margin-top: 6px; margin-bottom: 20px;}
+a.hyplkm:hover{  color: #ff6600;  text-decoration: none;}
+a.gtyng{  color: #0088cc;  display: block; margin-right: 10px;}
+.INtres{  font-family: 宋体; font-size: 14px;  color: #3c3c3c; margin-left: 12px; margin-right: 10px; }
+.opiy-V{ position: relative;}
+.yuand_num{ position: relative;  right: 10px;  top: 0px; }
+.INtres-on{ color: #ff6600; text-decoration: none;}
+.INtres:hover{ color: #ff6600; text-decoration: underline;}
+
+/*------采购中心 表格样式 20150513---------*/
+.table-ff{width:838px;margin-top:10px;border:1px solid #dfdfdf;margin-bottom:39px;}
+.upmkh{padding-left:10px;height:42px;color:#3c3c3c;line-height:42px;background:#f8f8f8;border:1px solid #efefef;font-size:14px; margin-top: 10px;}
+.qiehuan-m{  display: none;  margin-bottom: 0px;}
+/*--------采购中心-采购列表-查看报价 gaoyuejiao 20150513-------*/
+
+.HYtu_t{width:838px;border:1px solid #efefef;min-height:100px;margin:0px auto; padding-bottom:3px; margin-top: 10px;}
+.Polku{ margin-top: 21px; padding-left: 20px;}
+.Guleft{  width: 340px; float: left;  line-height: 30px; margin-left: 20px; margin-top: 6px; margin-bottom: 10px;}
+.left-title{ color:#757575; }
+.Guleft1{  width: 300px!important;  }
+.Guleft2{  width: 138px!important;}
+.mop-P{  color: #ff0000;}
+.ruwei{  font-family: 宋体; font-size: 12px; font-weight: bold;  color: #3c3c3c; float: left;  display: block; width: 80px; text-align: right;  height: 30px;  line-height: 30px;}
+.yes-m{ height: 30px; line-height: 30px;}
+.cklb_B{ width: 840px;border: 1px solid #efefef; margin-top: 10px;}
+.cklb_B td{ text-align: center;}
+.hpoM{  width: 840px;  height: 44px;  }
+.hhlo{ position: relative;}
+.kout{ position: absolute; right: 40px; top: -43px;}
+.nmop{ margin-left: 20px; margin-right: 20px;}
+.all-m{  color: #0088cc}
+.all-m:hover{  color: #ff6600}
+.julpu{ margin-left:20px;+margin-left:0px;}
+.all_gao{ color:#0088cc; font-weight:bold;}
+.all_gao:hover{ color:#ff6600; font-weight:bold;}
+.m_addp{height:30px;margin-bottom:6px;+height:34px;}
+.peomes_h2 .table-n{position:static;right:auto;top:auto;font-size:12px;font-family:"SimSun";vertical-align:6px;margin-left:4px}
+.Wdate{position:absolute;top:0px;right:2px;}
+.dOpM{ display:none;}
+/*-----------------发布产品信息最新版 20150518 gaoyuejiao-----------------------*/
+.gao-kopl{ height:30px; border-bottom:1px solid #dfdfdf; border-left:1px solid #dfdfdf;border-right:1px solid #dfdfdf; background:#f9f9f9;}
+.tabb li{margin-right:0;text-align:center;height:35px;line-height:35px;margin-top:0;margin-right:-1px;padding:0 22px; color:#aaa;}
+.tabb li.on{height:36px;background-color:#f9f9f9; color:#3c3c3c;}
+.daoru-cg{ float:left;  margin-left:27px; position:absolute; left:200px;+left:70px; margin-top:10px; top:0px; +top:-10px; +width:200px;}
+.hytrp{ margin-top:40px;+margin-top:50px;}
+.hytre{ height:30px; line-height:22px;}
+.hhpo{ position:relative;}
+.juykj{ position:absolute; top:10px; border-bottom:1px solid #dfdfdf; width:100%; left:0px; }
+.h350{ height:350px;}
+.fbcp-banner{ border:1px solid #dfdfdf; position:relative; height:218px;}
+.hhtgf{ position:absolute;  height:46px; z-index:10; bottom:10px; width:100%; left:0px; }
+.ggopu{ width:279px; height:46px; margin-left:280px; display:block; text-align:center; background:url(../images/product/fbcp-btn.png) no-repeat center center; font-size:22px; color:#fff; line-height:46px; float:left; }
+.ggopu:hover{ background:url(../images/product/fbcp-btnhover.png) no-repeat center center; color:#fff; text-decoration:none }
+.ggopu:active{ background:url(../images/product/fbcp-btnactive.png) no-repeat center center;}
+.fbsjjq{  display: block; float:left; margin-left:20px; background:url(../images/product/right-jt.png) right center no-repeat; padding-right:10px; margin-top:15px; font-size:16px;}
+.hytmk{ margin-top:10px;}
+.ffggtr{ margin-top:10px; border:1px solid #dfdfdf; min-height:30px; padding-top:5px; padding-bottom:5px;}
+.ffggtr-left{ float:left; width:420px;  line-height:25px; margin-left:5px!important;}
+.gaojy{ display:block;}
+.ffggtr-right{ float:left; line-height:25px; width:300px;}
+.kuomn{ margin-top:5px; margin-right:5px;}
+.move_g{ font-family:"宋体"; font-size:12px; color:#0088cc; float:right; margin-right:10px; }
+.move_g:hover{ color:#ff6600; text-decoration:underline;}
+.gaojy{ background:url(../images/product/price_icon1.png) no-repeat left 4px; padding-left:20px;}
+.gaojy:hover{background:url(../images/product/price_icon1.png) no-repeat 0px -18px;}
+.cgd-an {  padding: 0 9px;  float: right;  margin-top: 10px;  margin-right: 10px;  }
+.hhtrb{ line-height: 22px; margin-left: 20px;  text-align: left; margin-top: 15px; margin-bottom: 14px;  width: 260px;}
+.hymn{ margin-top: 15px; margin-left: 20px;line-height: 22px; text-align: left; margin-bottom: 15px; margin-right: 20px;}
+.nhglk{ display: block; margin-left: 20px; margin-top:15px; line-height: 22px; text-align: left; width: 247px; margin-bottom: 15px; }
+.table_m{ display: table;}
+.kongh li{ position:relative; }
+.jjulk{ position:absolute; font-family: "宋体"; right:10px; color:#757575;}
+/*--------------------发布报价单----2.3版本-------------------------*/
+.hopmhk{height: 35px; line-height: 50px; padding-left: 10px; font-family:"SimSun"; font-size: 12px;font-weight: bold; color: #3c3c3c;}
+.hopmhk span{ margin-left:10px; cursor:pointer!important; color:#5555555;}
+.ColmMh{color:#0088cc!important;}
+
+.ColmMBl{color:#3c3c3c!important;}
+.ColmMBl:hover{ color:#ff6600!important;}
+.colof60{ color:#ff6600!important; text-decoration:underline;}
+.umoobco{ cursor:pointer;}
+.pammokj{ width:260px; border:1px solid #dfdfdf; padding:10px; position:absolute;  left:-220px; background:#fff; text-align:left;+top:20px;}
+.pammokj p{ font-family:"SimSun"; font-size:12px; color:#3c3c3c; line-height:17px; }
+.resion{ font-family:"SimSun"; font-size:12px; color:#aaa;}
+/*-----------------2.3版本 采购中心--采购列表--产看报价 gaoyuejiao 20150609-----------------*/
+.domh{ margin-right:21px; margin-top:7px; +margin-top:-22px;}
+.juomnd{ color:}
+/*-----------------2.3版本 弹框退回报价 gaoyuejiao 20150609-----------------*/
+.uoplmc{ width:196px; float:left; display:block;}
+.gumno{ line-height:22px;  font-family:"SimSun"; font-size: 12px; margin-left:30px; margin-right:30px;}
+.ddvbm{line-height:22px;  font-family:"SimSun"; font-size: 12px;  margin-top:10px; display:block;}
+.hylmjl{ width:380px; display:block; border:1px solid #dfdfdf; height:90px; padding:5px; font-family:"SimSum"; font-size: 12px;  margin:16px auto 13px; text-align:left!important;  color:#aaaaaa;}
+.red_mop{ font-family:"SimSun";font-size: 14px; color:#ff0000;}
+.gkolv{   color:#757575;  padding-left:16px;  padding-right:0px; }
+.bnm{font-family:"SimSum"; font-size: 12px; }
+.komhp{ margin-left:22px; }
+.mt-3{margin-top:-3px!important;+margin-top:0px!important;}
+.w370{ width:350px;  margin-left: -175px;padding: 0 10px 10px;}
+/*-----------------2.3版本（2）期 温馨提示弹窗 gaoyuejiao 20150611------------------*/
+
+.molkh{width:300px; margin:0px auto; text-align:center; margin-top:18px;}
+.komng{ font-family:"SimSun"; font-size: 12px; }
+.dian-M{ height:1px; background:url(../images/dian.png) repeat-x; width:350px; margin:0px auto; display:block; margin-top:25px;}
+.komhg{ width:248px; height:26px; border:1px solid #e8e8e8; line-height:26px; padding-left:5px; padding-right:5px;}
+.jombb{ margin-top:22px;}
+.koumng{ width:330px;  height:30px; margin-left:18px;}
+/*--------2.3(2)---主动报价管理----*/
+.table_m td{ text-align:center; font-family:"SimSun"}
+.kolmg{ display:block; width:204px; line-height:22px; text-align:left; margin-left:20px;margin-right:20px; margin-top:10px; margin-bottom:10px;}
+
+.jomg   td{height: 66px; text-align: center; line-height: 22px; font-family: "SimSun"; font-size: 12px; border-bottom:1px solid #eeeeee; }
+.jomg{width: 840px;  border: 1px solid #eee; margin-top: 10px; border-bottom: none;}
+.cgd-ana{ float: right;margin-right: 10px; margin-top: 10px;padding: 0 19px;}
+.kolm{font-family:"SimSun"; font-size: 12px; border-left:none; border-right:none;}
+.kolm{font-family:"SimSun"; font-size: 12px; border-left:none; border-right:none;}
+.molkd{ border-top: none; background: #fff;}
+.table_bm td{height:42px; text-align:center; font-family:"SimSun";font-size: 12px; border-bottom:1px solid #eeeeee;}
+.table_bm{ width:840px;  border:1px solid #eeeeee; border-top:none; }
+.mokhd{ float:left; margin-left:20px; margin-top:10px;}
+.molpic{ width:183px; display:block; float:left; margin-top:5px; margin-left:10px; line-height:22px;}
+.wBox{ width:60px; height:60px; margin-left:20px; margin-top:14px;  margin-bottom:15px;background:#333; position:relative; float:left;}
+.Mopo{ margin-top:0px; border-top:none;}
+.blackBox{ position:absolute; top:0px; left:0px; width:80px; height:80px; line-height:80px; color:#fff; background:url(../images/aa.png) repeat; display:none;}
+.momolk{ width:170px; padding-left:10px; padding-right:10px; float:left; margin-left:20px; margin-top:15px; border:1px solid #e6e6e6; line-height:22px; height:72px; padding-top:5px; margin-bottom:12px; }
+.mokhc{ width:205px; margin-left:13px; float:left;}
+.nimbq{ border:1px solid #e6e6e6; height:28px; line-height:28px; padding-left:4px; padding-right:4px; text-align:center;}
+.kolpu{ border-left:none; border-right:none;}
+.tab-Bm {background: #f8f8f8 none repeat scroll 0 0; color: #333333;height: 44px;width: 838px;}
+.mkolhg{ height:430px; overflow:scroll; overflow-x:hidden;}
+.border-b{ border-bottom:none; padding-bottom:0px;}
+.jkmng{ width:520px; padding-left:10px;  padding-right:10px; line-height:22px; padding-top:10px; padding-bottom:10px; border:1px solid #e6e6e6; float:left; margin-top:20px;  margin-bottom:20px; height: 78px;}
+.tjly{ float:left; margin-left:87px; margin-top:20px;}
+.jhk{ display:inline-block; }
+span.nimbq{ background:#f8f8f8;}
+.Yxqz th{ width:145px; height:40px; vertical-align:top; text-align:right; padding-right:5px;}
+.fasiz14{ font-size:14px; font-family:c}
+.Yxqz td{ vertical-align:top;}
+.noolm{ width:240px; padding-left:10px; padding-right:10px; height:28px; border:1px solid #e6e6e6; line-height:28px;}
+.fsobj{ width:118px; height:34px; border:1px solid #fb883b;}
+.komg{ width:118px; height:34px;  border:1px solid #fb883b; background:#ff9933; display:block; line-height:34px; margin:0px auto; font-family:"SimSun"; font-size:16px; color:#fff; text-decoration:none; font-weight:bold; margin-top:50px; margin-bottom:50px; }
+.komg:hover{ color:#ff661b;  text-decoration:none; font-weight:bold;}
+.koplvx{ margin-top:3px; font-family:"SimSun"; font-size:12px;  }
+.gao-inpu1{  width: 148px;  border: 1px solid #e6e6e6; padding: 0px 5px;height: 28px; line-height: 28px;}
+.nloplk{ margin-top:7px; float:left; margin-left:10px;}
+/*------------2.3(2)TK-设置统计产品 gaoyuejiao  20150615-----------------*/
+.hunbp{ width:138px; padding-left:10px; padding-right:10px; border:1px solid #e6e6e6; height:28px; line-height:28px; margin-left:8px;}
+.producth{ font-weight:bold; font-family:"SimSun"; font-size:12px; margin-top:5px; }
+.komgsty{ margin-top:20px;+margin-top:20px; margin-left:20px;}
+.molnb{ height:300px; width:594px; margin:0px auto; margin-top:20px;}
+.kolmc li{ float:left; width:290px;  height:32px; line-height:32px; font-family:"SimSun"; font-size:12px;}
+.komgj{ width:282px!important; margin-left:16px;}
+.zhumingd{ color:#757575; margin-top:5px; font-family:"SimSun"; font-size:12px;}
+.mopkhB{+margn-left:10px;}
+/*----------2.3(2)-弹出框-添加客户-----------*/
+.molhgf{ height:44px; line-height:42px; background:#e8e8e8; border:1px solid #efefef; font-family:"SimSun"; font-size:12px; font-weight:bold;}
+.molhgf span{ cursor:pointer;}
+.pmolj{ padding:0px;}
+/*-------------********弹出框表格样式***************gaoyuejiao 20150615 --------------*/
+.jkmBn{ width:674px; margin:0px auto; margin-top:30px;}
+.jkmBn th{ text-align:center;}
+.molhD{ width:674px; margin-top:0px; border:1px solid #eeeeee; border-top:none;  border-bottom:none;}
+.molhD td{ height:42px; padding-top:0px; text-align:center;border-bottom:1px solid #eeeeee; }
+.bor-rb{ border-right:1px solid #eeeeee;}
+/*----------选择产品 gaoyuejiao 20150615-------------*/
+.kmbPOb{ width:590px; margin:30px auto 10px; min-height:300px;}
+.oljhu li{ float:left; width:288px; height:100px; border:1px solid #dfdfdf; margin-bottom:10px;}
+.oljhu li:hover{ border:1px solid #ff6600; box-shadow:inset 0px 0px  6px #ff6600}
+.molPox{ width:80px; height:80px; float:left; margin-top:10px; margin-left:10px;}
+.mpolj{ margin-left:100px; margin-top:5px; line-height:22px;}
+/*---------------------采购中心--收到的主动报价---------------*/
+.kloh th{ border-bottom: 1px solid  #eeeeee; text-align: left; }
+.komb{ margin-left: 20px; line-height: 22px; width: 170px;}
+.moljs{ margin-top: 10px; text-align: left  ; width: 160px; margin-bottom: 10px;  margin-left: 15px;}
+.Onehuner{ color: #ff6600;}
+/*---2.3(2)采购中心--收到的主动报价--报价单详情------*/
+.Dfgl{ margin-bottom: 34px;}
+.koMpl{ margin-top:13px; }
+.color-75{ color: #757575;}
+.opic{
+    width: 805px; line-height: 22px; font-family:"SimSun"; font-size:12px;}
+.joplmv1{  width: 310px; height:0px;  line-height: 10px; float: left;}
+.yj-w300{ width: 300px;}
+.komnp{ width: 21px; height:20px; margin-top:5px;  }
+.gyjadd{ display:inline-block; float:left; background:url(../images/clickadd.jpg) no-repeat  center center;}
+.gyjadd:hover{ background:url(../images/click-hover.jpg) no-repeat center center;}
+.gyjmin{ display:inline-block; float:left; background:url(../images/clickmin.jpg) no-repeat  center center;}
+.gyjmin:hover{ background:url(../images/clickmin-hover%20.jpg) no-repeat center center;}
+.lomgd{ float:left; width:58px; height:28px; line-height:28px; border:1px solid #e6e6e6; margin-left:10px; margin-right:10px; text-align:center;}
+.mojh{ border-left:none;  border-right:none; width:838px;}
+.mojh td{ text-align:center;}
+.yomh{ width:60px; height:60px; float:left; margin-left:20px; margin-top:12px;}
+.jioMo{ width:211px; float:left; margin-left:10px; line-height:22px; margin-top:8px; text-align:left;}
+.kolop{ width:838px;font-family:"SimSun"; font-size:12px;  }
+.kolop  td{ text-align:center;}
+.komgv{ line-height:30px;  font-family:"SimSun"; font-size:12px;}
+/*-------------销售中心-主动报价-报价详情--------------*/
+.komgl{ line-height:22px; margin-left:20px; margin-top:17px; width:636px; font-family:"SimSun"; font-size:12px; padding-bottom:13px;}
+.komgl p span{ color:#757575;}
+.issue2{ margin: 0 auto;text-align: center;width: 840px;}
+.Joutfv{ margin-left:20px; margin-top:20px; }
+.Joutfv span{color:#757575;}
+.oolkm li{ height:30px; line-height:33px; font-family:"SimSun"; font-size:12px; margin-left:20px;}
+
+.oolkm li span{ color:#757575;}
+.kombK{ width:800px; margin:10px auto 0px;}
+.kombK td{ text-align:center;}
+.hfB{ border-top:1px solid #eee; margin-top:10px;}
+.bKhgc{ width:800px; margin:0px auto; margin-bottom:18px;}
+.kopmnd {font-family:"SimSun"; font-size:12px; width:838px; border-left:none; border-right:none;}
+.lpmgj{ height:42px; line-height:42px;}
+.opkhgf{ color:#0088cc; margin-right:0px; background:url(../images/clickdown.png) no-repeat right center; display:block;width:60px;margin:0 auto;}
+img.koplf{display:none;text-align:left;}
+.opkhgf.active{background-image:url(../images/clickup.png)}
+.opmG td{ border-bottom:1px solid #eee; }
+.kopuFF td{float:left;}
+.omlPh{ width:818px;+width:816px; border:1px solid #ff6600;min-height:30px; max-height:110px; text-align:left; padding-left:20px; padding-top:10px; padding-bottom:10px;}
+.omlPh p{ line-height:22px;}
+.col75{color:#757575}
+.koplf{ cursor:pointer;}
+.colff660{ color:#ff6600;}
+/*--------------------2.3(2)销售中心-主动报价-效果分析-客户分析----------------------*/
+.lpou{ width:100%;}
+.lpou li{ float:left; width:90px; height:45px; z-index:111; font-family:"SimSun"; font-size:14px; text-align:center; color:#aaaaaa; line-height:40px; }
+.lpou li span{ display:block; width:90px; height:40px; margin-top:0px;  font-weight:bold; text-decoration:none; d}
+.spanf8{ background:#f8f8f8;}
+.lpou li span:hover{color:#757575;}
+.activeT{ background-color:none!important;}
+
+.kiugf{ font-weight:bold; color:#fff!important ;   font-family:"SimSun"; font-size:14px; text-align:center; background:url(../images/active-click.png) no-repeat  left top; }
+.kiugf span{  background:none;}
+.kiugf span:hover{color:#fff!important;}
+.opuF{ width:840px;  min-height:400px; margin-top:0px; display:none;}
+.backFFF{ background:#fff; border:none;}
+.oplkh{ width:838px; height:438px; border:1px solid #dfdfdf; margin:10px auto; margin-bottom:10px;}
+.cgd-ana1 { float: left; margin-right: 10px;margin-top: 6px; padding: 0 10px;margin-left:10px;}
+.kpmlh{ position:absolute; right:0px; top:0px;}
+.hmlpG{+padding-top:30px;}
+.kolmh {+margin-left : 10px;}
+.cgd-anm {  padding: 0 14px;  float: right;  margin-top: 10px;  margin-right: 10px;  }
+.LPimg{ margin-top: 10px; border-top: 1px solid #eee; border-bottom: 1px solid #eee;}
+.kophfd{ float: right; margin-top: 0px; margin-right: 20px; text-align: center;}
+/*弹窗宽度*/
+.tk_w652{ width:642px; padding:0px 10px 10px; margin-left:-326px;}
+.tk_w676{width:656px;padding:0px 10px 10px;margin-left:-338px;}
+.tk_w754{ width:734px; padding:0px 10px 10px; margin-left:-367px;}
+.w416{ width:396px;  margin-left: -258px;padding: 0 10px 10px;}
+/*------------------------------询报价404页面 gaoyuejiao 20150619--------------------------------*/
+.MMlp{ width:800px; margin:0px auto; min-height:400px; margin-top: 40px;}
+.MMlp_left{ width:420px; min-height:200px; float:left; margin-top:30px;}
+.MMLp_right{ width:380px; float:left; min-height:338px; margin-top:30px;}
+.jhGFdS{ font-family:"微软雅黑"; font-size:18px; color:#3c3c3c; margin-left:20px;}
+.plhFr{ width:286px; min-height:171px; margin:40px  auto 20px;}
+.HNGd{ width:90px; display:block; height:23px;margin:0px auto; float:left; margin-left:60px;}
+.JHDb{ width:53px; height:23px; float:left; margin-left:20px; display:block;  }
+.jhfdrt{ margin:0px auto 10px; text-align:center;}
+.jimngf{ height:23px;}
+.Volhgf{ position: absolute;top:50%; left: 50%; margin-top: 170px; margin-left: -400px;}
+.kopfgh{ position: relative; width: 100%; height: 100%;}
+/*-----------------询盘详情页 gaoyuejiao 20150707----------------*/
+.mkomh{ margin-top: 5px; margin-bottom: 10px; margin-left: 5px;}
+.dian-N{height: 11px; width: 100%; display: block;   background:url(../images/dota.jpg ) repeat-x;}
+.nomkhd{ line-height:22px;}
+/*-------------------产品信息优化 gaoyuejiao 20150722---------------------*/
+/*----------------------- 优化 产品质量 shx 20140723-----------------------------*/
+.molpf{ position: relative!important;}
+.zlxj{  z-index: 1; display: inline; float: left;}
+.col-fff{ color: #fff;}
+.star span{ width:145px;background:url(../images/xj.png) no-repeat 56px top;display:inline-block;height:15px;line-height:15px;vertical-align:middle;margin-right:12px; border: none;}
+.youhuaP.jimh{ width: 100%; text-align: center;  border:none ; line-height: 34px;}
+
+.star span.one {
+    background-position: left -50px;
+}
+.komhg{position: relative!important; text-align: left!important;}
+/*---------------------发布产品 gaoytuejiao 20150722-------------------------*/
+.opmhh{ margin-top: 20px;}
+.processthre .process p{height:24px;margin:1px auto;background:url(../images/sanbu-m.png) no-repeat -23px -12px;}
+.processthree  .process p{width:960px;height:25px;background:url(../images/sanbu-m.png) no-repeat -17px -15px; line-height: 24px;}
+.processthree .process-2 p{background-position:center -116px;}
+.processthree .process-3 p{background-position:center -222px;}
+.processthree .process-4 p{background-position:center -75px;}
+.lpomn{ padding-top: 10px;}
+.lpomn li.p1{ width: 350px; text-align: left; }
+
+.lpomn li.p3{ text-align: right;  width: 80px;  float: right; }
+.process-box{height:114px;}
+.ba-gba{ background: #f8f8f8; width: 980px; margin: 10px; border: 1px solid #eeeeee; margin-bottom: 0px;}
+.cb-f60{ color: #ff6600; font-size: 14px;}
+.col-aaa{ color: #aaa; font-size: 14px;   margin-top: 10px; margin-bottom: 10px;}
+.ukpi{ text-indent: 28px;}
+.menu_head{ color: #0088cc;}
+.menu_body p{ border: none;}
+.ba-gba td{ padding-top: 10px;}
+.text_inp{height:28px;line-height:28px;width:440px;background-color:#FFF;border:1px solid #e6e6e6;padding:0 10px}
+.lpojf{ float: left;  margin-top: 10px; margin-right: 10px;}bor-r-no
+
+.oplmn{  border: 1px solid #eeeeee; width: 978px; margin: 10px auto;  border-bottom: none; margin-bottom: 0; margin-top:0;background:#F8F8F8!important; }
+.oplmn td{ height: 50px; vert-align: top; text-align: left; }
+.oplmn th{ text-align: right; height: 50px; font-size: 14px; font-family: "SimSun"; width: 102px;}
+.oTextm{  height: 28px;  line-height: 28px; padding: 0px 5px; border: 1px solid #e6e6e6; width: 248px; border: 1px solid #e6e6e6;}
+.oplmn th s{color: #ff0000;  padding-right: 5px;  text-decoration: none;  font-family: "SimSun";}
+.Haosh{ margin-left: 10px; font-size: 14px; font-family: "SimSun"; color: #3c3c3c; }
+.opud{ margin-top: 0px; border-bottom: 1px solid #e6e6e6; background: #F8F8F8; width:976px ; margin: 0px auto; margin-bottom: 10px; padding-bottom: 12px; font-size: 14px; color: #aaaaaa; padding-top: 10px; border-right: 1px solid #e6e6e6; border-left: 1px solid #e6e6e6;}
+.mouPK{ margin-left: 34px; font-size: 14px; font-family: "SimSun";  margin-right: 8px;}
+.kidk{ float: right; font-size: 12px; margin-right: 10px;}
+.editorm{  min-height: 100px;  width: 808px;  margin-left: 159px;  margin-top: 10px;}
+.oplmn td label{ font-size: 14px; font-family: "SimSun";}
+.opmn{ border-bottom: 1px solid #eeeeee;}
+.ablueA{ color: #0088cc;}
+.yulan{ padding-left: 54px; padding-right: 54px; height: 34px; line-height: 34px; display: inline-block; font-size: 16px; font-family:"SimSun";  margin-left: 17px; color: #757575; font-weight: bold; border: 1px solid #fff; }
+.yulan:hover{ border:1px solid #e1e1e1; text-decoration: none;color: #3c3c3c; }
+.lopmhg td{ height: 36px;}
+.lpir td{ padding-top: 5px;}
+.title1_h5{height:33px;line-height:33px;}
+.font-12px{ font-size: 12px;}
+.kous td{ background:#F8F8F8; text-align: left; border-right: 1px  solid #e6e6e6; }
+.bor-r-no{ border-right:none;}
+.kous{ border-left:1px solid #e6e6e6;}
+.oplu{ width: 98px; padding: 0px 5px; height: 28px;line-height: 28px; border: 1px solid #e6e6e6; margin-top: 10px;}
+.ddplfmn{ width: 492px; +width: 492px;}
+.mtThree,.mtTwo{margin-top:46px}
+.MPOU{ padding-top: 10px;  margin-top: 20px;}
+.korj{ float: left;  margin-top: 20px; margin-left: 10px;}
+.opudb{ margin-top: 0px;  background: #F8F8F8; width:976px ; margin: 0px auto;  border-top: 1px solid #e6e6e6; padding-bottom: 12px; font-size: 14px; color: #aaaaaa; padding-top: 10px; border-right: 1px solid #e6e6e6; border-left: 1px solid #e6e6e6;}
+/* add wx 选择类目 11-20*/
+.daoru-bd {
+	 width: 228px;
+	 font-size: 12px;
+	 font-family: "SimSun";
+	display: block;
+	height: 16px;
+	line-height: 16px;
+	background: url(../images/ka.png) no-repeat;
+	padding-left: 30px;
+	margin-top: 10px;
+    position: absolute;
+    right: 0px; 
+    top: -35px;
+}
+.bdka{
+	display: none;
+	width: 144px;
+	height: 111px;
+	padding: 25px 30px;
+	background: url(../images/ka-bg.png);
+	position: absolute;
+    right: 0px;
+    top: -10px;}
+.bdka div{  
+
+	margin-top: 10px;
+	margin-left: 10px;
+	padding-left: 15px; 
+	background: url(../images/kali-bg.png) no-repeat 0 4px; 
+}
+
+/*-------------引用产品--------------*/
+.udng{  height: 626px; border: 1px solid #dfdfdf; margin-top: 60px; position: relative;}
+.homgd{ position: absolute; top: 50%; left: 50%;  width:438px; height: 158px; margin-left: -269px; margin-top: -79px;}
+.imhs{ margin-top: 41px;  float:left;}
+.jrojr{ margin-top: 27px; margin-left: 30px;  font-size: 20px; font-family: "Microsoft YaHei"; text-align: left; float: left;color: #3c3c3c; width: 349px;}
+/*-------------引用产品( 有内容)gaoyuejiao 20150724--------------*/
+.processfour .process p.lp{ width: 980px; background:url(../images/product/textfor.png) -4px -50px;}
+.processfour .process-2 p.lp{background-position:center -208px;}
+.processfour .process-3 p.lp{background-position:center -366px;}
+.processfour .process-4 p.lp{background-position:center -524px;}
+.processfour .process li.pm1{ width: 181px; text-align: left; margin-left: 6px; height: 25px;}
+.processfour .process li.pm2{ width: 236px; text-align:center; margin-left: 37px;  height: 25px;}
+.processfour .process li.pm3{width: 134px; margin-left: 83px;text-align: right;  height: 25px;}
+.processfour .process li.pm4{width: 171px; margin-left: 132px;text-align: right;  height: 25px;}
+/*------------宽度为10000表格的表头 gaoyuejiao 20150724-----------*/
+.BGtab{ width: 998px;border: 1px solid #efefef; background: #f8f8f8; margin: 0px auto;}
+.BGtab td{ height: 42px; line-height: 42px; text-align: center;}
+.komgD{  width: 998px; border: 1px solid #efefef; margin: 0px auto; border-bottom: none;}
+.komgD td{  text-align:center;height: 44px; border-bottom: 1px solid #eeeeee;  padding:5px 0px;}
+.img-boa{  /*margin-left: 10px; margin-right: 10px; margin-bottom: 10px;*/  margin: 10px;  margin-top: 5px; margin-bottom: 5px; display: block;  width: 100px; height: 100px;}
+.komgD td p{ line-height: 22px; text-align: left; text-indent: 62px;}
+.komgD td span{ display: block; line-height: 22px; text-align: left; text-indent: 62px;}
+.nomg{ display:block; width: 62px; height: 22px; background: #ff9933; color: #fff!important;  font-size: 12px; text-align: center; line-height: 22px; border: 1px solid #fb883b; margin-left: auto; margin-right: auto;}
+.nomg:hover{ color: #ff6600; text-decoration: none;}
+/*-----------------优化建议gaoyuejiao 20150726------------------*/
+
+.kouG{ width: 100%;}
+h3.youztil{ height: 73px; line-height: 73px; background:url(../images/titl-bg.gif) no-repeat left center;  font-size: 22px; color: #ff6600; font-weight: bold; padding-left: 10px;}
+.dpo-bg{ padding-left:17px; padding-top:10px;padding-right:17px;width: 962px; border: 1px solid #eeeeee; margin: 0px auto; background: #f9f9f9;min-height:74px;}
+.opkMB{   font-size: 16px; color: #737373; font-family: SimSun; line-height: 30px;}
+.op-M{ color: #339933;font-family: SimSun; font-size: 16px; line-height: 30px;}
+.um_box li{ line-height: 28px; font-family: SimSun; color: #737373; font-size: 16px; }
+.zvdj-cx{ width: 554px; height: 147px; margin: 0px auto;  margin-top: 30px;  margin-bottom: 20px;}
+.dpo-bg .center { margin: 0px auto; width: 626px;}
+/*侧导航样式*/
+#nav {position:fixed; top:40px;z-index:8888;  display:none; width:160px;  background:#ccc; 	transition:bottom 0.9s;-webkit-transition:bottom 0.9s;-moz-transition:bottom 0.9s;-o-transition:bottom 0.9s;}
+#nav li {width:160px; display:block; height:40px; line-height:40px; text-align:center;}
+#nav li ..current{ background:url(../images/hover.png) no-repeat;}
+#nav li a {  color:#3c3c3c;  display:block;  font-size: 14px;  text-decoration: none;  width:150px; height:40px;  font-family:"Microsoft YaHei";  line-height:40px;  background:url(../images/aa.jpg)  no-repeat center left;  padding-left:10px;  }
+#t-bt-bg{background:url(../images/cdh_hover_bg.jpg) no-repeat center left;width:147px;line-height:40px;}
+
+#nav ul li a:hover { font-size: 14px;  background:url(../images/hover.jpg) no-repeat  center left ;  color:#F60; text-decoration:none;
+}
+#nav .current a {  font-family:"Microsoft YaHei";  font-size:14px;  font-weight:500;  color:#F60;  background:url(../images/hover.jpg) no-repeat center left;  text-decoration:none;
+}
+
+.current{
+
+    color:#fff;
+    text-decoration:none;
+
+}
+
+.star span{ background-position: 56px -50px;}
+#goTopBtn {
+    position: fixed;  text-align: center; line-height: 30px; WIDTH: 30px; BOTTOM: 35px; HEIGHT: 33px; FONT-SIZE: 12px; CURSOR: pointer; RIGHT: 80px; _position: absolute; _right: auto;
+}
+/*-----------fanhuidingbu------------*/
+#gotop{z-index:400;overflow: visible;position: fixed;width:160px; _position: absolute;_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,40)||0)-(parseInt(this.currentStyle.marginTop,0)||40)));border-left:1px solid #dfdfdf; display:block;}
+#back{background:url(../images/btn-quick_back.jpg) no-repeat top left; width:160px; height:56px; display:block; text-indent:-9999em;
+    cursor:pointer ;border:none;}
+	#back:hover{background:url(../images/btn-quick_back.jpg) no-repeat top left;}
+.body_yh{ height: 3600px;}
+a.iokhg{ color:#757575!important;  border: #e1e1e1;!important;  display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    height: 34px;
+    line-height: 34px;
+    line-height: 38px\9;
+    padding: 0 30px; background: #eaeaea !important;  cursor: default;}
+a.iokhg{ text-decoration: none; cursor: default;}
+.gao-hide{display: none;}
+.float-n font{z-index: 100;}
+.basic-table th.oplj{ padding-top: 15px;}
+.process-box2{
+    height: 77px;}
+.process-box2 .process li{ height: 25px!important;}
+.opjinPut{ width: 108px; padding-left: 10px; padding-right: 10px; height: 28px; line-height: 28px;border: 1px solid #e6e6e6; }
+.ppou{ width: auto;}
+#back{  border-left:1px solid #e6e6e6;}
+.oplhte{ bottom: 400px!important; right: 52px!important;}
+/*-------------------------发布成功页 gaoyuejiao 20150727-------------------------*/
+.kolmnd{ float: left; margin-left: 86px; margin-top: 10px;}
+.OPlm{  height: 20px;  width: 600px; margin-left: 160px;}
+.secsee{ font-size: 20px; font-family: "Microsoft YaHei"; color: #3c3c3c; }
+.oputB{ font-size: 14px; color: #3c3c3c; font: "Microsoft YaHei"; line-height: 30px; font-family: "Microsoft YaHei"; }
+.YNg{   margin-left:10px;padding-left: 14px; padding-right: 14px; height: 23px; line-height: 23px; background: #eaeaea; border: 1px solid #e1e1e1; float: left; color: #757575;}
+.YNg:hover{ color: #999; text-decoration: none;}
+.kolam{float: left; margin-top: 10px;}
+.opleh{  margin-left: 150px; margin-top: 10px; padding-top: 20px}
+.opleh p{ line-height: 27px; font-family: "Microsoft YaHei";}
+.oplK-N { height: 48px; line-height: 48px; background: #f8f8f8; border: 1px solid #ececec;}
+.olaj{ padding-right: 12px; padding-left: 12px; height: 34px; border: 1px solid #fb883b; background: #ff9933;  line-height: 34px; color: #fff; font-family:"Microsoft YaHei"; font-size: 16px; font-weight: bold; }
+.olaj:hover{ color: #ff6600; text-decoration: none;}
+.jomg-p{ height: 0px;}
+.koehg{ width: 1000px; margin: 0px auto;}
+.peomes_h2 b, .peomes_h2 span, .peomes_h2 a{ float:right;}
+/*-------------------------快捷发布下拉框框gaoyuejiao 20150731---------------------*/
+.wap_m{ width: 300px; min-height: 100px; border: 1px solid #ccc;margin-left: 204px;display:none;}
+.wap_m p{ color: #757575;  height: 30px; line-height: 30px; margin-left: 10px;font-size: 12px; font-family: SimSun;}
+ .wap_m ul li{ cursor: pointer; height: 30px; line-height: 30px;text-align: left; color: #3c3c3c; font-size: 12px; font-family: SimSun; padding-left: 5px;}
+ .wap_m ul li:hover{ background: #9cd7fc; color: #ffffff;}
+ /*发布产品换banner gaoyuejiao 20150731*/
+ .fbcp-banner2{ height: 360px;}
+ .kogrh{ position:absolute;   text-align:center;height:46px; z-index:10; bottom:40px; width:100%; left:0px; }
+.glp_m{ float: left; background: #51b7ec; border-radius: 4px;  padding-left: 53px; padding-right: 53px; height: 40px; line-height: 40px; font-family: "Microsoft YaHei"; font-size: 18px; color: #fff; }
+.glp_m:hover{ background: #4485ab; color: #fff; text-decoration: none;}
+.kokeh{ position: absolute; right: 70px;}
+.lrkh{ float: right; margin-right: 200px; margin-top: 12px;}
+.fb-pop font.oplkF { border: 1px solid #f9dfb2;  border-radius: 3px;  -moz-border-radius: 3px;  -webkit-border-radius: 3px;  left: 26px;  height: 86px;  top: -44px;  width: 125px;  text-align: left;  background: #ffffe0;  line-height: 20px;  color: #ff6600;  display: block;  padding: 8px 8px 8px 10px;  -webkit-box-shadow: 0 0 3px #ffcc99;  -moz-box-shadow: 0 0 3px #ffcc99;  box-shadow: 0 0 3px #ffcc99;  font-size: 12px;  display: none;  z-index: 100;  }
+.fb-pop font span.pomouy {
+    background: url(../images/pop_right_arr.png) no-repeat 0 top;
+
+    display: block;  float: left;  margin-left: -17px;  margin-top: 38px;  width: 7px;  height: 11px;
+}
+.oplkF{ position: absolute; bottom: 90px; left: 0px; font-size: 14px; font-family: "Microsoft YaHei";}
+.Fbsjq{ text-decoration: underline; }
+/*xiugaoyangshi*/
+.XiXX{ position:relative;}
+
+/*2015.10.10 wx 采购中心-我的交易-返利提现页面增加返现提示图标*/
+.feiyongjin{ display:block;background:url(../images/feiyongjin.png) no-repeat; width:31px; height:20px; margin-left:25px;+margin-left:7px; margin-top:10px;}
+.feiyongjin:hover{ background:url(../images/feiyongjin_hover.png) no-repeat;}
+.tsk{ display:none; width:278px; height:37px; background:url(../images/tsk.png) no-repeat;left:60px; top:-7px; +top:0px; text-align:left; color:#ff6600; padding:4px 5px 5px 12px;}
+.yongjin{ width:19px; height:20px; background:url(../images/yongjin.png) no-repeat; margin-left:30px;+margin-left:5px; margin-top:10px;}
+
+/*10-29 wx add 返利提现*/
+.order-Invoice{ width:756px; padding:20px 20px; height:88px; background:#ffffe0; border:1px solid #f9dfb2; font-family:"SimSun"}
+.Invoice-xinxi th{ line-height:26px;}
+.c-c60{ color:#cc6600;}
+.pd20{ padding:20px !important;}

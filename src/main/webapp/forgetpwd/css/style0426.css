@@ -1,0 +1,678 @@
+@charset "utf-8";
+/**
+* Description: common
+* Developers: WANGJUN
+* Time:2013 04
+**/
+/*RESET
+-------------------------------------------------------------- */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, hr, pre, code, form, input, button, fieldset, textarea, p, blockquote, th, td { margin: 0; padding: 0; }
+body{background-color:#ffffff}
+table { border-collapse: collapse; border-spacing: 0 }
+fieldset, img { border: 0 }
+address, caption, cite, code, dfn, em, strong, th, var { font-style: normal; font-weight: normal }
+ol, ul { list-style: none }
+del, ins { text-decoration: none }
+caption, th { text-align: left }
+h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: normal }
+input, button, textarea, select { font-size: 100% }
+q:before, q:after { content: '' }
+addr, acronym { border: 0; font-variant: normal }
+sup, sub { vertical-align: baseline }
+.none{ text-decoration:none}
+/*CLEARFIX
+-------------------------------------------------------------- */
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.clearfix { display: inline-block; }
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/*FONT
+-------------------------------------------------------------- */
+body {font:12px/1.5 tahoma, arial, \5b8b\4f53, sans-serif; color:#3333333; text-align:center; background:#fefefe}
+/*FOOT
+-------------------------------------------------------------- */
+.bord{ width:100%; height:auto; border-top:1px solid #cccccc; background:#eee}
+.bord .copyright {  margin:10px auto 0!important;}
+.foot_cont {width: 950px; height: auto; margin: 0 auto; overflow: hidden;}
+.copyright { width:950px; margin:10px auto; clear:both; padding:8px 0; text-align:center;}
+.copyright p{ color:#333; line-height:30px;}
+.copyright p a{ color:#4d4d4d; text-decoration:none}
+.copyright p a:hover{ color:#f60;}
+.footer_pic{width:950px; margin:0 auto; padding-left:20px; text-align:center;}
+.footer_pic ul li{ float:left; margin:0 6px;}
+/*HEAD
+-------------------------------------------------------------- */
+.message{ width:800px; overflow:hidden; text-align:center; margin:0 auto; border:1px solid #eee; overflow:hidden}
+.message .head01{ width:800px; padding:5px; text-align:center; margin:0 auto;  font-size:12px; overflow:hidden; position:relative; border-bottom:1px solid #cdcdcd; }
+.message dl{ width:677px; margin:40px auto 30px; padding:0; text-align:left}
+.message dt{ color:#ff6600; margin:0 0 40px}
+.message dd{ color:#757575; line-height:28px; padding:0 0 10px 40px; }
+.message dd b{ padding:2px; border:#cccccc 1px solid; color:#ff6600}
+.message .p_div{ width:760px; padding:20px; background:#eeeeee; overflow:hidden}
+.message .p_div p{ padding:0 0 0 40px; text-align:left;line-height:24px;}
+.message .p_div p i{ font-style:normal; color:#ff6600; }
+.message .p_div p a{ text-decoration:none}
+.message .p_div p a:hover{ text-decoration:underline}
+.head01 span{ display:block; position:absolute; color:#044885; font-size:12px; left:168px; top:48px;}
+.head01{ width:790px; padding:5px; text-align:center; margin:0 auto;  font-size:12px; overflow:hidden; position:relative }
+.head01 .logo{ width:137px; height:37x; float:left; margin:20px 16px 0 0;}
+.head01 .txt{ width:183px; height:33px; float:left; margin:24px 0 0;}
+.head01 p{ width:248px; overflow:hidden; float:right; margin:30px 0 0; white-space:nowrap; overflow:hidden }
+.head01 p a img{ margin:0 6px 0 6px}
+.head01 p a{ display:inline-block; height:28px; text-decoration:none;color:#757575; font-size:18px; background:url(../../images/line.gif) right 5px no-repeat; padding:4px 8px 4px 4px; margin:0}
+.head01 p a:hover{ color:#CC6600;}
+
+
+.area{ width:990px; padding:5px; text-align:center; margin:0 auto;  font-size:12px; overflow:hidden;}
+.head_white, .head{ width:990px; padding:5px; text-align:center; margin:0 auto;  font-size:12px; overflow:hidden; position:relative }
+.head_white{ background:#fff; position:relative}
+.head_white .logo, .head .logo{ width:216px; height:58px; float:left; margin:16px 16px 0 0;}
+.head_white .txt, .head .txt{ width:117px; height:42px; float:left; margin:24px 0 0;}
+.head p{ width:248px; overflow:hidden; float:right; margin:30px 0 0; white-space:nowrap; overflow:hidden }
+.head p a img{ margin:0 6px 0 6px}
+.head p a{ display:inline-block; height:28px; text-decoration:none;color:#757575; font-size:18px; background:url(../../images/line.gif) right 5px no-repeat; padding:4px 8px 4px 4px; margin:0}
+.head p a:hover{ color:#CC6600;}
+.head_white p{ width:166px; overflow:hidden; float:right; margin:30px 0 0; line-height:20px;}
+.head_white p a{ text-decoration:none;color:#757575; }
+.head_white p a:hover{ color:#CC6600;}
+.head_white em{ font-style:normal; color:#e70000}
+.head span{ display:block; position:absolute; color:#044885; font-size:12px; right:5px; top:66px;}
+.head_auto{ width:100%; height:97px; background:#fff; border-bottom:1px solid #e7e7e7}
+.tip{ width:100%;height:127px;margin:0 auto 10px; padding:0; text-align:center; background:#f2f2f2 ;  position:relative;border-bottom:1px solid #ff6600;}
+.tip p{ text-align:center; color:#ff6600; line-height:28px; padding:10px;}
+/*.tip .img{ position:absolute; top:126px; top:125px/9; top:125px/0; _top:125px}
+*/.tip td{ color:#ff6600; text-align:left; font-weight:bold; line-height:24px;}
+.tip table{ margin:0 auto; padding:0; width:410px; position:relative; top:30px}
+ dl dd a{ color:#0033cc; text-decoration:none }
+ dl dd a:hover{ color:#1f376d!important;}
+
+/*	BTN 
+-------------------------------------------------------------- */
+.input{ width:283px; height:28px; border:1px solid #dbdbdb;line-height:28px; color:#999; padding-left:5px; vertical-align:middle}
+.input01{ width:100px!important;}
+.input02{ width:175px!important;}
+.input03{width:129px!important; }
+.input04{width:59px; height:28px; border:1px solid #dbdbdb;line-height:28px; color:#999; margin:0 10px 0 0;padding:0 0 0 5px; }
+.inpt_mar{ margin:0 5px 0 0 }
+.btn01{ width:100px; height:38px; line-height:38px; background:url(../../images/btn.gif) left top no-repeat;cursor:pointer; border:none; color:#fff; font-weight:bold; font-size:14px;}
+.btn02{ width:170px; height:35px; line-height:34px; color:#fff;background:url(../../images/btn.gif) left bottom no-repeat;cursor:pointer; border:none;font-weight:bold; font-size:14px;}
+.lady_btn{width:190px; height:43px; line-height:42px; color:#333;background:url(../../images/lady_btn.gif) no-repeat;cursor:pointer; border:none;font-weight:bold; font-size:14px;}
+
+/*CONTENT
+-------------------------------------------------------------- */
+.login_con{ width:100%; height:496px; background:#ff6600 url(../../images/wj_bg.jpg) center no-repeat; margin:0 auto; padding:0; clear:both;}
+.login{ width:370px; height:auto;background:url(../../images/login_bg.png) center top no-repeat; padding:6px 14px 90px;_padding:6px 14px 86px; margin:54px 0 0; float:right; position:relative }
+.qq{ width:379px; height:75px; padding:0 10px; background:url(../../images/qq_bg.png) center no-repeat; overflow:hidden; position:absolute; bottom:0px; left:0px;_left:3px}
+.qq_nonbg{ width:378px;_width:375px; height:75px; padding:0 10px; background:#eee; overflow:hidden; position:absolute; bottom:0px; left:0px;_left:3px; border-top:1px solid #cccccc}
+.qq01{ width:379px; height:30px; line-height:30px; padding:0 10px;  overflow:hidden; position:relative; margin:74px 0 0 -36px}
+.qq02{ margin:34px 0 0 -36px!important}
+.qq01 .txt01{ display:block; float:left; width:150px; text-align:right}
+.qq_nonbg ul,.qq ul{ width:264px; height:30px; line-height:30px;}
+.qq_nonbg ul li,.qq ul li{ width:60px; height:30px; display:inline; float:left; margin:0 5px 0 5px; cursor:pointer; color:#fff;}
+.qq01 label{ width:60px!important; height:30px !important; display:inline !important; float:left !important; margin:0 5px 0 5px !important; cursor:pointer !important; color:#fff !important;color:#757575!important} 
+.qq_nonbg ul li{ color:#000!important}
+.qq_nonbg span,.qq span{ display:inline-block; width:100%; height:30px; color:#fff; text-align:left; line-height:30px; }
+.qq_nonbg span{ color:#000!important}
+.login_con .ty img{ float:left; margin:165px 0 0 5px;}
+.login h3{ width:362px; height:36px; line-height:36px; font-size:14px; color:#fff; text-align:left; padding:0 0 0 2px; margin:0 0 24px 0; border-bottom:1px solid #fff;}
+ .warn{background:url(../../images/ico01.gif) no-repeat scroll 5px -15px #FFFFD0; text-align:left; line-height: 14px; margin: 0px 0 10px 57px; margin: 0px 0 10px -28px\9;margin: 0px 0 10px 57px\0;_margin: 0px 0 10px -28px; position:relative; padding: 5px 5px 5px 24px;width: 192px; overflow:hidden; border:1px solid #ccc; clear:both}
+ .warn01{margin: 0px 0 10px 57px; margin: 0px 0 10px -28px\9;margin: 0px 0 10px 57px\0;_margin: 0px 0 10px -56px;}
+.login dl{ width:378px; height:30px; line-height:30px; float:left; margin:0 0 14px 0;}
+
+.login dl dt{ width:58px; text-align:right;font-size:12px; color:#fff; float:left}
+.login dl dd{ float:left}
+.login dl.verify input{ width:100px!important; margin:0 8px 0 0!important; float:left }
+.login dl.verify img{ float:left; margin:1px 8px 0 0}
+.login i{ font-style:normal; color:#0048b3; text-decoration:underline; cursor:pointer}
+.login p{ color:#fff; height:36px; overflow:hidden; line-height:18px; text-align:left; padding:0 0 0 60px; position:relative}
+.login p input{ margin:0 5px 0 0; vertical-align:middle; position:relative}
+.login p a{color:#fff; text-decoration:none}
+.login p a.register{ position:absolute; right:36px; font-size:14px; color:#f6ab00; font-weight:bold}
+.login p a:hover{ text-decoration:underline}
+/*POP
+-------------------------------------------------------------- */
+
+.pop{ width:398px; height:auto; padding:0 0 96px 0; border:8px solid #595959; background:#fff; position:absolute; top:50%; left:50%; margin:-190px 0 0 -180px}
+.pop h4{ width:378px; height:40px; line-height:40px; color:#fff; background:#ff6600; font-size:12px; padding:0 0 0 20px; font-size:14px; text-align:left; font-weight:bold; margin:0 0 20px 0}
+.pop h4 img{ width:13px; height:15px; float:right; margin:15px 27px 0 0; cursor:pointer}
+.pop dl{ width:378px; height:30px; line-height:30px; float:left; margin:0 0 14px 0}
+.pop dl dt{ width:58px; text-align:right;font-size:12px; color:#757575; float:left}
+.pop dl dd{ float:left}
+.pop dl.verify img{ float:left; margin:1px 8px 0 4px}
+.pop i{ font-style:normal; color:#0033cc; text-decoration:underline; cursor:pointer}
+.pop p{ color:#757575; height:36px; overflow:hidden; line-height:18px; text-align:left; padding:0 0 0 78px; position:relative}
+.pop p input{ margin:0 5px 0 0; vertical-align:middle; position:relative}
+.pop p a{color:#757575; text-decoration:none}
+.pop p a.register{ position:absolute; right:36px;}
+.pop p a:hover{ text-decoration:underline}
+.pop table{ width:300px; margin:0 auto; padding:0; text-align:left}
+.pop table td input{ margin:20px 0 0 60px; }
+.pop table td{ line-height:24px;}
+/*BUY
+-------------------------------------------------------------- */
+.buy{ width:940px; height:auto; padding:30px 0px 50px; margin:12px auto 12px;}
+.buy .buy_information{ width:570px; margin:0 auto; padding:0}
+.buy .buy_information dl{ width:570px; float:left; color:#757575; line-height:30px; margin:0 0 15px}
+.buy .buy_information dl dt{ width:66px; float:left; line-height:30px; text-align:right}
+.buy .buy_information dl dt i{ color:#F00; padding-right:6px;}
+.buy .buy_information dl dd{float:left; position:relative; vertical-align:middle; color:#ff6600; line-height:30px; text-align:left}
+.buy .buy_information dl dd .inpt{  margin:0 40px 0 0;_margin:0 20px 0 0;}
+.buy .buy_information dl dd em{ padding:5px 2px 0px; vertical-align:middle; color:#757575; line-height:30px; }
+.buy .buy_information dl dd select{ width:61px; border:#7f9db9 1px solid; height:18px; line-height:16px; margin:0 8px 0 0;padding:0 0 0 5px }
+.buy .buy_information dl dd .radio{ position:relative; position:relative; top:5px;}
+.buy .buy_information dl dd img{ position:relative; top:5px;}
+.buy .buy_information dl dd a{ color:#757575; text-decoration:none; padding-left:40px;}
+.buy .buy_information dl dd a:hover{}
+.buy .F1{}
+.buy .F1 ul{ width:980px; height:158px;overflow:hidden; padding:0 0 0 20px;}
+.buy .F1 ul li{ position:relative; width:254px; height:158px; display:inline; float:left; text-align:left;overflow:hidden; margin:0 70px 0 0}
+.buy .F1 ul li a{ display:block; width:224px; text-align:left; text-decoration:none; font-size:18px; color:#ff6600; font-weight:bold}
+.buy .F1 ul li a:hover{ text-decoration:underline;color:#ff6600!important;}
+.buy .F1 ul li a img{ float:left; margin:0 8px 0 0 ; display:block; }
+.buy .F1 ul li em{ position:absolute; top:36px; left:88px; font-size:14px; color:#757575;}
+.buy .F1 ul li .F1_btn01{ position:absolute; top:100px; left:0px; }
+.buy .F2{ width:998px; border:1px solid #dddddd; overflow:hidden}
+.buy .F2 h4{ width:978px; height:34px; color:#4d4d4d; background:url(../../images/buy_bg.gif) repeat-x; line-height:34px; border-bottom:1px solid #dddddd; padding:0 0 0 20px; text-align:left; font-weight:bold; font-size:14px}
+.buy .F2 ul { width:1200px; padding:12px 0 0 12px}
+.buy .F2 ul li{ width:152px; height:265px; display:inline; float:left; overflow:hidden; margin:0 12px 0 0; padding:0;}
+.buy .F2 ul li a.img{ width:152px; display:block; text-align:left; color:#000; font-weight:bold; text-decoration:none}
+.buy .F2 ul li a.img:hover{ text-decoration:underline}
+.buy .F2 ul li p{ width:158px; line-height:18px; color:#333;}
+.buy .F2 ul li p i{ display:block; float:left; width:60px; text-align:left; white-space:nowrap; overflow:hidden; font-style:normal}
+.buy .F2 ul li p i.big{ width:120px!important;}
+.buy .F2 ul li p u.small{ width:30px!important; padding:0!important}
+.buy .F2 ul li p u{ display:block; float:left; width:88px; white-space:nowrap; overflow:hidden; padding:0 6px 0 0; margin:0 0 0 3px; text-align:right; text-decoration:none;}
+.buy .F2 ul li label{ display:block; width:158px; height:36px; line-height:36px; color:#757575; border-top:1px solid #d8d8d8;  text-align:left; clear:both}
+.buy .F2 ul li label a.news{ color:#0033cc; text-decoration:none!important}
+.buy .F2 ul li label a.news:hover{ }
+.buy .F3{ width:1000px; overflow:hidden;}
+.buy .F3 ul{ width:1200px; height:186x;overflow:hidden; padding:0 ; margin:0 0 20px}
+.buy .F3 ul li{ position:relative; width:271px; height:158px; padding:30px 20px 10px 30px; display:inline; float:left; text-align:left;overflow:hidden; margin:0 15px 0 0; border:1px solid #e5e5e5;}
+.buy .F3 ul li a{ display:block; width:224px; text-align:left; text-decoration:none; font-size:18px; color:#ff6600; font-weight:bold}
+.buy .F3 ul li a:hover{ text-decoration:underline;color:#ff6600!important;}
+.buy .F3 ul li a img{ float:left; margin:0 8px 0 0 ; display:block; }
+.buy .F3 ul li em{ position:absolute; top:62px; left:120px; font-size:14px; color:#757575; padding:0 30px 0 0}
+.buy .F3 ul li .F1_btn01{ position:absolute; top:145px; left:31px; }
+
+
+/*SALE
+-------------------------------------------------------------- */
+.sale{ width:940px; height:auto; padding:30px 0px 50px;  background:#fff; margin:12px auto 12px;}
+/*.sale .tip{ width:956px; margin:10px auto 0; padding:0; text-align:center;  margin:0 0 15px}*/
+.sale .sale_information{ width:570px; margin:0 auto; padding:0}
+.sale .sale_information dl{ width:570px; float:left; color:#757575; line-height:30px; margin:0 0 15px}
+.sale .sale_information dl dt{ width:66px; float:left; line-height:30px; text-align:right}
+.sale .sale_information dl dt i{ color:#F00; padding-right:6px;}
+.sale .sale_information dl dd{float:left; position:relative; vertical-align:middle; color:#ff6600; line-height:30px; }
+.sale .sale_information dl dd .inpt{ width:173px; padding:0 0 0 5px; border:1px solid #ccc; height:28px; line-height:28px; margin:0 40px 0 0; color:#ccc;}
+.sale .sale_information dl dd .inpt_big{width:319px; padding:0 0 0 5px; border:1px solid #ccc; height:28px; line-height:28px; color:#ccc;}
+.sale .sale_information dl dd em{ padding:5px; vertical-align:top}
+.sale .sale_information dl dd .inpt_1{width:59px; border:1px solid #ccc; height:28px; line-height:28px; padding:0 0 0 5px; margin:0 10px 0 0; color:#ccc;}
+.sale .sale_information dl dd .inpt_2{width:129px; border:1px solid #ccc; height:28px; line-height:28px; padding:0 0 0 5px; margin:0 10px 0 0;color:#ccc;}
+.sale .sale_information dl dd select{ width:66px; border:#7f9db9 1px solid; height:18px; line-height:16px; margin:0 0 0 8px}
+.sale .sale_information dl dd img{ position:relative; top:5px;}
+.sale .sale_information dl dd .save_btn{  width:170px; height:35px; line-height:34px; color:#fff; background:url(../../images/btn_bg1.png) no-repeat;cursor:pointer; border:none}
+.sale .sale_information dl dd a{ color:#757575; text-decoration:none; padding-left:40px;}
+.sale .sale_information dl dd a:hover{ text-decoration:underline}
+.sale .F1{ width:1000px; overflow:hidden}
+.sale .F1 ul{ width:1900px;}
+.sale .F1 ul li{ width:150px; height:108px; float:left; text-align:left; margin:0 115px 0 0; display:inline; font-size:14px; color:#333; line-height:24px; }
+/*.sale .F1 ul li b{ display:block; width:150px; overflow:hidden; white-space:normal; color:#333; font-size:22px; line-height:28px;}
+*/
+.sale .F1 ul li img{ margin:0 0 8px 0}
+.sale .F1 ul li a{ display:block; width:120px; line-height:24px; text-align:left; color:#ff6600; text-decoration:none}
+.sale .F1 ul li a:hover{ color:#ff6600; text-decoration:underline}
+.sale .F2{ width:998px; border:1px solid #dddddd; overflow:hidden; margin:40px 0 0 }
+.sale .F2 h4{ width:978px; height:34px; color:#4d4d4d; background:url(../../images/buy_bg.gif) repeat-x; line-height:34px; border-bottom:1px solid #dddddd; padding:0 0 0 20px; text-align:left; font-weight:bold; font-size:14px}
+.sale .F2 ul { height:202px; width:1200px; padding:12px;}
+.sale .F2 ul li{ width:150px; height:190px; display:inline; float:left; padding: 0 0px 10px; overflow:hidden; margin:0 12px 0 0; border:1px solid #cccccc}
+.sale .F2 ul li p{ width:140px; color:#757575; text-align:left; display:block; width:130px; padding:0 10px; line-height:20px;}
+.sale .F2 ul li p.pad5{padding:5px 10px 0;}
+.sale .F2 ul li label{ display:block; width:140px; height:30px; border-bottom:1px solid #cccccc; line-height:30px; color:#555555; font-weight:bold; text-align:left; padding:0 0 0 10px; background:#e8e8e8;}
+.sale .F2 ul li p em{ color:#e90000; text-decoration:none}
+
+.sale .F2 ul li p i{ color:#eb6100; font-style:normal}
+.sale .F2 ul li p input{ display:block; background:url(../../images/baojia_btn.gif) no-repeat; width:73px; height:21px; border:none; margin:10px 0 0; cursor:pointer;}
+/*-------------------------------------------------------------- */
+
+.sale_company{ width:1000px; height:auto; padding:30px 0px 50px; background:#fff; margin:12px auto 12px;}
+.sale_company table{ width:800px; margin:0 auto; padding:0}
+/*.sale_company .tip{ width:956px; margin:10px auto 0; padding:0; text-align:center;  margin:0 0 15px}
+*/.sale_company .company{ width:866px; height:auto; margin:40px auto}
+.sale_company .company dl{ width:866px; height:30px; float:left; margin:0 0 10px 0}
+.sale_company .company dl.martop{  margin:5px 0 10px 0;_margin:0 0 10px 0}
+.sale_company .company dl.big{ height:120px;}
+.sale_company .company dl dt{width:160px; float:left; line-height:30px; text-align:right}
+.sale_company .company dl dt.radioo{width:160px; float:left; _line-height:18px; text-align:right}
+
+.sale_company .company dl dd{ float:left; position:relative; vertical-align:middle; color:#ff6600; height:28px; line-height:28px; text-align:left;}
+.sale_company .company dl dd.on{ background:#ededed; padding:4px 5px 7px 5px; overflow:hidden}
+.sale_company .company dl dd em,.company dl dd p{ color:#757575;}
+.company dl dd p{ line-height:18px;}
+.sale_company .company dl dd em{ display:inline-block; height:32px;line-height:30px;}
+.sale_company .company dl dd em a{ color:#0100fe; padding:0!important; text-decoration:none}
+.sale_company .company dl dd em a:hover{ text-decoration:underline}
+.sale_company .company dl dd input.check{ width:13px; border:none; height:28px; margin:0 5px 0 5px; line-height:28px; /*position:relative; top:2px;*/vertical-align:middle}
+.sale_company .company dl dd input.radio{width:13px; border:none; height:13px; margin:0 5px 0 5px; }
+.sale_company .company dl dd input.radio{}
+.sale_company .company dl dd .modify{ width:100px; height:23px; background:url(../../images/modify.gif) no-repeat; border:none; cursor:pointer}
+.sale_company .company dl dd select{ border:1px solid #7f9db9; height:18px; line-height:18px; color:#000;  }
+.sale_company .company dl dd .s1{ width:180px;}
+.sale_company .company dl dd .s2{ width:60px;}
+.sale_company .company dl dd i{ font-style:normal; color:#0100fe; cursor:pointer}
+.sale_company .company dl.l dd select{ width:66px; border:#7f9db9 1px solid; height:18px!important; line-height:16px; margin:0 8px 0 0}
+
+.sale_company .company dl.l dd img{ position:relative; top:5px;}
+.sale_company .company dl dd textarea{width:520px; border:1px solid #ccc; height:120px; line-height:24px; }
+.sale_company .company dl dd a{ color:#757575; text-decoration:none; padding-left:40px;}
+.sale_company .company dl dd a:hover{ text-decoration:underline}
+
+/*-------------------------------------------------------------password
+*/
+.mima{ width:1000px; margin:20px auto; padding:0; text-align:center}
+.password{ width:1000px; height:520px;_height:700px; padding:0px; border:#e7e7e7 1px solid; background:#fff; margin:0px auto 12px; color:#757575;}
+.password img{ margin:0 auto; padding:0}
+.password .mid{ width:626px; height:auto; margin:40px auto 0; _margin:70px auto 0; padding:0 0 30px 0; overflow:hidden}
+.password .mid_big{ width:700px!important}
+.password .mid i{ font-style:normal}
+.password .mid .yellow{ color:#ff6600}
+.password .mid table tr{ height:67px;}
+.password .mid table { margin:0 auto}
+.password .mid table td{ line-height:28px; font-size:14px; text-align:left}
+.password .mid table td input a.nonline{ text-decoration:none!important}
+.password .mid table td input a.nonline:hover{ text-decoration:none!important}
+
+.password h5{ width:950px; height:40px; line-height:40px; border-bottom:1px solid #e7e7e7; background:url(../../images/mima.gif) 21px 12px no-repeat; padding:0 0 0 50px; color:#757575; text-align:left; margin:0 auto}
+
+.password h5 i{ color:#ff6600; font-style:normal}
+.password h5.bg{ background:url(../../images/mima.gif) 21px -52px no-repeat!important;}
+.password dl{ width:866px; height:30px; float:left; margin:8px auto ; padding:0}
+.password dl.verify{ margin:0px 0 14px 0!important}
+.password dl.verify img{ float:left; margin:1px 8px 0px 8px ;}
+.password dl dd.on{background:#ededed; height:30px; overflow:hidden;padding:4px 5px 6px 5px;}
+.password dl dd.on em{ display:inline-block; width:220px; height:30px; overflow:hidden; margin:0; padding:0 0 0 5px;  line-height:30px; vertical-align:middle; text-align: left; color:#e70000;}
+.password dl dd.on em.big{ width:370px;}
+.password dl.mar5{ width:866px; height:30px; float:left; margin:5px auto 5px auto; padding:0}
+.password dl.nomar{ margin:0!important}
+.password dl.reset{ margin:0px auto 5px auto!important;}
+/*
+.password span{ background:#fcf2d9; color:#757575; padding:4px 15px; margin:8px 0 8px 160px;_margin:0 0 8px 140px;  clear:both; width:394px; height:20px; display:block; text-align:left;}
+.password span u{ text-decoration:none!important; color:#0000ff;}
+*/
+
+.password dl dt{width:160px; float:left; line-height:30px; text-align:right}
+.password dl dd{ float:left; position:relative; vertical-align:middle; color:#757575; line-height:30px; padding:0; text-align:left}
+.password dl dd.txt{ float:left; position:relative; vertical-align:middle; color:#757575; height:25px; line-height:24px; padding:2px 5px 3px 5px; _padding:0px; margin:0;  text-align:left;}
+.password a{ color:#ccc; text-decoration:none; font-size:12px;}
+.password a:hover{color:#1f376d/* text-decoration:underline*/}
+.password p{ padding:0; text-align:left; padding-left:106px; line-height:38px;}
+/*-------------------------------------------------------------find
+*/
+.find_way{ width:1000px; height:520px; _height:700px;padding:30px 0px 50px; border:#e7e7e7 1px solid; background:#fff; margin:12px auto 12px; color:#757575;}
+.find_way .mid{ width:500px; height:250px; _height:600px; margin:40px auto 0;_margin:70px auto 0; padding:0; overflow:hidden}
+.find_way dl{ width:866px; height:30px; float:left;  margin:0px auto 5px auto; padding:0}
+.find_way dl dt{width:160px; float:left; line-height:30px; text-align:right}
+.find_way dl dd{ float:left; position:relative; vertical-align:middle; color:#757575; line-height:30px; padding:2px 5px 3px 5px; text-align:left}
+.find_way dl dd input{margin:0 8px 0 0;}
+.find_way dl dd img{ cursor:pointer}
+.find_way dl dd select{border:1px solid #7f9db9; height:18px; line-height:18px; color:#000; width:90px;}
+.find_way p{ padding:0; text-align:left; padding-left:106px; line-height:38px;}
+.find_way dl dd input.btn{ position:relative; top:8px;}
+
+/*-------------------------------------------------------------reset_over
+*/
+.reset_over{ width:1000px; height:520px; padding:30px 0px 50px; border:#e7e7e7 1px solid; background:#fff; margin:12px auto 12px; color:#757575;}
+.reset_over .mid{ width:500px; height:250px; margin:40px auto 0; padding:0; overflow:hidden}
+.reset_over dl{ width:866px; height:30px; float:left;  margin:0px auto 5px auto; padding:0}
+.reset_over dl dt{width:160px; float:left; line-height:30px; text-align:right}
+.reset_over dl dd{ float:left; position:relative; vertical-align:middle; color:#757575; line-height:30px; padding:2px 5px 3px 5px; text-align:left}
+.reset_over p{ padding:0; text-align:left; padding-left:40px; line-height:38px; background:url(../../images/right.gif) left center no-repeat; color:#555; font-weight:bold}
+.reset_over dl dd input{ width:170px; height:35px; line-height:34px; text-align:center; color:#fff; cursor:pointer; background:url(../../images/btn_bg1.png) no-repeat; margin:15px 0 0 0; padding:0; border:none; color:#fff; font-weight:bold}
+.reset_over dl dd a{ color:#757575; text-decoration:none; padding-left:60px; position:relative; top:15px;}
+.reset_over dl dd a:hover{ text-decoration:underline}
+/*-------------------------------------------------------------regesiter_buy
+*/
+
+.regesiter_buy{ width:1000px; height:520px; padding:30px 0px 80px; border:#e7e7e7 1px solid; background:#fff; margin:12px auto 12px; color:#757575;}
+.regesiter_buy p{ width:958px; height:40px; line-height:40px; padding:0; text-align:center;  margin:0 auto 15px; background:url(../../images/register_buy.gif) no-repeat; position:relative; color:#2679bb; font-size:14px; font-weight:bold}
+.regesiter_buy p em{ position:absolute; color:#757575; top:0; right:20px; font-size:12px;}
+.regesiter_buy p em a{ color:#0018ff; text-decoration:none}
+.regesiter_buy p em a:hover{ text-decoration:underline}
+.regesiter_buy .tip01{ width:958px; height:18px; line-height:18px; position:relative;color:#757575; clear:both; margin:0 0 20px; }
+.regesiter_buy .tip01 em{  position:absolute; font-style:normal; left:325px; top:0;}
+.regesiter_buy .tip01 i u{ color:#ff0000; text-decoration:none}
+.regesiter_buy .tip01 i{ position:absolute;font-style:normal; right:0; top:0}
+.regesiter_buy .tip01 em b{ color:#008000;font-weight:normal}
+.regesiter_buy .buy_information{ width:958px; margin:0 auto; padding:0}
+.regesiter_buy .left{ width:340px; height:auto; display:inline; float:left; margin-top:-24px; padding:0 30px 0  0; overflow:hidden }
+.regesiter_buy .left ul li{ width:331px; list-style:none; position:relative; margin:10px 0; text-align:left;padding:0; clear:both;}
+.regesiter_buy .left ul li.mar26{ height:60px; margin:16px 0 0 0!important}
+.regesiter_buy .left ul li label{ display:block; width:226px;  line-height:24px; margin:0; padding:0}
+.regesiter_buy .left ul li label em{ display:block; width:160px;  color:#555; white-space:nowrap;  font-weight:bold; overflow:hidden; text-align:left}
+.regesiter_buy .left ul li label img{ width:56px; height:55px; float:left; margin:0 8px 0 0; padding:0}
+
+.regesiter_buy .left ul li i{display:block; width:156px; position:absolute; text-align:left; left:0px; top:24px; font-style:normal; margin:0; padding-left:64px;}
+.regesiter_buy .right{ width:515px; height: auto; display:inline; float:left; border-left:1px solid #e2e2e2; padding:0 0  0 50px; overflow:hidden}
+.regesiter_buy .right h3{ width:515px; height:40px; line-height:40px; color:#008000; font-size:30px; border-bottom:1px solid #ff6600; text-align:left; margin:0 0 24px; font-weight:bold}
+.regesiter_buy .right h3 b{ color:#555; font-size:12px;}
+.regesiter_buy .right h3 a{ float:right; width:100px; color:#6676b9; font-size:12px; text-decoration:none; margin:0; position:relative; top:5px; font-weight:normal}
+.regesiter_buy .right h3 a:hover{ text-decoration:underline}
+
+.regesiter_buy .right dl{ width:510px; height:30px; line-height:30px; float:left; padding:0; margin:0 0 14px 0}
+.regesiter_buy .right dl.big{ height:38px;}
+.regesiter_buy .right dl.nomar{ margin:0!important}
+.regesiter_buy .right dl.mar5{ margin:0 0 5px 0!important}
+.regesiter_buy .right dl dd.on{ background:#ededed; height:30px; overflow:hidden;padding:4px 5px 6px 5px;}
+.regesiter_buy .right dl input.check{ width:13px; height:13px; vertical-align:middle; line-height:12px;}
+.regesiter_buy .right dl dt{ width:76px; text-align:right;font-size:12px; color:#757575; float:left}
+.regesiter_buy .right dl dt i{ font-style:normal; text-decoration:none; color:#F00}
+.regesiter_buy .right dl dd{ float:left}
+.regesiter_buy .right dl dd em{ display:inline-block; width:220px;   line-height:14px; text-align: left;}
+.regesiter_buy .right dl dd a{ color:#6676b9; text-decoration:none}
+.regesiter_buy .right dl dd .yz{ margin:4px 6px 0; cursor:pointer}
+.regesiter_buy .right dl dd a:hover{}
+.regesiter_buy .right dl dd.on em{ display:inline-block; width:220px; height:30px; overflow:hidden; margin:0; padding:0;  line-height:15px; text-align: left; color:#E70000}
+.regesiter_buy .right dl dd.on b{display:inline-block; width:220px; height:30px; overflow:hidden; margin:0; padding:0;  line-height:30px; text-align: left; color:#E70000; text-decoration:none; font-weight:normal}
+.regesiter_buy .right dl.verify{ margin:0px 0 14px 0!important}
+.regesiter_buy .right dl.verify img{ float:left; margin:1px 8px 0 10px}
+.regesiter_buy .right i{ font-style:normal; color:#0048b3; text-decoration:underline; cursor:pointer}
+.regesiter_buy .right span{ background:#fcf2d9; color:#757575; padding:4px 15px; margin:8px 0 8px 78px;_margin:0 0 8px 58px;  clear:both; width:391px; height:20px; display:block; text-align:left}
+.regesiter_buy .right span u{ text-decoration:none!important; color:#0000ff;}
+
+/*-------------------------------------------------------------regesiter_sale
+*/
+
+.register_sale{ width:1000px; height:520px; padding:30px 0px 80px; border:#e7e7e7 1px solid; background:#fff; margin:12px auto 12px; color:#757575;}
+.register_sale p{ width:958px; height:40px; line-height:40px; padding:0; text-align:center;  margin:0 auto 15px; background:url(../../images/register_buy.gif) no-repeat; position:relative; color:#2679bb; font-size:14px; font-weight:bold}
+.register_sale p em{ position:absolute; color:#757575; top:0; right:20px; font-size:12px;}
+.register_sale p em a{ color:#0018ff; text-decoration:none}
+.register_sale p em a:hover{ text-decoration:underline}
+.register_sale .tip01{ width:958px; height:18px; z-index:9; line-height:18px; position:relative;color:#757575; clear:both; margin:0 0 20px; }
+.register_sale .tip01 em{  position:absolute; font-style:normal; left:325px; top:0;}
+.register_sale .tip01 i u{ color:#ff0000; text-decoration:none}
+.register_sale .tip01 i{ position:absolute;font-style:normal; right:0; top:0}
+.register_sale .tip01 em b{ color:#008000;font-weight:normal}
+.register_sale .buy_information{ width:958px; margin:0 auto; padding:0}
+.register_sale .right{ width:340px; height:auto; display:inline; float:left; margin-top:-24px; padding:0 0 0 50px ; overflow:hidden}
+.register_sale .right ul li{ width:331px; list-style:none; position:relative; margin:10px 0; text-align:left;padding:0; clear:both;}
+.register_sale .right ul li.mar26{ height:60px; margin:16px 0 0 0!important}
+.register_sale .right ul li label{ display:block; width:226px;  line-height:24px; margin:0; padding:0}
+.register_sale .right ul li label em{ display:block; width:160px;  color:#555; white-space:nowrap;  font-weight:bold; overflow:hidden; text-align:left}
+.register_sale .right ul li label img{ width:56px; height:55px; float:left; margin:0 8px 0 0; padding:0}
+
+.register_sale .right ul li i{display:block; width:156px; position:absolute; text-align:left; left:0px; top:24px; font-style:normal; margin:0; padding-left:64px;}
+.register_sale .left{ width:515px; height: auto; display:inline; float:left; border-right:1px solid #e2e2e2; padding:0 30px 0 0; overflow:hidden}
+.register_sale .left h3{ width:515px; height:40px; line-height:40px; color:#fd0000; font-size:30px; border-bottom:1px solid #ff6600; text-align:left; margin:0 0 24px; font-weight:bold}
+.register_sale .left h3 b{ color:#555; font-size:12px;}
+.register_sale .left h3 a{ float:right; width:100px; color:#6676b9; font-size:12px; text-decoration:none; margin:0; position:relative; top:5px; font-weight:normal}
+.register_sale .left h3 a:hover{ text-decoration:underline}
+
+.register_sale .left dl{ width:510px; height:30px; line-height:30px; float:left; padding:0; margin:0 0 14px 0}
+.register_sale .left dl.nomar{ margin:0!important}
+.register_sale .left dl.mar5{ margin:0 0 5px 0!important}
+.register_sale .left dl dd.on{ background:#ededed; height:30px; overflow:hidden;padding:4px 5px 6px 5px;}
+.register_sale .left dl input.check{ width:13px; height:13px; vertical-align:middle; line-height:12px;}
+.register_sale .left dl dt{ width:76px; text-align:right;font-size:12px; color:#757575; float:left}
+.register_sale .left dl dt i{ font-style:normal; text-decoration:none; color:#F00}
+.register_sale .left dl dd{ float:left}
+.register_sale .left dl dd em{ display:inline-block; width:220px;   line-height:14px; text-align: left;}
+.register_sale .left dl dd a{ color:#0033cc; }
+.register_sale .left dl dd .yz{ margin:4px 6px 0; cursor:pointer}
+.register_sale .left dl dd.on em{ display:inline-block; width:220px; height:30px; overflow:hidden; margin:0; padding:0;  line-height:15px; text-align: left; color:#E70000}
+.register_sale .left dl dd.on  b{display:inline-block; width:220px; height:30px; overflow:hidden; margin:0; padding:0;  line-height:30px; text-align: left; color:#E70000; text-decoration:none; font-weight:normal}
+
+.register_sale .left dl.verify{ margin:5px 0 14px 0!important}
+.register_sale .left dl.verify img{ float:left; margin:1px 8px 0 10px}
+.register_sale .left i{ font-style:normal; color:#0048b3; text-decoration:underline; cursor:pointer}
+.register_sale .left span{ background:#fcf2d9; color:#757575; padding:4px 15px; margin:8px 0 8px 74px;_margin:0 0 8px 58px;  clear:both; width:394px; height:20px; display:block; text-align:left;}
+.register_sale .left span u{ text-decoration:none!important; color:#0000ff;}
+
+.register01{width:958px; margin:0 auto; padding:0}
+
+.register01 .left ul li i{display:block; width:156px; position:absolute; text-align:left; left:0px; top:24px; font-style:normal; margin:0; padding-left:64px; color:#555555!important; text-decoration:none}
+.register01 .left{ width:340px; height:auto; display:inline; float:left; margin-top:0px; padding:0 30px 0  0;  }
+.register01 .left ul li{ width:331px; list-style:none; position:relative; margin:10px 0; text-align:left;padding:0; clear:both;}
+.register01 .left ul li.mar26{ height:60px; margin:16px 0 0 0!important}
+.register01 .left ul li label{ display:block; width:226px;  line-height:24px; margin:0; padding:0}
+.register01 .left ul li label img{ width:56px; height:55px; float:left; margin:0 8px 0 0; padding:0}
+.register01 .left{ width:415px; height: auto; display:inline; float:left; border-right:1px solid #e2e2e2; padding:0 30px 0 0; overflow:hidden}
+
+.register01 .right{ width:440px; height:auto; display:inline; float:left; margin-top:0px; padding:0 0 0 50px }
+.register01 .right ul li{ width:331px; list-style:none; position:relative; margin:10px 0; text-align:left;padding:0; clear:both;}
+.register01 .right ul li label img{ width:56px; height:55px; float:left; margin:0 8px 0 0; padding:0}
+.register01 .left ul li{ width:331px; list-style:none; position:relative; margin:10px 0; text-align:left;padding:0; clear:both;}
+.register01 i{display:block; width:156px; position:absolute; text-align:left; left:0px; top:24px; font-style:normal; margin:0; padding-left:64px; color:#555}
+.register01 .mar26{ height:60px; margin:16px 0 0 0!important}
+.register01 ul li label em{ display:block; width:160px;  color:#555; white-space:nowrap;  font-weight:bold; overflow:hidden; text-align:left}
+.register01 ul li label{ display:block; width:226px;  line-height:24px; margin:0; padding:0}
+
+
+
+/*-------------------------------------------------------------regesiter_sale
+*/
+
+.exit{ width:1000px; height:520px; padding:30px 0px 50px; border:#e7e7e7 1px solid; background:#fff; margin:12px auto 12px; color:#757575; overflow:hidden}
+.exit p{ width:958px; height:66px; line-height:66px; padding:0 0 0 20px; text-align:center;  margin:0 0 15px; background: url(../../images/rool.gif) 169px center no-repeat; position:relative; color:#555555; font-size:14px; font-weight:bold}
+.exit ul{ width:946px; height:260px; margin:0 auto; padding:70px 0 0 0; border-top:#000 1px dotted}
+.exit ul li{ width:180px; height:130px; padding:65px 30px 0; color:#717171; text-align:center; list-style:none; display:inline; float:left; margin:0 37px; line-height:24px;}
+.exit ul li.a{ background:url(../../images/exit_a.gif) no-repeat;}
+.exit ul li.b{ background:url(../../images/exit_b.gif) no-repeat;}
+.exit ul li.c{ background:url(../../images/exit_c.gif) no-repeat;}
+
+/*-------------------------------------------------------------third
+*/
+.third{width:1000px; height:520px; padding:30px 0px 50px; background:#fff; margin:12px auto 12px; color:#757575; overflow:hidden}
+.third .left{ width:586px; display:inline; float:left; border:#dbdbdb 1px solid; padding:0 0 60px 0}
+.third .left label{ display:block; float:left; width:116px; height:40px; line-height:40px; cursor:pointer; color:#333; font-size:14px; font-weight:bold}
+.third .left label.on{ background:url(../../images/arrow_tab.gif) center bottom no-repeat; color:#ff6600;}
+.third .left p{ height:40px; line-height:40px; border-bottom:#dbdbdb 1px solid}
+.third .left table{ width:420px; margin:38px 0 40px 38px; padding:0 }
+.third .left td{ font-size:12px; color:#333; text-align:left}
+.third .left td b{ color:#ff6600; font-size:14px; line-height:38px;}
+.third .left dl{ width:510px; height:30px; line-height:30px; float:left; padding:0; margin:0 0 14px 20px}
+.third .left dl.nomar{ margin:0!important}
+.third .left dl.mar5{ margin:0 0 5px 0!important}
+.third .left dl dd.on{ background:#ededed; height:30px; overflow:hidden;padding:4px 5px 6px 5px; color:#e60011}
+.third .left dl input.check{ width:13px; height:13px; vertical-align:middle; line-height:12px;}
+.third .left dl dt{ width:76px; text-align:right;font-size:12px; color:#757575; float:left}
+.third .left dl dt i{ font-style:normal; text-decoration:none; color:#F00}
+.third .left dl dd{ float:left}
+.third .left dd em{ display:inline-block; width:220px;   line-height:14px; text-align: left;}
+.third .left dd a{ color:#6676b9; text-decoration:none}
+.third .left .yz{ margin:4px 6px 0; cursor:pointer}
+.third .left dd a:hover{ text-decoration:underline}
+.third .left dd.on em{ display:inline-block; width:220px; height:30px; overflow:hidden; margin:0; padding:0;  line-height:15px; text-align: left; color:#E70000f}
+.third .right{ width:330px; display:inline; float:left; margin:40px 0 0 15px;}
+.third .right p{ text-align:left;}
+.third .right p input{ margin:10px 0 0 }
+/*....................................................................*/
+
+/*个人信息*/
+input.txt1{ padding:1px 2px; background:#fff; height:26px; line-height:26px; border:1px solid #ccc; color:#333; vertical-align:middle; margin:0;}
+.peomes_h2{ height:44px; line-height:44px; }
+.peomes_h2 b, .peomes_h2 span , .peomes_h2 a{ float:left; font-weight:normal; font-size:12px;}
+.peomes_h2 .s{_margin:14px 0 0 0}
+.peomes_h2 b{ font-size:14px; font-weight:bold;}
+.mar_span{ margin-left:28px;}
+.m_no{ margin-top:0px}
+.pad_no{ padding-right:0px;}
+.pad_no .a_s{ color:#044985; background:url(../../../../images/jt_spr.gif) no-repeat left 6px; padding:0; display:inline; height:15px; text-indent:8px; float:right;}
+.pad_no .a_x{ background:url(../../../../images/jt_spr.gif) no-repeat left -13px;text-indent:8px; }
+.peomes_tab{ margin:10px 0 0 0px;  }
+.peomes_tab tr td{ text-align:right;  vertical-align:middle; }
+.peomes_tab tr th{ padding:0px 0 14px 0; }
+.peomes_tab tr th img{ float:left; margin-bottom:14px}
+.peomes_tab tr th input{  float:left; height:26px; border:1px solid #ccc; float:left;}
+.peomes_tab tr th input.rad{ height:12px; width:12px; margin:10px 0 0 0}
+.peomes_tab tr th input.rad1{ margin-left:23px}
+.peomes_tab thead tr td{ height:121px; margin-bottom:14px;}
+.peomes_tab tbody tr th div{ height:30px; background:#eeeeee; padding:4px 0 4px 4px; }
+
+.peomes_tab tr td span{ display:block; height:30px; padding-top:-20px}
+
+.img_r{ float:left; display:inline; padding-top:46px; margin:0 0 0 16px}
+.img_r p{ color:#ccc; text-align:left;}
+.img_r p a, .peomes_tab tbody tr th a{float:left; font-weight:normal; font-size:12px; margin:8px 8px 0 0; text-decoration:none ; color:#0100FE}
+.input1{ width:280px;}
+.span1{ color:#fd1717; float:left; margin:0 0 0 9px; display:inline; height:28px; line-height:28px}
+.strong1{ float:left; vertical-align:middle; margin:8px 0 0 5px; font-weight:normal;}
+.input2{ width:205px;}
+.peomes_tab tbody tr th  .a1{ margin:4px 0 0 10px}
+.input3{ width:39px;}
+.input4{ width:52px;}
+.input5{ width:143px;}
+.peomes_tab tbody tr th i{ margin:0 5px 0 5px; float:left; color:#ccc; line-height:30px}
+.peomes_tab tfoot tr th select{ height:20px; float:left; margin: 1px 2px 0 0;}
+.peomes_tab tr td b{ color:#fd1717; margin-right:7px}
+.w44{ width:44px; overflow:hidden;}
+.s1{ padding-right:9px}
+.s2{ padding-right:1px}
+.s3{ padding-right:3px}
+.but_x .save_but{ display:block; background:url(../../../../images/save_but.gif) no-repeat; width:74px; height:28px; text-align:center; font-weight:bold; font-size:14px; color:#fff; line-height:28px;} 
+.but_x{ height:28px;margin:15px 0 27px 145px}
+.peomes_tab tbody tr th .pd1{ margin:3px 0 0 10px;}
+.peomes_h2 .m2{ margin:10px 0 0 14px}
+
+
+/*企业信息*/
+.con_div{ padding:20px 41px 0 174px}
+.con_div p{ color:#666; text-align:left; padding:0 0 0 84px;}
+.con_div .red_p{ color:#fd1717; margin:15px 0 15px 0}
+.p_hei{ height:30px; margin-bottom:14px }
+.p_hei input{border:1px solid #ccc; height:26px}
+.p_hei input, .p_hei span, .p_hei b{ float:left;}
+.p_hei b{ color:#044985}
+.in75{ width:75px; margin:0 8px 0 0; display:inline; padding: 1px 2px;}
+.in415{ width:415px;}
+.sp1{ width:265px; float:left; line-height:15px; margin-left:4px; display:inline; text-align:left;}
+.peomes_tab tbody tr th a.acol{ color:#0033cc; margin:0}
+.w410{ width:410px; text-align:left; color:#666; float:left}
+.sp2{ float:left; line-height:28px; margin-left:4px; display:inline;color:#666;}
+.peomes_tab tr th  .c1{ height:14px; margin:9px 0 0 7px; }
+.se1{ width:178px; float:left;}
+.peomes_tab tr .w155{ width:155px}
+.te1{ width:460px; height:127px; float:left;}
+.peomes_tab tfoot tr th{}
+.peomes_tab tfoot tr th .img_r{ float:left; display:inline; padding-top:46px; margin:0 0 0 16px}
+.peomes_tab tfoot tr th .img_r p{ color:#ccc; text-align:left;}
+.peomes_tab tfoot tr th .img_r p a{float:left; font-weight:normal; font-size:12px; margin:8px 8px 0 0; }
+.tp{ float:left; margin:115px 0 0 5px}
+.tp b{ color:#fd1717}
+.fl_z{ float:left; line-height:28px; margin:0 5px; display:inline;}
+.tan_i{ height:50px; border:1px solid #ccc;padding:10px 0 0 210px; margin:0 0 14px 0; background:#FFE5CC; }
+.tan_i p{width:450px; margin:0 auto;}
+
+.tan_i div, .tan_i img{ float:left}
+.tan_i img{ margin-right:10px}
+.tan_i .p_st{ font-weight:bold;}
+.peomes_tab tfoot tr th .s2{ margin:5px 0 0 10px; width:100px; }
+.m3{ margin:3px 0 0 10px; float:left; display:inline;}
+.m3 span{ color:#0100FE; text-decoration:none}
+
+.no1{ margin-top:15px}
+.w435{  margin:0 0 14px 86px; overflow:hidden;}
+.ml135 .wid_a{ display:block; height:24px; width:100px}
+.w435 p, .w435 .hdiv{ height:30px; margin-bottom:14px;}
+.w435 p, .w435 .hdiv .divpad{ padding:0px; top:29px; text-align:left; text-align:left;}
+.w435 .hdiv .mr5{ margin:0 5px}
+
+.w435 p span, .w435 p input , .w435 p select{ float:left; text-align:left;}
+.w435 .hdiv span, .w435 .hdiv input{ float:left;}
+.w435 p .w_pan{ width:100px}
+.w435 p span.lin_sp{ line-height:24px; padding-top:0px}
+/**/
+.w435 .hdiv .span_60{ line-height:28px; width:61px;}
+.w435 p input, .w435 .hdiv input{ height:26px; border:1px solid #ccc; margin:0 5px 0 0; text-align:left;}
+.w435 p span, .w435 .hdiv span{ line-height:28px;}
+.w435 .hdiv .w221{ width:221px;}
+.w435 p input.w55{ width:55px;}
+.w435 p input.w185{ width:180px; display:inline}
+.w435 p input.w100{ width:100px;}
+.wz_box{ padding-left:60px;}
+.wz_box div, .wz_box a{ float:left;}
+.wz_box div{ border:1px solid #c4c4c4; height:60px; width:60px;}
+.m4{ margin:70px 0 0 10px;}
+.w435 p a{ float:left; color:#044985; margin-left:60px; display:inline;}
+.buy_tit span{ float:left}
+.peomes_tab tr td .btnGray2 span{ height:16px; color:#0100FE; text-decoration:none }
+.mb10{ margin-bottom:10px}
+.peomes_tab  tr th a.nom{ margin:0;}
+.peomes_tab  tr th div.nodiv{ background:#fff; padding:0 0 0 5px; height:auto; top:33px; left:4px; }
+.peomes_tab  tr th div.nobg{ background:#fff;}
+.peomes_tab tr th div.z_w80{ width:80px; top:29px; left:0}
+.peomes_tab tr th div.z_w80 ul{ width:75px; float:left; text-align:left;}
+.peomes_tab  tr th div.nopad{ padding:0;}
+.z_w80{ width:80px;}
+.a_div{ display:none; position:relative; padding:0 32px 0 0;}
+.t_box{ position:absolute; width:360px; border:1px solid #ccc; padding:5px; z-index:22222px; top:596px; background:#fff; left:350px; display:none;}
+.t_box li{ width:110px; float:left; margin-left:10px; display:inline;text-align:left;}
+.t_box li a{padding-left:10px;}
+.peomes_tab tr th .t_box input{ height:22px}
+#show22{ top:641px}
+.w435 .hdiv .z_nom{ margin:0;}
+.buy_mes{margin:14px 0}
+.buy_tit{ height:29px;background:#e8e8e8; margin-top:1px; padding:0 240px 0 10px;}
+.buy_tit a{ float:right;  margin-top:5px; display:block; text-align:center; width:50px}
+.buy_tit .on{ background:#fff; border:1px solid #ccc; border-bottom:medium none; height:25px; color:#044985}
+.buy_tit span{ line-height:29px; font-weight:bold}
+
+
+
+.table-address{border:1px solid #ccc;padding:10px;margin:10px;}
+.table-address li{padding:5px 0;height:22px;line-height:22px;}
+.addbg{background:#ffe5cc;}
+/*表单按钮*/
+.sub-btn,.cacl-btn{ height:24px; width:58px; font:100 12px/24px "微软雅黑"; color:#fff; border:1px solid #d8dfea; border-right:1px solid #0e1f5b; border-bottom:1px solid #0e1f5b; background:#005eac;}
+.cacl-btn{ border:1px solid #c3c3c3; background:#f0f0f0; color:#333}
+
+/*下拉菜单样式*/
+.select,.dropDown{}
+.select .slt-input,.dropDown .slt-input{ float:left; height:26px; line-height:26px; padding:1px 2px; border:1px solid #B5B5B5; color:#666; font-size:12px; outline:none; background:#fff url(../../images/selct_bg.gif) repeat-x top;}
+.select .slt-btn,.dropDown .slt-btn{ float:left; display:inline-block; height:30px; width:24px; background:url(../../images/select_btn2.gif) no-repeat; text-decoration:none;}
+.select .slt-option,.dropDown .slt-div{ display:none; position:absolute; left:0; top:29px; border:1px solid #b5b5b5; background:#fff;}
+.select .slt-option ul li a{ display:block; height:18px; padding:0 10px; overflow:hidden}
+.select .slt-option ul li a:hover{ background:#0066cc; color:#fff; text-decoration:none}
+
+/*选择分类*/
+.category-select-list{ float:left; height:242px; width:210px; overflow-x:hidden; overflow-y:auto; border:1px solid #ccc; background:#fff;}
+.category-select-list h4{ margin:0 5px 5px 5px; font:100 12px/24px "微软雅黑"; text-align:center; border-bottom:1px solid #ccc;}
+.category-select-list ul li a{ display:block; height:22px; line-height:22px; padding-left:10px;}
+.category-select-list ul li a:hover{ background:#FFFFCD; text-decoration:none;}
+.category-select-list ul li a.item-p{ background:url(../../images/sanjiao.gif) no-repeat right 7px}
+.category-select-list ul li a.item-p:hover{background:#FFFFCD url(../../images/sanjiao.gif) no-repeat right 7px}
+.category-select-list ul li a.catCurr{ color:#FF7300; background-color:#FFFFCD}
+.mt38{ margin-top:38px}
+.mt20{ margin-top:20px}
+.mt10{ margin-top:10px}
+.mt5{ margin-top:5px}
+.mt3{ margin-top:3px}
+.mt64{ margin-top:64px;}
+.ml15{ margin-left:15px}
+.ml25{ margin-left:25px}
+.ml30{ margin-left:30px}
+
+.ml5{ margin-left:5px}
+.ml10{ margin-left:10px}
+.ml50{ margin-left:50px}
+.ml65 { margin-left:65px;}
+.ml135{margin-left:135px;}
+.mr5{ margin-right:5px}
+.mr10{ margin-right:10px}
+
+.pt64{ margin-top:64px}
+.pt60{ margin-top:60px}
+
+
+.pad0{padding:0;}
+
+.width750{ width:750px}
+.width600{ width:600px}
+.width600{ width:600px; padding-top:50px;}
+.fl{ float:left}
+.fr{ float:right}
+.textR{ text-align:right}
+.textC{ text-align:center}
+.position{ position:relative;}
+.displayl{ display:inline}
+
+.wrapper{ width:1000px; margin:0 auto;}

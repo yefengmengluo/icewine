@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wangku.dpw.dao.ArticleDao">
+	<resultMap id="articleMapper" type="com.wangku.dpw.domain.Article">
+			<result property="id" column="id" />
+			<result property="title" column="title" />
+			<result property="pictureUrl" column="picture_url" />
+			<result property="classCode" column="class_code" />
+			<result property="author" column="author" />
+			<result property="origin" column="origin" />
+			<result property="originType" column="origin_type" />
+			<result property="summary" column="summary" />
+			<result property="dataStatus" column="data_status" />
+			<result property="tag" column="tag" />
+			<result property="creater" column="creater" />
+			<result property="siteId" column="site_id" />
+			<result property="addTime" column="add_time" />
+			<result property="mdfyTime" column="mdfy_time" />
+			<result property="exInt" column="ex_int" />
+			<result property="exString" column="ex_string" />
+			<result property="htmlId" column="html_id" />
+			<result property="times" column="times" />
+			<result property="innerweb" column="innerweb" />
+			<result property="innerweburl" column="innerweburl" />
+			<result property="keywords" column="keywords" />
+			<result property="status" column="status" />
+			<result property="categoryName" column="category_name" />
+			<result property="flag" column="flag" />
+			<result property="code" column="code" />
+			
+	</resultMap>
+	
+	<select id="queryById" resultMap="articleMapper" >
+		select * from article
+		where id = #{id}
+	</select>
+    <!-- 查询行业资讯列表页推荐单单数据 -->
+    <select id="querySingle" resultMap="articleMapper" parameterType="java.util.Map">
+		select * from article 
+		where data_status = #{dataStatus} and class_code = #{classCode}
+	</select>
+	<!-- 查询资讯中的更多的方法 -->
+	<select id="queryMoreList" resultMap="articleMapper" parameterType="java.util.Map">
+		select * from article 
+		where  class_code = #{classCode}
+	</select>
+
+	<!-- 查询推荐资讯中的方法 -->
+	<select id="recommendList" resultMap="articleMapper" parameterType="java.util.Map">
+		select * from article 
+		where  data_status = #{dataStatus}
+	</select>
+	  
+	<!-- 根据类别查询列表 -->
+	<select id="morePage" resultMap="articleMapper" parameterType="java.util.Map">
+		select * from article 
+		where  class_code = #{classCode}
+		<if test="page!=null">
+			<include refid="pagination_tail" />
+		</if>
+	</select>
+	
+	<sql id="count_Tail">
+		select count(1) from article record
+	</sql>
+
+	<sql id="pagination_tail">
+	  limit #{page.pageOffset} , #{page.pageSize}
+	</sql>
+
+	<sql id="selectAllColumns">
+		<![CDATA[
+		SELECT
+			 id, 
+			 title, 
+			 picture_url, 
+			 class_code, 
+			 author, 
+			 origin, 
+			 origin_type, 
+			 summary, 
+			 data_status, 
+			 tag, 
+			 creater, 
+			 site_id, 
+			 add_time, 
+			 mdfy_time, 
+			 ex_int, 
+			 ex_string, 
+			 html_id, 
+			 times, 
+			 innerweb, 
+			 innerweburl, 
+			 keywords, 
+			 status, 
+			 category_name, 
+			 flag, 
+			 code 
+			FROM article record
+		]]>
+	</sql>
+
+	<sql id="where_fragement">
+		where 1=1
+		<if test="entity!=null">
+				<if test = "entity.id != null and entity.id != ''">
+					<![CDATA[ and record.id  = #{entity.id} ]]>
+				</if>
+				<if test = "entity.title != null and entity.title != ''">
+					<![CDATA[ and record.title  like '%${entity.title}%' ]]>
+				</if>
+				<if test = "entity.pictureUrl != null and entity.pictureUrl != ''">
+					<![CDATA[ and record.picture_url  = #{entity.pictureUrl} ]]>
+				</if>
+				<if test = "entity.classCode != null and entity.classCode != ''">
+					<![CDATA[ and record.class_code  = #{entity.classCode} ]]>
+				</if>
+				<if test = "entity.author != null and entity.author != ''">
+					<![CDATA[ and record.author  = #{entity.author} ]]>
+				</if>
+				<if test = "entity.origin != null and entity.origin != ''">
+					<![CDATA[ and record.origin  = #{entity.origin }]]>
+				</if>
+				<if test = "entity.originType != null and entity.originType != ''">
+					<![CDATA[ and record.origin_type  = #{entity.originType} ]]>
+				</if>
+				<if test = "entity.summary != null and entity.summary != ''">
+					<![CDATA[ and record.summary  like '%${entity.summary}%' ]]>
+				</if>
+				<if test = "entity.dataStatus != null and entity.dataStatus != ''">
+					<![CDATA[ and record.data_status  = #{entity.dataStatus} ]]>
+				</if>
+				<if test = "entity.tag != null and entity.tag != ''">
+					<![CDATA[ and record.tag  = #{entity.tag }]]>
+				</if>
+				<if test = "entity.creater != null and entity.creater != ''">
+					<![CDATA[ and record.creater  = #{entity.creater}]]>
+				</if>
+				<if test = "entity.siteId != null and entity.siteId != ''">
+					<![CDATA[ and record.site_id  = #{entity.siteId }]]>
+				</if>
+				<if test = "entity.addTime != null and entity.addTime != ''">
+					<![CDATA[ and record.add_time  = #{entity.addTime} ]]>
+				</if>
+				<if test = "entity.mdfyTime != null and entity.mdfyTime != ''">
+					<![CDATA[ and record.mdfy_time  = #{entity.mdfyTime} ]]>
+				</if>
+				<if test = "entity.exInt != null and entity.exInt != ''">
+					<![CDATA[ and record.ex_int  = #{entity.exInt} ]]>
+				</if>
+				<if test = "entity.exString != null and entity.exString != ''">
+					<![CDATA[ and record.ex_string  = #{entity.exString }]]>
+				</if>
+				<if test = "entity.htmlId != null and entity.htmlId != ''">
+					<![CDATA[ and record.html_id  = #{entity.htmlId}]]>
+				</if>
+				<if test = "entity.times != null and entity.times != ''">
+					<![CDATA[ and record.times  = #{entity.times} ]]>
+				</if>
+				<if test = "entity.innerweb != null and entity.innerweb != ''">
+					<![CDATA[ and record.innerweb  = #{entity.innerweb }]]>
+				</if>
+				<if test = "entity.innerweburl != null and entity.innerweburl != ''">
+					<![CDATA[ and record.innerweburl  = #{entity.innerweburl} ]]>
+				</if>
+				<if test = "entity.keywords != null and entity.keywords != ''">
+					<![CDATA[ and record.keywords  = #{entity.keywords }]]>
+				</if>
+				<if test = "entity.status != null and entity.status != ''">
+					<![CDATA[ and record.status  = #{entity.status }]]>
+				</if>
+				<if test = "entity.categoryName != null and entity.categoryName != ''">
+					<![CDATA[ and record.category_name  = #{entity.categoryName} ]]>
+				</if>
+				<if test = "entity.flag != null and entity.flag != ''">
+					<![CDATA[ and record.flag  = #{entity.flag }]]>
+				</if>
+				<if test = "entity.code != null and entity.code != ''">
+					<![CDATA[ and record.code  = #{entity.code }]]>
+				</if>
+		</if>
+	</sql>
+
+	<insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="com.wangku.dpw.domain.Article">
+		insert into article(
+				id,
+				title,
+				picture_url,
+				class_code,
+				author,
+				origin,
+				origin_type,
+				summary,
+				data_status,
+				tag,
+				creater,
+				site_id,
+				add_time,
+				mdfy_time,
+				ex_int,
+				ex_string,
+				html_id,
+				times,
+				innerweb,
+				innerweburl,
+				keywords,
+				status,
+				category_name,
+				flag,
+				code
+		)values(
+				#{id},
+				#{title},
+				#{pictureUrl},
+				#{classCode},
+				#{author},
+				#{origin},
+				#{originType},
+				#{summary},
+				#{dataStatus},
+				#{tag},
+				#{creater},
+				#{siteId},
+				#{addTime},
+				#{mdfyTime},
+				#{exInt},
+				#{exString},
+				#{htmlId},
+				#{times},
+				#{innerweb},
+				#{innerweburl},
+				#{keywords},
+				#{status},
+				#{categoryName},
+				#{flag},
+				#{code}
+		)
+		
+	</insert>
+	
+	<update id="update">
+		update article record set
+				<if test = "id != null and id != ''">
+					record.id = #{id}
+				</if>
+				<if test = "title != null and title != ''">
+					,record.title = #{title}
+				</if>
+				<if test = "pictureUrl != null and pictureUrl != ''">
+					,record.picture_url = #{pictureUrl}
+				</if>
+				<if test = "classCode != null and classCode != ''">
+					,record.class_code = #{classCode}
+				</if>
+				<if test = "author != null and author != ''">
+					,record.author = #{author}
+				</if>
+				<if test = "origin != null and origin != ''">
+					,record.origin = #{origin}
+				</if>
+				<if test = "originType != null and originType != ''">
+					,record.origin_type = #{originType}
+				</if>
+				<if test = "summary != null and summary != ''">
+					,record.summary = #{summary}
+				</if>
+				<if test = "dataStatus != null and dataStatus != ''">
+					,record.data_status = #{dataStatus}
+				</if>
+				<if test = "tag != null and tag != ''">
+					,record.tag = #{tag}
+				</if>
+				<if test = "creater != null and creater != ''">
+					,record.creater = #{creater}
+				</if>
+				<if test = "siteId != null and siteId != ''">
+					,record.site_id = #{siteId}
+				</if>
+				<if test = "addTime != null and addTime != ''">
+					,record.add_time = #{addTime}
+				</if>
+				<if test = "mdfyTime != null and mdfyTime != ''">
+					,record.mdfy_time = #{mdfyTime}
+				</if>
+				<if test = "exInt != null and exInt != ''">
+					,record.ex_int = #{exInt}
+				</if>
+				<if test = "exString != null and exString != ''">
+					,record.ex_string = #{exString}
+				</if>
+				<if test = "htmlId != null and htmlId != ''">
+					,record.html_id = #{htmlId}
+				</if>
+				<if test = "times != null and times != ''">
+					,record.times = #{times}
+				</if>
+				<if test = "innerweb != null and innerweb != ''">
+					,record.innerweb = #{innerweb}
+				</if>
+				<if test = "innerweburl != null and innerweburl != ''">
+					,record.innerweburl = #{innerweburl}
+				</if>
+				<if test = "keywords != null and keywords != ''">
+					,record.keywords = #{keywords}
+				</if>
+				<if test = "status != null and status != ''">
+					,record.status = #{status}
+				</if>
+				<if test = "categoryName != null and categoryName != ''">
+					,record.category_name = #{categoryName}
+				</if>
+				<if test = "flag != null and flag != ''">
+					,record.flag = #{flag}
+				</if>
+				<if test = "code != null and code != ''">
+					,record.code = #{code}
+				</if>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from article
+		<if test=" codes != null and codes.size() > 0 ">
+			where id in
+			<foreach collection="codes" open="(" separator="," close=")" item="code">
+				#{code}
+			</foreach>
+		</if>
+		<if test=" codes == null or codes.size() == 0 ">
+			where 1 = 3
+		</if>
+	</delete>
+	
+	<select id="queryCount" resultType="long" useCache="true">
+		<include refid="count_Tail"></include>
+		<include refid="where_fragement"></include>
+	</select>
+	
+
+	<select id="queryCountClassCode" resultType="long" useCache="true">
+		<include refid="count_Tail"></include>
+		where  class_code = #{classCode}
+	</select>
+	
+	
+	<select id="queryList" resultMap="articleMapper" useCache="true">
+		<include refid="selectAllColumns"/>
+		<include refid="where_fragement" />
+		<if test="page!=null">
+			<include refid="pagination_tail" />
+		</if>
+	
+	</select>
+	<cache flushInterval="60000" eviction="FIFO" readOnly="false" size="256"></cache>
+	
+</mapper>

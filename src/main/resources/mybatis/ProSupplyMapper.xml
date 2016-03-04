@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wangku.dpw.dao.ProSupplyDao">
+	<resultMap id="proSupplyMapper" type="com.wangku.dpw.domain.ProSupply">
+			<result property="id" column="id" />
+			<result property="name" column="name" />
+			<result property="alias" column="alias" />
+			<result property="pic" column="pic" />
+			<result property="categoryCode" column="category_code" />
+			<result property="classCode" column="class_code" />
+			<result property="areaCode" column="area_code" />
+			<result property="brandCode" column="brand_code" />
+			<result property="brandName" column="brand_name" />
+			<result property="unit" column="unit" />
+			<result property="unitCustom" column="unit_custom" />
+			<result property="summary" column="summary" />
+			<result property="memberId" column="member_id" />
+			<result property="siteId" column="site_id" />
+			<result property="freightId" column="freight_id" />
+			<result property="addrId" column="addr_id" />
+			<result property="priceMin" column="price_min" />
+			<result property="priceInterval" column="price_interval" />
+			<result property="storeNum" column="store_num" />
+			<result property="invoiceName" column="invoice_name" />
+			<result property="deliveryDayEnd" column="delivery_day_end" />
+			<result property="deliveryDayBegin" column="delivery_day_begin" />
+			<result property="promotionType" column="promotion_type" />
+			<result property="promotionPrice" column="promotion_price" />
+			<result property="promotionIsShow" column="promotion_is_show" />
+			<result property="isForTrade" column="is_for_trade" />
+			<result property="status" column="status" />
+			<result property="addTime" column="add_time" />
+			<result property="modifyTime" column="modify_time" />
+			<result property="expireTime" column="expire_time" />
+			<result property="times" column="times" />
+			<result property="sales" column="sales" />
+			<result property="source" column="source" />
+			<result property="priceDistrict" column="price_district" />
+			<result property="priceInner" column="price_inner" />
+			<result property="keyword" column="keyword" />
+			<result property="extractAddr" column="extract_addr" />
+			<result property="linkman" column="link_man" />
+			<result property="telephone" column="telephone" />
+		 	<result property="department" column="department" />
+	</resultMap>
+	
+	<select id="queryById" resultMap="proSupplyMapper" >
+		select * from pro_supply
+		where id = #{id}
+	</select>
+	
+   <select id="queryMeIdList" resultMap="proSupplyMapper" >
+		select * from pro_supply
+		where member_id = #{memberId}
+	</select>
+	<sql id="count_Tail">
+		select count(1) from pro_supply record
+	</sql>
+
+	<sql id="pagination_tail">
+	  limit #{page.pageOffset} , #{page.pageSize}
+	</sql>
+
+
+
+	 
+	
+	<sql id="selectAllColumns">
+		<![CDATA[
+		SELECT
+			 id, 
+			 name, 
+			 alias, 
+			 pic, 
+			 category_code, 
+			 class_code, 
+			 area_code, 
+			 brand_code, 
+			 brand_name, 
+			 unit, 
+			 unit_custom, 
+			 summary, 
+			 member_id, 
+			 site_id, 
+			 freight_id, 
+			 addr_id, 
+			 price_min, 
+			 price_interval, 
+			 store_num, 
+			 invoice_name, 
+			 delivery_day_end, 
+			 delivery_day_begin, 
+			 promotion_type, 
+			 promotion_price, 
+			 promotion_is_show, 
+			 is_for_trade, 
+			 status, 
+			 add_time, 
+			 modify_time, 
+			 expire_time, 
+			 times, 
+			 sales, 
+			 source, 
+			 price_district, 
+			 price_inner, 
+			 keyword, 
+			 extract_addr 
+			FROM pro_supply record
+		]]>
+	</sql>
+
+	<sql id="where_fragement">
+		where 1=1
+		<if test="entity!=null">
+				<if test = "entity.id != null and entity.id != ''">
+					<![CDATA[ and record.id  = #{entity.id} ]]>
+				</if>
+				<if test = "entity.name != null and entity.name != ''">
+					<![CDATA[ and record.name  like '%${entity.name}%']]>
+				</if>
+				<if test = "entity.alias != null and entity.alias != ''">
+					<![CDATA[ and record.alias  = #{entity.alias} ]]>
+				</if>
+				<if test = "entity.pic != null and entity.pic != ''">
+					<![CDATA[ and record.pic  = #{entity.pic} ]]>
+				</if>
+				<if test = "entity.categoryCode != null and entity.categoryCode != ''">
+					<![CDATA[ and record.category_code  = #{entity.categoryCode} ]]>
+				</if>
+				<if test = "entity.classCode != null and entity.classCode != ''">
+					<![CDATA[ and record.class_code  = #{entity.classCode} ]]>
+				</if>
+				<if test = "entity.areaCode != null and entity.areaCode != ''">
+					<![CDATA[ and record.area_code  = #{entity.areaCode }]]>
+				</if>
+				<if test = "entity.brandCode != null and entity.brandCode != ''">
+					<![CDATA[ and record.brand_code  = #{entity.brandCode} ]]>
+				</if>
+				<if test = "entity.brandName != null and entity.brandName != ''">
+					<![CDATA[ and record.brand_name  = #{entity.brandName} ]]>
+				</if>
+				<if test = "entity.unit != null and entity.unit != ''">
+					<![CDATA[ and record.unit  = #{entity.unit} ]]>
+				</if>
+				<if test = "entity.unitCustom != null and entity.unitCustom != ''">
+					<![CDATA[ and record.unit_custom  = #{entity.unitCustom} ]]>
+				</if>
+				<if test = "entity.summary != null and entity.summary != ''">
+					<![CDATA[ and record.summary  = #{entity.summary} ]]>
+				</if>
+				<if test = "entity.memberId != null and entity.memberId != ''">
+					<![CDATA[ and record.member_id  = #{entity.memberId} ]]>
+				</if>
+				<if test = "entity.siteId != null and entity.siteId != ''">
+					<![CDATA[ and record.site_id  = #{entity.siteId} ]]>
+				</if>
+				<if test = "entity.freightId != null and entity.freightId != ''">
+					<![CDATA[ and record.freight_id  = #{entity.freightId} ]]>
+				</if>
+				<if test = "entity.addrId != null and entity.addrId != ''">
+					<![CDATA[ and record.addr_id  = #{entity.addrId} ]]>
+				</if>
+				<if test = "entity.priceMin != null and entity.priceMin != ''">
+					<![CDATA[ and record.price_min  = #{entity.priceMin} ]]>
+				</if>
+				<if test = "entity.priceInterval != null and entity.priceInterval != ''">
+					<![CDATA[ and record.price_interval  = #{entity.priceInterval} ]]>
+				</if>
+				<if test = "entity.storeNum != null and entity.storeNum != ''">
+					<![CDATA[ and record.store_num  = #{entity.storeNum} ]]>
+				</if>
+				<if test = "entity.invoiceName != null and entity.invoiceName != ''">
+					<![CDATA[ and record.invoice_name  = #{entity.invoiceName} ]]>
+				</if>
+				<if test = "entity.deliveryDayEnd != null and entity.deliveryDayEnd != ''">
+					<![CDATA[ and record.delivery_day_end  = #{entity.deliveryDayEnd} ]]>
+				</if>
+				<if test = "entity.deliveryDayBegin != null and entity.deliveryDayBegin != ''">
+					<![CDATA[ and record.delivery_day_begin  = #{entity.deliveryDayBegin} ]]>
+				</if>
+				<if test = "entity.promotionType != null and entity.promotionType != ''">
+					<![CDATA[ and record.promotion_type  = #{entity.promotionType} ]]>
+				</if>
+				<if test = "entity.promotionPrice != null and entity.promotionPrice != ''">
+					<![CDATA[ and record.promotion_price  = #{entity.promotionPrice} ]]>
+				</if>
+				<if test = "entity.promotionIsShow != null and entity.promotionIsShow != ''">
+					<![CDATA[ and record.promotion_is_show  = #{entity.promotionIsShow} ]]>
+				</if>
+				<if test = "entity.isForTrade != null and entity.isForTrade != ''">
+					<![CDATA[ and record.is_for_trade  = #{entity.isForTrade} ]]>
+				</if>
+				<if test = "entity.status != null and entity.status != ''">
+					<![CDATA[ and record.status  = #{entity.status} ]]>
+				</if>
+				<if test = "entity.addTime != null and entity.addTime != ''">
+					<![CDATA[ and record.add_time  = #{entity.addTime} ]]>
+				</if>
+				<if test = "entity.modifyTime != null and entity.modifyTime != ''">
+					<![CDATA[ and record.modify_time  = #{entity.modifyTime} ]]>
+				</if>
+				<if test = "entity.expireTime != null and entity.expireTime != ''">
+					<![CDATA[ and record.expire_time  = #{entity.expireTime} ]]>
+				</if>
+				<if test = "entity.times != null and entity.times != ''">
+					<![CDATA[ and record.times  = #{entity.times} ]]>
+				</if>
+				<if test = "entity.sales != null and entity.sales != ''">
+					<![CDATA[ and record.sales  = #{entity.sales} ]]>
+				</if>
+				<if test = "entity.source != null and entity.source != ''">
+					<![CDATA[ and record.source  = #{entity.source} ]]>
+				</if>
+				<if test = "entity.priceDistrict != null and entity.priceDistrict != ''">
+					<![CDATA[ and record.price_district  = #{entity.priceDistrict} ]]>
+				</if>
+				<if test = "entity.priceInner != null and entity.priceInner != ''">
+					<![CDATA[ and record.price_inner  = #{entity.priceInner} ]]>
+				</if>
+				<if test = "entity.keyword != null and entity.keyword != ''">
+					<![CDATA[ and record.keyword  = #{entity.keyword} ]]>
+				</if>
+				<if test = "entity.extractAddr != null and entity.extractAddr != ''">
+					<![CDATA[ and record.extract_addr  = #{entity.extractAddr} ]]>
+				</if>
+		</if>
+	</sql>
+    <select id="querySingle" resultMap="proSupplyMapper" parameterType="java.util.Map">
+		select 	 id, 
+			 name, 
+			 alias, 
+			 pic, 
+			 class_code, 
+			 area_code, 
+			 brand_code, 
+			 brand_name, 
+			 unit, 
+			 unit_custom, 
+			 record.summary, 
+			 record.member_id, 
+			 freight_id, 
+			 addr_id, 
+			 price_min, 
+			 price_interval, 
+			 store_num, 
+			 invoice_name, 
+			 delivery_day_end, 
+			 delivery_day_begin, 
+			 promotion_type, 
+			 promotion_price, 
+			 promotion_is_show, 
+			 is_for_trade, 
+			 record.status, 
+			 record.add_time, 
+			 record.modify_time, 
+			 expire_time, 
+			 record.times, 
+			 sales, 
+			 source, 
+			 price_district, 
+			 price_inner, 
+			 keyword, 
+			 extract_addr,corporation_name from pro_supply record inner  join  member_basic t2 on record.member_id = t2.member_id
+		where   class_code = #{classCode}
+	</select>
+	<insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="com.wangku.dpw.domain.ProSupply">
+		insert into pro_supply(
+				id,
+				name,
+				alias,
+				pic,
+				category_code,
+				class_code,
+				area_code,
+				brand_code,
+				brand_name,
+				unit,
+				unit_custom,
+				summary,
+				member_id,
+				site_id,
+				freight_id,
+				addr_id,
+				price_min,
+				price_interval,
+				store_num,
+				invoice_name,
+				delivery_day_end,
+				delivery_day_begin,
+				promotion_type,
+				promotion_price,
+				promotion_is_show,
+				is_for_trade,
+				status,
+				add_time,
+				modify_time,
+				expire_time,
+				times,
+				sales,
+				source,
+				price_district,
+				price_inner,
+				keyword,
+				extract_addr
+		)values(
+				#{id},
+				#{name},
+				#{alias},
+				#{pic},
+				#{categoryCode},
+				#{classCode},
+				#{areaCode},
+				#{brandCode},
+				#{brandName},
+				#{unit},
+				#{unitCustom},
+				#{summary},
+				#{memberId},
+				#{siteId},
+				#{freightId},
+				#{addrId},
+				#{priceMin},
+				#{priceInterval},
+				#{storeNum},
+				#{invoiceName},
+				#{deliveryDayEnd},
+				#{deliveryDayBegin},
+				#{promotionType},
+				#{promotionPrice},
+				#{promotionIsShow},
+				#{isForTrade},
+				#{status},
+				#{addTime},
+				#{modifyTime},
+				#{expireTime},
+				#{times},
+				#{sales},
+				#{source},
+				#{priceDistrict},
+				#{priceInner},
+				#{keyword},
+				#{extractAddr}
+		)
+	</insert>
+	
+	<update id="update">
+		update pro_supply record set
+				<if test = "id != null and id != ''">
+					record.id = #{id}
+				</if>
+				<if test = "name != null and name != ''">
+					,record.name = #{name}
+				</if>
+				<if test = "alias != null and alias != ''">
+					,record.alias = #{alias}
+				</if>
+				<if test = "pic != null and pic != ''">
+					,record.pic = #{pic}
+				</if>
+				<if test = "categoryCode != null and categoryCode != ''">
+					,record.category_code = #{categoryCode}
+				</if>
+				<if test = "classCode != null and classCode != ''">
+					,record.class_code = #{classCode}
+				</if>
+				<if test = "areaCode != null and areaCode != ''">
+					,record.area_code = #{areaCode}
+				</if>
+				<if test = "brandCode != null and brandCode != ''">
+					,record.brand_code = #{brandCode}
+				</if>
+				<if test = "brandName != null and brandName != ''">
+					,record.brand_name = #{brandName}
+				</if>
+				<if test = "unit != null and unit != ''">
+					,record.unit = #{unit}
+				</if>
+				<if test = "unitCustom != null and unitCustom != ''">
+					,record.unit_custom = #{unitCustom}
+				</if>
+				<if test = "summary != null and summary != ''">
+					,record.summary = #{summary}
+				</if>
+				<if test = "memberId != null and memberId != ''">
+					,record.member_id = #{memberId}
+				</if>
+				<if test = "siteId != null and siteId != ''">
+					,record.site_id = #{siteId}
+				</if>
+				<if test = "freightId != null and freightId != ''">
+					,record.freight_id = #{freightId}
+				</if>
+				<if test = "addrId != null and addrId != ''">
+					,record.addr_id = #{addrId}
+				</if>
+				<if test = "priceMin != null and priceMin != ''">
+					,record.price_min = #{priceMin}
+				</if>
+				<if test = "priceInterval != null and priceInterval != ''">
+					,record.price_interval = #{priceInterval}
+				</if>
+				<if test = "storeNum != null and storeNum != ''">
+					,record.store_num = #{storeNum}
+				</if>
+				<if test = "invoiceName != null and invoiceName != ''">
+					,record.invoice_name = #{invoiceName}
+				</if>
+				<if test = "deliveryDayEnd != null and deliveryDayEnd != ''">
+					,record.delivery_day_end = #{deliveryDayEnd}
+				</if>
+				<if test = "deliveryDayBegin != null and deliveryDayBegin != ''">
+					,record.delivery_day_begin = #{deliveryDayBegin}
+				</if>
+				<if test = "promotionType != null and promotionType != ''">
+					,record.promotion_type = #{promotionType}
+				</if>
+				<if test = "promotionPrice != null and promotionPrice != ''">
+					,record.promotion_price = #{promotionPrice}
+				</if>
+				<if test = "promotionIsShow != null and promotionIsShow != ''">
+					,record.promotion_is_show = #{promotionIsShow}
+				</if>
+				<if test = "isForTrade != null and isForTrade != ''">
+					,record.is_for_trade = #{isForTrade}
+				</if>
+				<if test = "status != null and status != ''">
+					,record.status = #{status}
+				</if>
+				<if test = "addTime != null and addTime != ''">
+					,record.add_time = #{addTime}
+				</if>
+				<if test = "modifyTime != null and modifyTime != ''">
+					,record.modify_time = #{modifyTime}
+				</if>
+				<if test = "expireTime != null and expireTime != ''">
+					,record.expire_time = #{expireTime}
+				</if>
+				<if test = "times != null and times != ''">
+					,record.times = #{times}
+				</if>
+				<if test = "sales != null and sales != ''">
+					,record.sales = #{sales}
+				</if>
+				<if test = "source != null and source != ''">
+					,record.source = #{source}
+				</if>
+				<if test = "priceDistrict != null and priceDistrict != ''">
+					,record.price_district = #{priceDistrict}
+				</if>
+				<if test = "priceInner != null and priceInner != ''">
+					,record.price_inner = #{priceInner}
+				</if>
+				<if test = "keyword != null and keyword != ''">
+					,record.keyword = #{keyword}
+				</if>
+				<if test = "extractAddr != null and extractAddr != ''">
+					,record.extract_addr = #{extractAddr}
+				</if>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from pro_supply
+		<if test=" codes != null and codes.size() > 0 ">
+			where id in
+			<foreach collection="codes" open="(" separator="," close=")" item="code">
+				#{code}
+			</foreach>
+		</if>
+		<if test=" codes == null or codes.size() == 0 ">
+			where 1 = 3
+		</if>
+	</delete>
+	
+	<select id="queryCount" resultType="long" useCache="true">
+		<include refid="count_Tail"></include>
+		<include refid="where_fragement"></include>
+	</select>
+	
+	
+	<select id="queryMoreList" resultMap="proSupplyMapper" parameterType="String" useCache="true">
+		select  * from pro_supply  where  class_code=#{classCode}
+		 
+		<if test="page!=null">
+			<include refid="pagination_tail" />
+		</if>
+	</select>
+	
+	<cache flushInterval="60000" eviction="FIFO" readOnly="false" size="256"></cache>
+	
+	
+	<select id="queryList" resultMap="proSupplyMapper" parameterType="String">
+		select 	 record.id, 
+			record.name,
+			 
+			 alias, 
+			 pic, 
+			 class_code, 
+			 record.area_code,
+			 brand_code, 
+			 brand_name, 
+			 unit, 
+			 unit_custom, 
+			 record.summary, 
+			 record.member_id, 
+			 freight_id, 
+			 addr_id, 
+			 price_min, 
+			 price_interval, 
+			 store_num, 
+			 invoice_name, 
+			 delivery_day_end, 
+			 delivery_day_begin, 
+			 promotion_type, 
+			 promotion_price, 
+			 promotion_is_show, 
+			 is_for_trade, 
+			 record.status, 
+			 record.add_time, 
+			 record.modify_time, 
+			 expire_time, 
+			 record.times, 
+			 sales, 
+			 source, 
+			 price_district, 
+			 price_inner, 
+			 keyword, 
+			 extract_addr,corporation_name,link_man,telephone,department from pro_supply record left  join  member_basic t2 on record.member_id = t2.member_id 
+			 left join member  t3 on t3.member_id = t2.member_id   
+		<include refid="where_fragement" />
+		<if test="page!=null">
+			<include refid="pagination_tail" />
+		</if>
+	</select>
+</mapper>

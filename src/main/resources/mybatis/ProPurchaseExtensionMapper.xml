@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wangku.dpw.dao.ProPurchaseExtensionDao">
+	<resultMap id="proPurchaseExtensionMapper" type="com.wangku.dpw.domain.ProPurchaseExtension">
+			<result property="id" column="id" />
+			<result property="purId" column="pur_id" />
+			<result property="countNum" column="count_num" />
+			<result property="addTime" column="add_time" />
+			<result property="fileId" column="file_id" />
+			<result property="siteId" column="site_id" />
+			<result property="status" column="status" />
+	</resultMap>
+	
+	<select id="queryById" resultMap="proPurchaseExtensionMapper" >
+		select * from pro_purchase_extension
+		where id = #{id}
+	</select>
+
+	<sql id="count_Tail">
+		select count(1) from pro_purchase_extension record
+	</sql>
+
+	<sql id="pagination_tail">
+	  limit #{page.pageOffset} , #{page.pageSize}
+	</sql>
+
+	<sql id="selectAllColumns">
+		<![CDATA[
+		SELECT
+			 id, 
+			 pur_id, 
+			 count_num, 
+			 add_time, 
+			 file_id, 
+			 site_id, 
+			 status 
+			FROM pro_purchase_extension record
+		]]>
+	</sql>
+
+	<sql id="where_fragement">
+		where 1=1
+		<if test="entity!=null">
+				<if test = "entity.id != null and entity.id != ''">
+					<![CDATA[ and record.id  = #{entity.id} ]]>
+				</if>
+				<if test = "entity.purId != null and entity.purId != ''">
+					<![CDATA[ and record.pur_id  = #{entity.purId} ]]>
+				</if>
+				<if test = "entity.countNum != null and entity.countNum != ''">
+					<![CDATA[ and record.count_num  = #{entity.countNum} ]]>
+				</if>
+				<if test = "entity.addTime != null and entity.addTime != ''">
+					<![CDATA[ and record.add_time  = #{entity.addTime} ]]>
+				</if>
+				<if test = "entity.fileId != null and entity.fileId != ''">
+					<![CDATA[ and record.file_id  = #{entity.fileId} ]]>
+				</if>
+				<if test = "entity.siteId != null and entity.siteId != ''">
+					<![CDATA[ and record.site_id  = #{entity.siteId }]]>
+				</if>
+				<if test = "entity.status != null and entity.status != ''">
+					<![CDATA[ and record.status  = #{entity.status }]]>
+				</if>
+		</if>
+	</sql>
+
+	<insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="com.wangku.dpw.domain.ProPurchaseExtension">
+		insert into pro_purchase_extension(
+				id,
+				pur_id,
+				count_num,
+				add_time,
+				file_id,
+				site_id,
+				status
+		)values(
+				#{id},
+				#{purId},
+				#{countNum},
+				#{addTime},
+				#{fileId},
+				#{siteId},
+				#{status}
+		)
+	</insert>
+	
+	<update id="update">
+		update pro_purchase_extension record set
+				<if test = "id != null and id != ''">
+					record.id = #{id}
+				</if>
+				<if test = "purId != null and purId != ''">
+					,record.pur_id = #{purId}
+				</if>
+				<if test = "countNum != null and countNum != ''">
+					,record.count_num = #{countNum}
+				</if>
+				<if test = "addTime != null and addTime != ''">
+					,record.add_time = #{addTime}
+				</if>
+				<if test = "fileId != null and fileId != ''">
+					,record.file_id = #{fileId}
+				</if>
+				<if test = "siteId != null and siteId != ''">
+					,record.site_id = #{siteId}
+				</if>
+				<if test = "status != null and status != ''">
+					,record.status = #{status}
+				</if>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from pro_purchase_extension
+		<if test=" codes != null and codes.size() > 0 ">
+			where id in
+			<foreach collection="codes" open="(" separator="," close=")" item="code">
+				#{code}
+			</foreach>
+		</if>
+		<if test=" codes == null or codes.size() == 0 ">
+			where 1 = 3
+		</if>
+	</delete>
+	
+	<select id="queryCount" resultType="long">
+		<include refid="count_Tail"></include>
+		<include refid="where_fragement"></include>
+	</select>
+	
+	<select id="queryList" resultMap="proPurchaseExtensionMapper" >
+		<include refid="selectAllColumns"/>
+		<include refid="where_fragement" />
+		<if test="page!=null">
+			<include refid="pagination_tail" />
+		</if>
+	</select>
+</mapper>

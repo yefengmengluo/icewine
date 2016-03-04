@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wangku.dpw.dao.MemberDao">
+	<resultMap id="memberMapper" type="com.wangku.dpw.domain.Member">
+			<result property="memberId" column="member_id" />
+			<result property="account" column="account" />
+			<result property="password" column="password" />
+			<result property="email" column="email" />
+			<result property="mobile" column="mobile" />
+			<result property="channelsType" column="channels_type" />
+			<result property="bindType" column="bind_type" />
+			<result property="status" column="status" />
+			<result property="addTime" column="add_time" />
+			<result property="modifyTime" column="modify_time" />
+			<result property="regIp" column="reg_ip" />
+			<result property="loginIp" column="login_ip" />
+			<result property="totalLogin" column="total_login" />
+			<result property="siteId" column="site_id" />
+			<result property="position" column="position" />
+			<result property="department" column="department" />
+			<result property="postCode" column="post_code" />
+			<result property="telephone" column="telephone" />
+			<result property="qq" column="qq" />
+			<result property="sex" column="sex" />
+			<result property="headPortrait" column="head_portrait" />
+			<result property="linkMan" column="link_man" />
+			<result property="nickname" column="nickname" />
+			<result property="areaCode" column="area_code" />
+			<result property="address" column="address" />
+			<result property="parentId" column="parent_id" />
+			<result property="roleId" column="role_id" />
+			<result property="memberType" column="member_type" />
+			<result property="accreditStatus" column="accredit_status" />
+			<result property="fromUi" column="from_ui" />
+			<result property="expirTime" column="expir_time" />
+			<result property="validDay" column="valid_day" />
+			<result property="fax" column="fax" />
+			<result property="times" column="times" />
+			<result property="beginTime" column="begin_time" />
+			<result property="orderBy" column="order_by" />
+			<result property="corporationName" column="corporation_name"/>
+	</resultMap>
+	
+	<select id="queryById" resultMap="memberMapper" >
+		select * from member
+		where member_id = #{id}
+	</select>
+
+	<sql id="count_Tail">
+		select count(1) from member record
+	</sql>
+
+	<sql id="pagination_tail">
+	  limit #{page.pageOffset} , #{page.pageSize}
+	</sql>
+
+	<sql id="selectAllColumns">
+		<![CDATA[
+		SELECT
+			 member_id, 
+			 account, 
+			 password, 
+			 email, 
+			 mobile, 
+			 channels_type, 
+			 bind_type, 
+			 status, 
+			 add_time, 
+			 modify_time, 
+			 reg_ip, 
+			 login_ip, 
+			 total_login, 
+			 site_id, 
+			 position, 
+			 department, 
+			 post_code, 
+			 telephone, 
+			 qq, 
+			 sex, 
+			 head_portrait, 
+			 link_man, 
+			 nickname, 
+			 area_code, 
+			 address, 
+			 parent_id, 
+			 role_id, 
+			 member_type, 
+			 accredit_status, 
+			 from_ui, 
+			 expir_time, 
+			 valid_day, 
+			 fax, 
+			 times, 
+			 begin_time, 
+			 order_by 
+			FROM member record
+		]]>
+	</sql>
+
+	<sql id="where_fragement">
+		where 1=1
+		<if test="entity!=null">
+				<if test = "entity.memberId != null and entity.memberId != ''">
+					<![CDATA[ and record.member_id  = #{entity.memberId} ]]>
+				</if>
+				<if test = "entity.account != null and entity.account != ''">
+					<![CDATA[ and record.account  like '%${entity.account}%' ]]>
+				</if>
+				<if test = "entity.password != null and entity.password != ''">
+					<![CDATA[ and record.password  = #{entity.password }]]>
+				</if>
+				<if test = "entity.email != null and entity.email != ''">
+					<![CDATA[ and record.email  = #{entity.email} ]]>
+				</if>
+				<if test = "entity.mobile != null and entity.mobile != ''">
+					<![CDATA[ and record.mobile  = #{entity.mobile} ]]>
+				</if>
+				<if test = "entity.channelsType != null and entity.channelsType != ''">
+					<![CDATA[ and record.channels_type  = #{entity.channelsType} ]]>
+				</if>
+				<if test = "entity.bindType != null and entity.bindType != ''">
+					<![CDATA[ and record.bind_type  = #{entity.bindType} ]]>
+				</if>
+				<if test = "entity.status != null and entity.status != ''">
+					<![CDATA[ and record.status  = #{entity.status} ]]>
+				</if>
+				<if test = "entity.addTime != null and entity.addTime != ''">
+					<![CDATA[ and record.add_time  = #{entity.addTime} ]]>
+				</if>
+				<if test = "entity.modifyTime != null and entity.modifyTime != ''">
+					<![CDATA[ and record.modify_time  = #{entity.modifyTime} ]]>
+				</if>
+				<if test = "entity.regIp != null and entity.regIp != ''">
+					<![CDATA[ and record.reg_ip  = #{entity.regIp} ]]>
+				</if>
+				<if test = "entity.loginIp != null and entity.loginIp != ''">
+					<![CDATA[ and record.login_ip  = #{entity.loginIp} ]]>
+				</if>
+				<if test = "entity.totalLogin != null and entity.totalLogin != ''">
+					<![CDATA[ and record.total_login  = #{entity.totalLogin} ]]>
+				</if>
+				<if test = "entity.siteId != null and entity.siteId != ''">
+					<![CDATA[ and record.site_id  = #{entity.siteId} ]]>
+				</if>
+				<if test = "entity.position != null and entity.position != ''">
+					<![CDATA[ and record.position  = #{entity.position} ]]>
+				</if>
+				<if test = "entity.department != null and entity.department != ''">
+					<![CDATA[ and record.department  = #{entity.department} ]]>
+				</if>
+				<if test = "entity.postCode != null and entity.postCode != ''">
+					<![CDATA[ and record.post_code  = #{entity.postCode} ]]>
+				</if>
+				<if test = "entity.telephone != null and entity.telephone != ''">
+					<![CDATA[ and record.telephone  = #{entity.telephone} ]]>
+				</if>
+				<if test = "entity.qq != null and entity.qq != ''">
+					<![CDATA[ and record.qq  = #{entity.qq} ]]>
+				</if>
+				<if test = "entity.sex != null and entity.sex != ''">
+					<![CDATA[ and record.sex  = #{entity.sex} ]]>
+				</if>
+				<if test = "entity.headPortrait != null and entity.headPortrait != ''">
+					<![CDATA[ and record.head_portrait  = #{entity.headPortrait} ]]>
+				</if>
+				<if test = "entity.linkMan != null and entity.linkMan != ''">
+					<![CDATA[ and record.link_man  = #{entity.linkMan} ]]>
+				</if>
+				<if test = "entity.nickname != null and entity.nickname != ''">
+					<![CDATA[ and record.nickname  = #{entity.nickname} ]]>
+				</if>
+				<if test = "entity.areaCode != null and entity.areaCode != ''">
+					<![CDATA[ and record.area_code  = #{entity.areaCode} ]]>
+				</if>
+				<if test = "entity.address != null and entity.address != ''">
+					<![CDATA[ and record.address  = #{entity.address} ]]>
+				</if>
+				<if test = "entity.parentId != null and entity.parentId != ''">
+					<![CDATA[ and record.parent_id  = #{entity.parentId} ]]>
+				</if>
+				<if test = "entity.roleId != null and entity.roleId != ''">
+					<![CDATA[ and record.role_id  = #{entity.roleId} ]]>
+				</if>
+				<if test = "entity.memberType != null and entity.memberType != ''">
+					<![CDATA[ and record.member_type  = #{entity.memberType }]]>
+				</if>
+				<if test = "entity.accreditStatus != null and entity.accreditStatus != ''">
+					<![CDATA[ and record.accredit_status  = #{entity.accreditStatus} ]]>
+				</if>
+				<if test = "entity.fromUi != null and entity.fromUi != ''">
+					<![CDATA[ and record.from_ui  = #{entity.fromUi} ]]>
+				</if>
+				<if test = "entity.expirTime != null and entity.expirTime != ''">
+					<![CDATA[ and record.expir_time  = #{entity.expirTime} ]]>
+				</if>
+				<if test = "entity.validDay != null and entity.validDay != ''">
+					<![CDATA[ and record.valid_day  = #{entity.validDay} ]]>
+				</if>
+				<if test = "entity.fax != null and entity.fax != ''">
+					<![CDATA[ and record.fax  = #{entity.fax} ]]>
+				</if>
+				<if test = "entity.times != null and entity.times != ''">
+					<![CDATA[ and record.times  = #{entity.times} ]]>
+				</if>
+				<if test = "entity.beginTime != null and entity.beginTime != ''">
+					<![CDATA[ and record.begin_time  = #{entity.beginTime} ]]>
+				</if>
+				<if test = "entity.orderBy != null and entity.orderBy != ''">
+					<![CDATA[ and record.order_by  = #{entity.orderBy} ]]>
+				</if>
+		</if>
+	</sql>
+
+	<insert id="add" useGeneratedKeys="true" keyProperty="memberId" parameterType="com.wangku.dpw.domain.Member">
+		insert into member(
+				member_id,
+				account,
+				password,
+				email,
+				mobile,
+				channels_type,
+				bind_type,
+				status,
+				add_time,
+				modify_time,
+				reg_ip,
+				login_ip,
+				total_login,
+				site_id,
+				position,
+				department,
+				post_code,
+				telephone,
+				qq,
+				sex,
+				head_portrait,
+				link_man,
+				nickname,
+				area_code,
+				address,
+				parent_id,
+				role_id,
+				member_type,
+				accredit_status,
+				from_ui,
+				expir_time,
+				valid_day,
+				fax,
+				times,
+				begin_time,
+				order_by
+		)values(
+				#{memberId},
+				#{account},
+				#{password},
+				#{email},
+				#{mobile},
+				#{channelsType},
+				#{bindType},
+				#{status},
+				#{addTime},
+				#{modifyTime},
+				#{regIp},
+				#{loginIp},
+				#{totalLogin},
+				#{siteId},
+				#{position},
+				#{department},
+				#{postCode},
+				#{telephone},
+				#{qq},
+				#{sex},
+				#{headPortrait},
+				#{linkMan},
+				#{nickname},
+				#{areaCode},
+				#{address},
+				#{parentId},
+				#{roleId},
+				#{memberType},
+				#{accreditStatus},
+				#{fromUi},
+				#{expirTime},
+				#{validDay},
+				#{fax},
+				#{times},
+				#{beginTime},
+				#{orderBy}
+		)
+	</insert>
+	
+	<update id="update">
+		update member record set
+				<if test = "memberId != null and memberId != ''">
+					record.member_id = #{memberId}
+				</if>
+				<if test = "account != null and account != ''">
+					,record.account = #{account}
+				</if>
+				<if test = "password != null and password != ''">
+					,record.password = #{password}
+				</if>
+				<if test = "email != null and email != ''">
+					,record.email = #{email}
+				</if>
+				<if test = "mobile != null and mobile != ''">
+					,record.mobile = #{mobile}
+				</if>
+				<if test = "channelsType != null and channelsType != ''">
+					,record.channels_type = #{channelsType}
+				</if>
+				<if test = "bindType != null and bindType != ''">
+					,record.bind_type = #{bindType}
+				</if>
+				<if test = "status != null and status != ''">
+					,record.status = #{status}
+				</if>
+				<if test = "addTime != null and addTime != ''">
+					,record.add_time = #{addTime}
+				</if>
+				<if test = "modifyTime != null and modifyTime != ''">
+					,record.modify_time = #{modifyTime}
+				</if>
+				<if test = "regIp != null and regIp != ''">
+					,record.reg_ip = #{regIp}
+				</if>
+				<if test = "loginIp != null and loginIp != ''">
+					,record.login_ip = #{loginIp}
+				</if>
+				<if test = "totalLogin != null and totalLogin != ''">
+					,record.total_login = #{totalLogin}
+				</if>
+				<if test = "siteId != null and siteId != ''">
+					,record.site_id = #{siteId}
+				</if>
+				<if test = "position != null and position != ''">
+					,record.position = #{position}
+				</if>
+				<if test = "department != null and department != ''">
+					,record.department = #{department}
+				</if>
+				<if test = "postCode != null and postCode != ''">
+					,record.post_code = #{postCode}
+				</if>
+				<if test = "telephone != null and telephone != ''">
+					,record.telephone = #{telephone}
+				</if>
+				<if test = "qq != null and qq != ''">
+					,record.qq = #{qq}
+				</if>
+				<if test = "sex != null and sex != ''">
+					,record.sex = #{sex}
+				</if>
+				<if test = "headPortrait != null and headPortrait != ''">
+					,record.head_portrait = #{headPortrait}
+				</if>
+				<if test = "linkMan != null and linkMan != ''">
+					,record.link_man = #{linkMan}
+				</if>
+				<if test = "nickname != null and nickname != ''">
+					,record.nickname = #{nickname}
+				</if>
+				<if test = "areaCode != null and areaCode != ''">
+					,record.area_code = #{areaCode}
+				</if>
+				<if test = "address != null and address != ''">
+					,record.address = #{address}
+				</if>
+				<if test = "parentId != null and parentId != ''">
+					,record.parent_id = #{parentId}
+				</if>
+				<if test = "roleId != null and roleId != ''">
+					,record.role_id = #{roleId}
+				</if>
+				<if test = "memberType != null and memberType != ''">
+					,record.member_type = #{memberType}
+				</if>
+				<if test = "accreditStatus != null and accreditStatus != ''">
+					,record.accredit_status = #{accreditStatus}
+				</if>
+				<if test = "fromUi != null and fromUi != ''">
+					,record.from_ui = #{fromUi}
+				</if>
+				<if test = "expirTime != null and expirTime != ''">
+					,record.expir_time = #{expirTime}
+				</if>
+				<if test = "validDay != null and validDay != ''">
+					,record.valid_day = #{validDay}
+				</if>
+				<if test = "fax != null and fax != ''">
+					,record.fax = #{fax}
+				</if>
+				<if test = "times != null and times != ''">
+					,record.times = #{times}
+				</if>
+				<if test = "beginTime != null and beginTime != ''">
+					,record.begin_time = #{beginTime}
+				</if>
+				<if test = "orderBy != null and orderBy != ''">
+					,record.order_by = #{orderBy}
+				</if>
+		where member_id = #{memberId}
+	</update>
+	<delete id="delete">
+		delete from member
+		<if test=" codes != null and codes.size() > 0 ">
+			where id in
+			<foreach collection="codes" open="(" separator="," close=")" item="code">
+				#{code}
+			</foreach>
+		</if>
+		<if test=" codes == null or codes.size() == 0 ">
+			where 1 = 3
+		</if>
+	</delete>
+	<select id="getEntityBymap"  parameterType="java.util.Map" resultType="java.util.Map">
+	select member_id memberId,account,password from member
+	    where 1=1 
+	    <if test="account != null">
+	    and account=#{account}
+		 </if>
+	</select>
+	<select id="queryCount" resultType ="long">
+		<include refid="count_Tail"></include>
+		<include refid="where_fragement"></include>
+	</select>
+	
+	<select id="queryList" resultMap="memberMapper" >
+		SELECT
+			 record.member_id, 
+			 account, 
+			 password, 
+			 corporation_name,
+			 email, 
+			 mobile, 
+			 channels_type, 
+			 bind_type, 
+			 t2.status, 
+			 record.add_time, 
+			 record.modify_time, 
+			 reg_ip, 
+			 login_ip, 
+			 total_login, 
+			 record.site_id, 
+			 position, 
+			 department, 
+			 post_code, 
+			 telephone, 
+			 qq, 
+			 sex, 
+			 head_portrait, 
+			 link_man, 
+			 nickname, 
+			 area_code, 
+			 address, 
+			 parent_id, 
+			 role_id, 
+			 member_type, 
+			 accredit_status, 
+			 from_ui, 
+			 expir_time, 
+			 valid_day, 
+			record.fax, 
+			 record.times, 
+			 begin_time, 
+			 order_by 
+			FROM member record    inner  join  member_basic   t2  on record.member_id = t2.member_id
+			<include refid="where_fragement" />
+		<if test="page!=null">
+			<include refid="pagination_tail" />
+		</if>
+	</select>
+</mapper>

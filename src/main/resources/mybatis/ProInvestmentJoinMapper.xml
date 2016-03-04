@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wangku.dpw.dao.ProInvestmentJoinDao">
+	<resultMap id="proInvestmentJoinMapper" type="com.wangku.dpw.domain.ProInvestmentJoin">
+			<result property="id" column="id" />
+			<result property="investmentId" column="investment_id" />
+			<result property="memberId" column="member_id" />
+			<result property="status" column="status" />
+			<result property="joinType" column="join_type" />
+			<result property="companyName" column="company_name" />
+			<result property="qq" column="qq" />
+			<result property="phone" column="phone" />
+			<result property="linkman" column="linkman" />
+			<result property="email" column="email" />
+			<result property="telephone" column="telephone" />
+			<result property="quote" column="quote" />
+			<result property="toMemberId" column="to_member_id" />
+			<result property="code" column="code" />
+			<result property="code1" column="code1" />
+			<result property="code2" column="code2" />
+			
+			<association property="member" javaType="com.wangku.dpw.domain.Member">  
+          		<result property="memberId" column="member_id" />
+			<result property="account" column="account" />
+			<result property="password" column="password" />
+			<result property="email" column="email" />
+			<result property="mobile" column="mobile" />
+			<result property="channelsType" column="channels_type" />
+			<result property="bindType" column="bind_type" />
+			<result property="status" column="status" />
+			<result property="addTime" column="add_time" />
+			<result property="modifyTime" column="modify_time" />
+			<result property="regIp" column="reg_ip" />
+			<result property="loginIp" column="login_ip" />
+			<result property="totalLogin" column="total_login" />
+			<result property="siteId" column="site_id" />
+			<result property="position" column="position" />
+			<result property="department" column="department" />
+			<result property="postCode" column="post_code" />
+			<result property="telephone" column="telephone" />
+			<result property="qq" column="qq" />
+			<result property="sex" column="sex" />
+			<result property="headPortrait" column="head_portrait" />
+			<result property="linkMan" column="link_man" />
+			<result property="nickname" column="nickname" />
+			<result property="areaCode" column="area_code" />
+			<result property="address" column="address" />
+			<result property="parentId" column="parent_id" />
+			<result property="roleId" column="role_id" />
+			<result property="memberType" column="member_type" />
+			<result property="accreditStatus" column="accredit_status" />
+			<result property="fromUi" column="from_ui" />
+			<result property="expirTime" column="expir_time" />
+			<result property="validDay" column="valid_day" />
+			<result property="fax" column="fax" />
+			<result property="times" column="times" />
+			<result property="beginTime" column="begin_time" />
+			<result property="orderBy" column="order_by" />
+            </association>
+            <association property="memberBasic" javaType="com.wangku.dpw.domain.MemberBasic">  
+      		<result property="memberId" column="member_id" />
+			<result property="corporationName" column="corporation_name" />
+			<result property="url" column="url" />
+			<result property="siteId" column="site_id" />
+			<result property="addTime" column="add_time" />
+			<result property="modifyTime" column="modify_time" />
+			<result property="logo" column="logo" />
+			<result property="fax" column="fax" />
+			<result property="enrollId" column="enroll_id" />
+			<result property="dealInId" column="deal_in_id" />
+			<result property="categoryCode" column="category_code" />
+			<result property="summary" column="summary" />
+			<result property="pictureUrl" column="picture_url" />
+			<result property="regNumber" column="reg_number" />
+			<result property="helpId" column="help_id" />
+			<result property="enName" column="en_name" />
+			<result property="accreditNumber" column="accredit_number" />
+			<result property="status" column="status" />
+			<result property="icp" column="icp" />
+			<result property="artificialPerson" column="artificial_person" />
+			<result property="trafficUrl" column="traffic_url" />
+			<result property="trafficInfo" column="traffic_Info" />
+			<result property="dealInAddress" column="deal_in_address" />
+			<result property="dealInAreaCode" column="deal_in_Area_code" />
+			<result property="times" column="times" />
+			<result property="flag" column="flag" />
+			<result property="orgWeb" column="org_web" />
+			
+        </association> 
+        <association property="proInvestment" javaType="com.wangku.dpw.domain.ProInvestment">
+        
+        	<result property="id" column="id" />
+			<result property="name" column="name" />
+			<result property="alias" column="alias" />
+			<result property="pic" column="pic" />
+			<result property="categoryCode" column="category_code" />
+			<result property="classCode" column="class_code" />
+			<result property="areaCode" column="area_code" />
+			<result property="brandCode" column="brand_code" />
+			<result property="brandName" column="brand_name" />
+			<result property="summary" column="summary" />
+			<result property="memberId" column="member_id" />
+			<result property="siteId" column="site_id" />
+			<result property="cause" column="cause" />
+			<result property="status" column="status" />
+			<result property="addTime" column="add_time" />
+			<result property="modifyTime" column="modify_time" />
+			<result property="expireTime" column="expire_time" />
+			<result property="times" column="times" />
+			<result property="certificate" column="certificate" />
+			<result property="brandCreateTime" column="brand_create_time" />
+			<result property="brandExperience" column="brand_experience" />
+			<result property="category" column="category" />
+			<result property="guaranteeSum" column="guarantee_sum" />
+			<result property="basicInvestment" column="basic_investment" />
+        
+        </association>
+	</resultMap>
+	
+	<select id="queryById" resultMap="proInvestmentJoinMapper" >
+		select * from pro_investment_join
+		where id = #{id}
+	</select>
+
+	<sql id="count_Tail">
+		select count(1) from pro_investment_join record
+	</sql>
+
+	<sql id="pagination_tail">
+	  limit #{page.pageOffset} , #{page.pageSize}
+	</sql>
+
+	<sql id="selectAllColumns">
+		<![CDATA[
+		SELECT
+			 id, 
+			 investment_id, 
+			 member_id, 
+			 status, 
+			 join_type, 
+			 company_name, 
+			 qq, 
+			 phone, 
+			 linkman, 
+			 email, 
+			 telephone, 
+			 quote, 
+			 to_member_id, 
+			 code, 
+			 code1, 
+			 code2 
+			FROM pro_investment_join record
+		]]>
+	</sql>
+
+	<sql id="where_fragement">
+		where 1=1
+		<if test="entity!=null">
+				<if test = "entity.id != null and entity.id != ''">
+					<![CDATA[ and record.id  = #{entity.id }]]>
+				</if>
+				<if test = "entity.investmentId != null and entity.investmentId != ''">
+					<![CDATA[ and record.investment_id  = #{entity.investmentId} ]]>
+				</if>
+				<if test = "entity.memberId != null and entity.memberId != ''">
+					<![CDATA[ and record.member_id  = #{entity.memberId} ]]>
+				</if>
+				<if test = "entity.status != null and entity.status != ''">
+					<![CDATA[ and record.status  = #{entity.status }]]>
+				</if>
+				<if test = "entity.joinType != null and entity.joinType != ''">
+					<![CDATA[ and record.join_type  = #{entity.joinType} ]]>
+				</if>
+				<if test = "entity.companyName != null and entity.companyName != ''">
+					<![CDATA[ and record.company_name  = #{entity.companyName }]]>
+				</if>
+				<if test = "entity.qq != null and entity.qq != ''">
+					<![CDATA[ and record.qq  = #{entity.qq }]]>
+				</if>
+				<if test = "entity.phone != null and entity.phone != ''">
+					<![CDATA[ and record.phone  = #{entity.phone }]]>
+				</if>
+				<if test = "entity.linkman != null and entity.linkman != ''">
+					<![CDATA[ and record.linkman  = #{entity.linkman }]]>
+				</if>
+				<if test = "entity.email != null and entity.email != ''">
+					<![CDATA[ and record.email  = #{entity.email }]]>
+				</if>
+				<if test = "entity.telephone != null and entity.telephone != ''">
+					<![CDATA[ and record.telephone  = #{entity.telephone} ]]>
+				</if>
+				<if test = "entity.quote != null and entity.quote != ''">
+					<![CDATA[ and record.quote  = #{entity.quote }]]>
+				</if>
+				<if test = "entity.toMemberId != null and entity.toMemberId != ''">
+					<![CDATA[ and record.to_member_id  = #{entity.toMemberId }]]>
+				</if>
+				<if test = "entity.code != null and entity.code != ''">
+					<![CDATA[ and record.code  = #{entity.code} ]]>
+				</if>
+				<if test = "entity.code1 != null and entity.code1 != ''">
+					<![CDATA[ and record.code1  = #{entity.code1} ]]>
+				</if>
+				<if test = "entity.code2 != null and entity.code2 != ''">
+					<![CDATA[ and record.code2  = #{entity.code2 }]]>
+				</if>
+		</if>
+	</sql>
+
+	<insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="com.wangku.dpw.domain.ProInvestmentJoin">
+		insert into pro_investment_join(
+				id,
+				investment_id,
+				member_id,
+				status,
+				join_type,
+				company_name,
+				qq,
+				phone,
+				linkman,
+				email,
+				telephone,
+				quote,
+				to_member_id,
+				code,
+				code1,
+				code2
+		)values(
+				#{id},
+				#{investmentId},
+				#{memberId},
+				#{status},
+				#{joinType},
+				#{companyName},
+				#{qq},
+				#{phone},
+				#{linkman},
+				#{email},
+				#{telephone},
+				#{quote},
+				#{toMemberId},
+				#{code},
+				#{code1},
+				#{code2}
+		)
+	</insert>
+	
+	<update id="update">
+		update pro_investment_join record set
+				<if test = "id != null and id != ''">
+					record.id = #{id}
+				</if>
+				<if test = "investmentId != null and investmentId != ''">
+					,record.investment_id = #{investmentId}
+				</if>
+				<if test = "memberId != null and memberId != ''">
+					,record.member_id = #{memberId}
+				</if>
+				<if test = "status != null and status != ''">
+					,record.status = #{status}
+				</if>
+				<if test = "joinType != null and joinType != ''">
+					,record.join_type = #{joinType}
+				</if>
+				<if test = "companyName != null and companyName != ''">
+					,record.company_name = #{companyName}
+				</if>
+				<if test = "qq != null and qq != ''">
+					,record.qq = #{qq}
+				</if>
+				<if test = "phone != null and phone != ''">
+					,record.phone = #{phone}
+				</if>
+				<if test = "linkman != null and linkman != ''">
+					,record.linkman = #{linkman}
+				</if>
+				<if test = "email != null and email != ''">
+					,record.email = #{email}
+				</if>
+				<if test = "telephone != null and telephone != ''">
+					,record.telephone = #{telephone}
+				</if>
+				<if test = "quote != null and quote != ''">
+					,record.quote = #{quote}
+				</if>
+				<if test = "toMemberId != null and toMemberId != ''">
+					,record.to_member_id = #{toMemberId}
+				</if>
+				<if test = "code != null and code != ''">
+					,record.code = #{code}
+				</if>
+				<if test = "code1 != null and code1 != ''">
+					,record.code1 = #{code1}
+				</if>
+				<if test = "code2 != null and code2 != ''">
+					,record.code2 = #{code2}
+				</if>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from pro_investment_join
+		<if test=" codes != null and codes.size() > 0 ">
+			where id in
+			<foreach collection="codes" open="(" separator="," close=")" item="code">
+				#{code}
+			</foreach>
+		</if>
+		<if test=" codes == null or codes.size() == 0 ">
+			where 1 = 3
+		</if>
+	</delete>
+	
+	<select id="queryCount" resultType="long">
+		<include refid="count_Tail"></include>
+		<include refid="where_fragement"></include>
+	</select>
+	
+	<select id="queryList" resultMap="proInvestmentJoinMapper" >
+		<include refid="selectAllColumns"/>
+		<include refid="where_fragement" />
+		<if test="page!=null">
+			<include refid="pagination_tail" />
+		</if>
+	</select>
+</mapper>

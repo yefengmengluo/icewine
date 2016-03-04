@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wangku.dpw.dao.ProInvestmentDao">
+	<resultMap id="proInvestmentMapper" type="com.wangku.dpw.domain.ProInvestment">
+			<result property="id" column="id" />
+			<result property="name" column="name" />
+			<result property="alias" column="alias" />
+			<result property="pic" column="pic" />
+			<result property="categoryCode" column="category_code" />
+			<result property="classCode" column="class_code" />
+			<result property="areaCode" column="area_code" />
+			<result property="brandCode" column="brand_code" />
+			<result property="brandName" column="brand_name" />
+			<result property="summary" column="summary" />
+			<result property="memberId" column="member_id" />
+			<result property="siteId" column="site_id" />
+			<result property="cause" column="cause" />
+			<result property="status" column="status" />
+			<result property="addTime" column="add_time" />
+			<result property="modifyTime" column="modify_time" />
+			<result property="expireTime" column="expire_time" />
+			<result property="times" column="times" />
+			<result property="certificate" column="certificate" />
+			<result property="brandCreateTime" column="brand_create_time" />
+			<result property="brandExperience" column="brand_experience" />
+			<result property="category" column="category" />
+			<result property="guaranteeSum" column="guarantee_sum" />
+			<result property="basicInvestment" column="basic_investment" />
+		<association property="member" javaType="com.wangku.dpw.domain.Member">  
+      		<result property="memberId" column="member_id" />
+   		    <result property="account" column="account" />
+			<result property="password" column="password" />
+			<result property="email" column="email" />
+			<result property="mobile" column="mobile" />
+			<result property="channelsType" column="channels_type" />
+			<result property="bindType" column="bind_type" />
+			<result property="status" column="status" />
+			<result property="addTime" column="add_time" />
+			<result property="modifyTime" column="modify_time" />
+			<result property="regIp" column="reg_ip" />
+			<result property="loginIp" column="login_ip" />
+			<result property="totalLogin" column="total_login" />
+			<result property="siteId" column="site_id" />
+			<result property="position" column="position" />
+			<result property="department" column="department" />
+			<result property="postCode" column="post_code" />
+			<result property="telephone" column="telephone" />
+			<result property="qq" column="qq" />
+			<result property="sex" column="sex" />
+			<result property="headPortrait" column="head_portrait" />
+			<result property="linkMan" column="link_man" />
+			<result property="nickname" column="nickname" />
+			<result property="areaCode" column="area_code" />
+			<result property="address" column="address" />
+			<result property="parentId" column="parent_id" />
+			<result property="roleId" column="role_id" />
+			<result property="memberType" column="member_type" />
+			<result property="accreditStatus" column="accredit_status" />
+			<result property="fromUi" column="from_ui" />
+			<result property="expirTime" column="expir_time" />
+			<result property="validDay" column="valid_day" />
+			<result property="fax" column="fax" />
+			<result property="times" column="times" />
+			<result property="beginTime" column="begin_time" />
+			<result property="orderBy" column="order_by" />
+        </association> 
+        
+        
+        <association property="memberBasic" javaType="com.wangku.dpw.domain.MemberBasic">  
+      		<result property="memberId" column="member_id" />
+			<result property="corporationName" column="corporation_name" />
+			<result property="url" column="url" />
+			<result property="siteId" column="site_id" />
+			<result property="addTime" column="add_time" />
+			<result property="modifyTime" column="modify_time" />
+			<result property="logo" column="logo" />
+			<result property="fax" column="fax" />
+			<result property="enrollId" column="enroll_id" />
+			<result property="dealInId" column="deal_in_id" />
+			<result property="categoryCode" column="category_code" />
+			<result property="summary" column="summary" />
+			<result property="pictureUrl" column="picture_url" />
+			<result property="regNumber" column="reg_number" />
+			<result property="helpId" column="help_id" />
+			<result property="enName" column="en_name" />
+			<result property="accreditNumber" column="accredit_number" />
+			<result property="status" column="status" />
+			<result property="icp" column="icp" />
+			<result property="artificialPerson" column="artificial_person" />
+			<result property="trafficUrl" column="traffic_url" />
+			<result property="trafficInfo" column="traffic_Info" />
+			<result property="dealInAddress" column="deal_in_address" />
+			<result property="dealInAreaCode" column="deal_in_Area_code" />
+			<result property="times" column="times" />
+			<result property="flag" column="flag" />
+			<result property="orgWeb" column="org_web" />
+        </association> 
+     
+	</resultMap>
+	
+	<select id="queryById" resultMap="proInvestmentMapper" >
+		select * from pro_investment record
+		LEFT  JOIN member m ON record.member_id=m.member_id  
+		LEFT  JOIN member_basic mb ON record.member_id=mb.member_id  
+		where id = #{id} 
+	</select>
+  <!-- 查询招商加盟列表页推荐单单数据 -->
+    <select id="querySingle" resultMap="proInvestmentMapper" parameterType="java.util.Map">
+		select * from pro_investment 
+		where status = #{status} and class_code = #{classCode}   
+	</select>
+	<sql id="count_Tail">
+		select count(1) from pro_investment record
+	</sql>
+
+	<sql id="pagination_tail">
+	  limit #{page.pageOffset} , #{page.pageSize}
+	</sql>
+
+	<sql id="selectAllColumns">
+		<![CDATA[
+		SELECT
+			 id, 
+			 name, 
+			 alias, 
+			 pic, 
+			 category_code, 
+			 class_code, 
+			 area_code, 
+			 brand_code, 
+			 brand_name, 
+			 summary, 
+			 member_id, 
+			 site_id, 
+			 cause, 
+			 status, 
+			 add_time, 
+			 modify_time, 
+			 expire_time, 
+			 times ,
+			  certificate, 
+			 brand_create_time, 
+			 brand_experience, 
+			 category, 
+			 guarantee_sum, 
+			 basic_investment 
+			FROM pro_investment record
+		]]>
+	</sql>
+
+	<sql id="where_fragement">
+		where 1=1
+		<if test="entity!=null">
+				<if test = "entity.id != null and entity.id != ''">
+					<![CDATA[ and record.id  = #{entity.id} ]]>
+				</if>
+				<if test = "entity.name != null and entity.name != ''">
+					<![CDATA[ and record.name  like '%${entity.name}%' ]]>
+				</if>
+				<if test = "entity.alias != null and entity.alias != ''">
+					<![CDATA[ and record.alias  = #{entity.alias} ]]>
+				</if>
+				<if test = "entity.pic != null and entity.pic != ''">
+					<![CDATA[ and record.pic  = #{entity.pic} ]]>
+				</if>
+				<if test = "entity.categoryCode != null and entity.categoryCode != ''">
+					<![CDATA[ and record.category_code  = #{entity.categoryCode} ]]>
+				</if>
+				<if test = "entity.classCode != null and entity.classCode != ''">
+					<![CDATA[ and record.class_code  = #{entity.classCode} ]]>
+				</if>
+				<if test = "entity.areaCode != null and entity.areaCode != ''">
+					<![CDATA[ and record.area_code  = #{entity.areaCode} ]]>
+				</if>
+				<if test = "entity.brandCode != null and entity.brandCode != ''">
+					<![CDATA[ and record.brand_code  = #{entity.brandCode} ]]>
+				</if>
+				<if test = "entity.brandName != null and entity.brandName != ''">
+					<![CDATA[ and record.brand_name  = #{entity.brandName} ]]>
+				</if>
+				<if test = "entity.summary != null and entity.summary != ''">
+					<![CDATA[ and record.summary  = #{entity.summary} ]]>
+				</if>
+				<if test = "entity.memberId != null and entity.memberId != ''">
+					<![CDATA[ and record.member_id  = #{entity.memberId} ]]>
+				</if>
+				<if test = "entity.siteId != null and entity.siteId != ''">
+					<![CDATA[ and record.site_id  = #{entity.siteId} ]]>
+				</if>
+				<if test = "entity.cause != null and entity.cause != ''">
+					<![CDATA[ and record.cause  = #{entity.cause} ]]>
+				</if>
+				<if test = "entity.status != null and entity.status != ''">
+					<![CDATA[ and record.status  = #{entity.status} ]]>
+				</if>
+				<if test = "entity.addTime != null and entity.addTime != ''">
+					<![CDATA[ and record.add_time  = #{entity.addTime} ]]>
+				</if>
+				<if test = "entity.modifyTime != null and entity.modifyTime != ''">
+					<![CDATA[ and record.modify_time  = #{entity.modifyTime} ]]>
+				</if>
+				<if test = "entity.expireTime != null and entity.expireTime != ''">
+					<![CDATA[ and record.expire_time  = #{entity.expireTime} ]]>
+				</if>
+				<if test = "entity.times != null and entity.times != ''">
+					<![CDATA[ and record.times  = #{entity.times }]]>
+				</if>
+				<if test = "entity.certificate != null and entity.certificate != ''">
+					<![CDATA[ and record.certificate  = #{entity.certificate }]]>
+				</if>
+				<if test = "entity.brandCreateTime != null and entity.brandCreateTime != ''">
+					<![CDATA[ and record.brand_create_time  = #{entity.brandCreateTime} ]]>
+				</if>
+				<if test = "entity.brandExperience != null and entity.brandExperience != ''">
+					<![CDATA[ and record.brand_experience  = #{entity.brandExperience }]]>
+				</if>
+				<if test = "entity.category != null and entity.category != ''">
+					<![CDATA[ and record.category  = #{entity.category }]]>
+				</if>
+				<if test = "entity.guaranteeSum != null and entity.guaranteeSum != ''">
+					<![CDATA[ and record.guarantee_sum  = #{entity.guaranteeSum} ]]>
+				</if>
+				<if test = "entity.basicInvestment != null and entity.basicInvestment != ''">
+					<![CDATA[ and record.basic_investment  = #{entity.basicInvestment }]]>
+				</if>
+		</if>
+	</sql>
+
+	<insert id="add" useGeneratedKeys="true" keyProperty="id"
+	parameterType="com.wangku.dpw.domain.ProInvestment">
+	insert into pro_investment(
+	id,
+	name,
+	alias,
+	pic,
+	category_code,
+	class_code,
+	area_code,
+	brand_code,
+	brand_name,
+	summary,
+	member_id,
+	site_id,
+	cause,
+	status,
+	add_time,
+	modify_time,
+	expire_time,
+	times,
+	certificate,
+	brand_create_time,
+	brand_experience,
+	category,
+	guarantee_sum,
+	basic_investment
+	)values(
+	#{id},
+	#{name},
+	#{alias},
+	#{pic},
+	#{categoryCode},
+	#{classCode},
+	#{areaCode},
+	#{brandCode},
+	#{brandName},
+	#{summary},
+	#{memberId},
+	#{siteId},
+	#{cause},
+	#{status},
+	#{addTime},
+	#{modifyTime},
+	#{expireTime},
+	#{times},
+	#{certificate},
+	#{brandCreateTime},
+	#{brandExperience},
+	#{category},
+	#{guaranteeSum},
+	#{basicInvestment}
+	)
+	</insert>
+	
+	<update id="update">
+		update pro_investment record set
+				<if test = "id != null and id != ''">
+					record.id = #{id}
+				</if>
+				<if test = "name != null and name != ''">
+					,record.name = #{name}
+				</if>
+				<if test = "alias != null and alias != ''">
+					,record.alias = #{alias}
+				</if>
+				<if test = "pic != null and pic != ''">
+					,record.pic = #{pic}
+				</if>
+				<if test = "categoryCode != null and categoryCode != ''">
+					,record.category_code = #{categoryCode}
+				</if>
+				<if test = "classCode != null and classCode != ''">
+					,record.class_code = #{classCode}
+				</if>
+				<if test = "areaCode != null and areaCode != ''">
+					,record.area_code = #{areaCode}
+				</if>
+				<if test = "brandCode != null and brandCode != ''">
+					,record.brand_code = #{brandCode}
+				</if>
+				<if test = "brandName != null and brandName != ''">
+					,record.brand_name = #{brandName}
+				</if>
+				<if test = "summary != null and summary != ''">
+					,record.summary = #{summary}
+				</if>
+				<if test = "memberId != null and memberId != ''">
+					,record.member_id = #{memberId}
+				</if>
+				<if test = "siteId != null and siteId != ''">
+					,record.site_id = #{siteId}
+				</if>
+				<if test = "cause != null and cause != ''">
+					,record.cause = #{cause}
+				</if>
+				<if test = "status != null and status != ''">
+					,record.status = #{status}
+				</if>
+				<if test = "addTime != null and addTime != ''">
+					,record.add_time = #{addTime}
+				</if>
+				<if test = "modifyTime != null and modifyTime != ''">
+					,record.modify_time = #{modifyTime}
+				</if>
+				<if test = "expireTime != null and expireTime != ''">
+					,record.expire_time = #{expireTime}
+				</if>
+				<if test = "times != null and times != ''">
+					,record.times = #{times}
+				</if>
+				<if test = "certificate != null and certificate != ''">
+					,record.certificate = #{certificate}
+				</if>
+				<if test = "brandCreateTime != null and brandCreateTime != ''">
+					,record.brand_create_time = #{brandCreateTime}
+				</if>
+				<if test = "brandExperience != null and brandExperience != ''">
+					,record.brand_experience = #{brandExperience}
+				</if>
+				<if test = "category != null and category != ''">
+					,record.category = #{category}
+				</if>
+				<if test = "guaranteeSum != null and guaranteeSum != ''">
+					,record.guarantee_sum = #{guaranteeSum}
+				</if>
+				<if test = "basicInvestment != null and basicInvestment != ''">
+					,record.basic_investment = #{basicInvestment}
+				</if>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from pro_investment
+		<if test=" codes != null and codes.size() > 0 ">
+			where id in
+			<foreach collection="codes" open="(" separator="," close=")" item="code">
+				#{code}
+			</foreach>
+		</if>
+		<if test=" codes == null or codes.size() == 0 ">
+			where 1 = 3
+		</if>
+	</delete>
+	
+	<select id="queryCount" resultType="long">
+		<include refid="count_Tail"></include>
+		<include refid="where_fragement"></include>
+	</select>
+	
+	<select id="queryList" resultMap="proInvestmentMapper" >
+	SELECT * FROM pro_investment record 
+			LEFT  JOIN member m ON record.member_id=m.member_id  
+			LEFT  JOIN member_basic mb ON record.member_id=mb.member_id  
+		<!-- <include refid="selectAllColumns"/> -->
+		<include refid="where_fragement" />
+		<if test="page!=null">
+			<include refid="pagination_tail" />
+		</if>
+	</select>
+	<!-- <delete id="batchUpdateProduct" parameterType="java.util.List">
+		delete from pro_investment record where record_id in
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+	      #{item}
+	    </foreach>
+	</delete> -->
+	
+	<update id="batchUpdateProduct">
+		update pro_investment record set
+				<if test = "entity.status != null and entity.status != ''">
+					record.status = #{entity.status}
+				</if>
+			where 1=1 
+			and record.id in 
+			<foreach collection="ids" open="(" separator="," close=")" item="id1">
+				#{id1}
+			</foreach>
+			
+	</update>
+	
+	
+	<!-- 查询资讯中的更多的方法 -->
+	<select id="queryMoreList" resultMap="proInvestmentMapper" parameterType="java.util.Map">
+		select * from pro_investment 
+		where  class_code = #{classCode}
+	</select>
+</mapper>

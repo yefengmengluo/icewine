@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wangku.dpw.dao.ProInvestmentExtensionDao">
+	<resultMap id="proInvestmentExtensionMapper" type="com.wangku.dpw.domain.ProInvestmentExtension">
+			<result property="id" column="id" />
+			<result property="foreignKey" column="foreign_key" />
+			<result property="countNum" column="count_num" />
+			<result property="addTime" column="add_time" />
+	</resultMap>
+	
+	<select id="queryById" resultMap="proInvestmentExtensionMapper" >
+		select * from pro_investment_extension
+		where id = #{id}
+	</select>
+
+	<sql id="count_Tail">
+		select count(1) from pro_investment_extension record
+	</sql>
+
+	<sql id="pagination_tail">
+	  limit #{page.pageOffset} , #{page.pageSize}
+	</sql>
+
+	<sql id="selectAllColumns">
+		<![CDATA[
+		SELECT
+			 id, 
+			 foreign_key, 
+			 count_num, 
+			 add_time 
+			FROM pro_investment_extension record
+		]]>
+	</sql>
+
+	<sql id="where_fragement">
+		where 1=1
+		<if test="entity!=null">
+				<if test = "entity.id != null and entity.id != ''">
+					<![CDATA[ and record.id  = #{entity.id} ]]>
+				</if>
+				<if test = "entity.foreignKey != null and entity.foreignKey != ''">
+					<![CDATA[ and record.foreign_key  = #{entity.foreignKey} ]]>
+				</if>
+				<if test = "entity.countNum != null and entity.countNum != ''">
+					<![CDATA[ and record.count_num  = #{entity.countNum} ]]>
+				</if>
+				<if test = "entity.addTime != null and entity.addTime != ''">
+					<![CDATA[ and record.add_time  = #{entity.addTime} ]]>
+				</if>
+		</if>
+	</sql>
+
+	<insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="com.wangku.dpw.domain.ProInvestmentExtension">
+		insert into pro_investment_extension(
+				id,
+				foreign_key,
+				count_num,
+				add_time
+		)values(
+				#{id},
+				#{foreignKey},
+				#{countNum},
+				#{addTime}
+		)
+	</insert>
+	
+	<update id="update">
+		update pro_investment_extension record set
+				<if test = "id != null and id != ''">
+					record.id = #{id}
+				</if>
+				<if test = "foreignKey != null and foreignKey != ''">
+					,record.foreign_key = #{foreignKey}
+				</if>
+				<if test = "countNum != null and countNum != ''">
+					,record.count_num = #{countNum}
+				</if>
+				<if test = "addTime != null and addTime != ''">
+					,record.add_time = #{addTime}
+				</if>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from pro_investment_extension
+		<if test=" codes != null and codes.size() > 0 ">
+			where id in
+			<foreach collection="codes" open="(" separator="," close=")" item="code">
+				#{code}
+			</foreach>
+		</if>
+		<if test=" codes == null or codes.size() == 0 ">
+			where 1 = 3
+		</if>
+	</delete>
+	
+	<select id="queryCount" resultType="long">
+		<include refid="count_Tail"></include>
+		<include refid="where_fragement"></include>
+	</select>
+	
+	<select id="queryList" resultMap="proInvestmentExtensionMapper" >
+		<include refid="selectAllColumns"/>
+		<include refid="where_fragement" />
+		<if test="page!=null">
+			<include refid="pagination_tail" />
+		</if>
+	</select>
+</mapper>

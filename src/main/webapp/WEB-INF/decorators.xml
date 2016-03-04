@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<decorators defaultdir="/">
+	<!-- excludes用于不使用装饰器   不需要过滤的请求-->
+<!-- 	<excludes>          
+        <pattern>/main.jsp</pattern>  
+    </excludes> -->
+	<!--添加<meta name="decorator" content="right"/>-->
+	<!-- 定义装饰器要过滤的页面 -->
+	<decorator name="right" page="/WEB-INF/views/main.jsp">
+		 <pattern>views/*</pattern>  
+	</decorator>
+	
+	<decorator name="common" page="/WEB-INF/views/head.jsp">
+		<pattern>views/theme/*</pattern>
+	</decorator>
+	
+	<!-- 会员中心 -->
+	<decorator name="top" page="/WEB-INF/views/theme/memberTop.jsp">
+		<pattern>views/theme/*</pattern>
+	</decorator>
+</decorators>

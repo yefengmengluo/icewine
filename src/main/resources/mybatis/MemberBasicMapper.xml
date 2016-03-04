@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wangku.dpw.dao.MemberBasicDao">
+ 	<resultMap id="proSupplys" type="com.wangku.dpw.domain.ProSupply" >
+			<result property="name" column="name" />
+			<result property="unit" column="unit" />
+			<result property="summary" column="summary" />
+			<result property="memberId" column="member_id" />
+			<result property="priceMin" column="price_min" />
+			<result property="pic" column="pic" />
+        </resultMap>
+	<resultMap id="memberBasicMapper" type="com.wangku.dpw.domain.MemberBasic">
+			<result property="memberId" column="member_id" />
+			<result property="corporationName" column="corporation_name" />
+			<result property="url" column="url" />
+			<result property="siteId" column="site_id" />
+			<result property="addTime" column="add_time" />
+			<result property="modifyTime" column="modify_time" />
+			<result property="logo" column="logo" />
+			<result property="fax" column="fax" />
+			<result property="enrollId" column="enroll_id" />
+			<result property="dealInId" column="deal_in_id" />
+			<result property="categoryCode" column="category_code" />
+			<result property="summary" column="summary" />
+			<result property="pictureUrl" column="picture_url" />
+			<result property="regNumber" column="reg_number" />
+			<result property="helpId" column="help_id" />
+			<result property="enName" column="en_name" />
+			<result property="accreditNumber" column="accredit_number" />
+			<result property="status" column="status" />
+			<result property="icp" column="icp" />
+			<result property="artificialPerson" column="artificial_person" />
+			<result property="trafficUrl" column="traffic_url" />
+			<result property="trafficInfo" column="traffic_Info" />
+			<result property="dealInAddress" column="deal_in_address" />
+			<result property="dealInAreaCode" column="deal_in_Area_code" />
+			<result property="times" column="times" />
+			<result property="flag" column="flag" />
+			<result property="orgWeb" column="org_web" />
+		<association property="memberHot" javaType="com.wangku.dpw.domain.MemberHot">  
+      		<result property="memberId" column="member_id" />
+			<result property="siteId" column="site_id" />
+			<result property="originSiteId" column="origin_site_id" />
+			<result property="webCategoryCode" column="web_category_code" />
+			<result property="sort" column="sort" />
+			<result property="status" column="status" />
+			<result property="addTime" column="add_time" />
+			<result property="times" column="times" />
+        </association> 
+	</resultMap>
+	
+	
+	<resultMap id="memberBasicMapper1" type="com.wangku.dpw.domain.MemberBasic">
+			<result property="memberId" column="id" />
+			<result property="corporationName" column="corporation_name" />
+			<result property="dealInId" column="deal_in_id" />
+			<result property="summary" column="summary" />
+			<result property="dealInAreaCode" column="deal_in_Area_code" />
+        	<collection property="proSupply" resultMap="proSupplys" />
+	</resultMap>
+	
+	<select id="queryById" resultMap="memberBasicMapper" >
+		select * from member_basic
+		where member_id = #{id}
+	</select>
+   
+   <select id="queryByMemberId" resultMap="memberBasicMapper" >
+		select * from member_basic
+		where member_id = #{memberId}
+	</select>
+	<sql id="count_Tail">
+		select count(1) from member_basic record
+	</sql>
+
+	<sql id="pagination_tail">
+	  limit #{page.pageOffset} , #{page.pageSize}
+	</sql>
+
+	<sql id="selectAllColumns">
+		<![CDATA[
+		SELECT
+			 member_id, 
+			 corporation_name, 
+			 url, 
+			 site_id, 
+			 add_time, 
+			 modify_time, 
+			 logo, 
+			 fax, 
+			 enroll_id, 
+			 deal_in_id, 
+			 category_code, 
+			 summary, 
+			 picture_url, 
+			 reg_number, 
+			 help_id, 
+			 en_name, 
+			 accredit_number, 
+			 status, 
+			 icp, 
+			 artificial_person, 
+			 traffic_url, 
+			 traffic_Info, 
+			 deal_in_address, 
+			 deal_in_Area_code, 
+			 times, 
+			 flag, 
+			 org_web 
+			FROM member_basic record
+		]]>
+	</sql>
+
+	<sql id="where_fragement">
+		where 1=1
+		<if test="entity!=null">
+				<if test = "entity.memberId != null and entity.memberId != ''">
+					<![CDATA[ and record.member_id  = #{entity.memberId} ]]>
+				</if>
+				<if test = "entity.corporationName != null and entity.corporationName != ''">
+					<![CDATA[ and record.corporation_name like '%${entity.corporationName}%' ]]>
+				</if>
+				<if test = "entity.url != null and entity.url != ''">
+					<![CDATA[ and record.url  = #{entity.url} ]]>
+				</if>
+				<if test = "entity.siteId != null and entity.siteId != ''">
+					<![CDATA[ and record.site_id  = #{entity.siteId }]]>
+				</if>
+				<if test = "entity.addTime != null and entity.addTime != ''">
+					<![CDATA[ and record.add_time  = #{entity.addTime} ]]>
+				</if>
+				<if test = "entity.modifyTime != null and entity.modifyTime != ''">
+					<![CDATA[ and record.modify_time  = #{entity.modifyTime} ]]>
+				</if>
+				<if test = "entity.logo != null and entity.logo != ''">
+					<![CDATA[ and record.logo  = #{entity.logo} ]]>
+				</if>
+				<if test = "entity.fax != null and entity.fax != ''">
+					<![CDATA[ and record.fax  = #{entity.fax} ]]>
+				</if>
+				<if test = "entity.enrollId != null and entity.enrollId != ''">
+					<![CDATA[ and record.enroll_id  = #{entity.enrollId} ]]>
+				</if>
+				<if test = "entity.dealInId != null and entity.dealInId != ''">
+					<![CDATA[ and record.deal_in_id  = #{entity.dealInId }]]>
+				</if>
+				<if test = "entity.categoryCode != null and entity.categoryCode != ''">
+					<![CDATA[ and record.category_code  = #{entity.categoryCode }]]>
+				</if>
+				<if test = "entity.summary != null and entity.summary != ''">
+					<![CDATA[ and record.summary  = #{entity.summary} ]]>
+				</if>
+				<if test = "entity.pictureUrl != null and entity.pictureUrl != ''">
+					<![CDATA[ and record.picture_url  = #{entity.pictureUrl }]]>
+				</if>
+				<if test = "entity.regNumber != null and entity.regNumber != ''">
+					<![CDATA[ and record.reg_number  = #{entity.regNumber} ]]>
+				</if>
+				<if test = "entity.helpId != null and entity.helpId != ''">
+					<![CDATA[ and record.help_id  = #{entity.helpId} ]]>
+				</if>
+				<if test = "entity.enName != null and entity.enName != ''">
+					<![CDATA[ and record.en_name  = #{entity.enName} ]]>
+				</if>
+				<if test = "entity.accreditNumber != null and entity.accreditNumber != ''">
+					<![CDATA[ and record.accredit_number  = #{entity.accreditNumber }]]>
+				</if>
+				<if test = "entity.status != null and entity.status != ''">
+					<![CDATA[ and record.status  = #{entity.status }]]>
+				</if>
+				<if test = "entity.icp != null and entity.icp != ''">
+					<![CDATA[ and record.icp  = #{entity.icp} ]]>
+				</if>
+				<if test = "entity.artificialPerson != null and entity.artificialPerson != ''">
+					<![CDATA[ and record.artificial_person  = #{entity.artificialPerson} ]]>
+				</if>
+				<if test = "entity.trafficUrl != null and entity.trafficUrl != ''">
+					<![CDATA[ and record.traffic_url  = #{entity.trafficUrl }]]>
+				</if>
+				<if test = "entity.trafficInfo != null and entity.trafficInfo != ''">
+					<![CDATA[ and record.traffic_Info  = #{entity.trafficInfo} ]]>
+				</if>
+				<if test = "entity.dealInAddress != null and entity.dealInAddress != ''">
+					<![CDATA[ and record.deal_in_address  = #{entity.dealInAddress} ]]>
+				</if>
+				<if test = "entity.dealInAreaCode != null and entity.dealInAreaCode != ''">
+					<![CDATA[ and record.deal_in_Area_code  = #{entity.dealInAreaCode ]]>
+				</if>
+				<if test = "entity.times != null and entity.times != ''">
+					<![CDATA[ and record.times  = #{entity.times} ]]>
+				</if>
+				<if test = "entity.flag != null and entity.flag != ''">
+					<![CDATA[ and record.flag  = #{entity.flag }]]>
+				</if>
+				<if test = "entity.orgWeb != null and entity.orgWeb != ''">
+					<![CDATA[ and record.org_web  = #{entity.orgWeb}]]>
+				</if>
+		</if>
+	</sql>
+
+	<insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="com.wangku.dpw.domain.MemberBasic">
+		insert into member_basic(
+				member_id,
+				corporation_name,
+				url,
+				site_id,
+				add_time,
+				modify_time,
+				logo,
+				fax,
+				enroll_id,
+				deal_in_id,
+				category_code,
+				summary,
+				picture_url,
+				reg_number,
+				help_id,
+				en_name,
+				accredit_number,
+				status,
+				icp,
+				artificial_person,
+				traffic_url,
+				traffic_Info,
+				deal_in_address,
+				deal_in_Area_code,
+				times,
+				flag,
+				org_web
+		)values(
+				#{memberId},
+				#{corporationName},
+				#{url},
+				#{siteId},
+				#{addTime},
+				#{modifyTime},
+				#{logo},
+				#{fax},
+				#{enrollId},
+				#{dealInId},
+				#{categoryCode},
+				#{summary},
+				#{pictureUrl},
+				#{regNumber},
+				#{helpId},
+				#{enName},
+				#{accreditNumber},
+				#{status},
+				#{icp},
+				#{artificialPerson},
+				#{trafficUrl},
+				#{trafficInfo},
+				#{dealInAddress},
+				#{dealInAreaCode},
+				#{times},
+				#{flag},
+				#{orgWeb}
+		)
+	</insert>
+	
+	<update id="update">
+		update member_basic record set
+				<if test = "memberId != null and memberId != ''">
+					record.member_id = #{memberId}
+				</if>
+				<if test = "corporationName != null and corporationName != ''">
+					,record.corporation_name = #{corporationName}
+				</if>
+				<if test = "url != null and url != ''">
+					,record.url = #{url}
+				</if>
+				<if test = "siteId != null and siteId != ''">
+					,record.site_id = #{siteId}
+				</if>
+				<if test = "addTime != null and addTime != ''">
+					,record.add_time = #{addTime}
+				</if>
+				<if test = "modifyTime != null and modifyTime != ''">
+					,record.modify_time = #{modifyTime}
+				</if>
+				<if test = "logo != null and logo != ''">
+					,record.logo = #{logo}
+				</if>
+				<if test = "fax != null and fax != ''">
+					,record.fax = #{fax}
+				</if>
+				<if test = "enrollId != null and enrollId != ''">
+					,record.enroll_id = #{enrollId}
+				</if>
+				<if test = "dealInId != null and dealInId != ''">
+					,record.deal_in_id = #{dealInId}
+				</if>
+				<if test = "categoryCode != null and categoryCode != ''">
+					,record.category_code = #{categoryCode}
+				</if>
+				<if test = "summary != null and summary != ''">
+					,record.summary = #{summary}
+				</if>
+				<if test = "pictureUrl != null and pictureUrl != ''">
+					,record.picture_url = #{pictureUrl}
+				</if>
+				<if test = "regNumber != null and regNumber != ''">
+					,record.reg_number = #{regNumber}
+				</if>
+				<if test = "helpId != null and helpId != ''">
+					,record.help_id = #{helpId}
+				</if>
+				<if test = "enName != null and enName != ''">
+					,record.en_name = #{enName}
+				</if>
+				<if test = "accreditNumber != null and accreditNumber != ''">
+					,record.accredit_number = #{accreditNumber}
+				</if>
+				<if test = "status != null and status != ''">
+					,record.status = #{status}
+				</if>
+				<if test = "icp != null and icp != ''">
+					,record.icp = #{icp}
+				</if>
+				<if test = "artificialPerson != null and artificialPerson != ''">
+					,record.artificial_person = #{artificialPerson}
+				</if>
+				<if test = "trafficUrl != null and trafficUrl != ''">
+					,record.traffic_url = #{trafficUrl}
+				</if>
+				<if test = "trafficInfo != null and trafficInfo != ''">
+					,record.traffic_Info = #{trafficInfo}
+				</if>
+				<if test = "dealInAddress != null and dealInAddress != ''">
+					,record.deal_in_address = #{dealInAddress}
+				</if>
+				<if test = "dealInAreaCode != null and dealInAreaCode != ''">
+					,record.deal_in_Area_code = #{dealInAreaCode}
+				</if>
+				<if test = "times != null and times != ''">
+					,record.times = #{times}
+				</if>
+				<if test = "flag != null and flag != ''">
+					,record.flag = #{flag}
+				</if>
+				<if test = "orgWeb != null and orgWeb != ''">
+					,record.org_web = #{orgWeb}
+				</if>
+		where member_id = #{memberId}
+	</update>
+	
+	<delete id="delete">
+		delete from member_basic
+		<if test=" codes != null and codes.size() > 0 ">
+			where id in
+			<foreach collection="codes" open="(" separator="," close=")" item="code">
+				#{code}
+			</foreach>
+		</if>
+		<if test="codes == null or codes.size() == 0 ">
+			where 1 = 3
+		</if>
+	</delete>
+	
+	<select id="queryCount" resultType="long">
+		<include refid="count_Tail"></include>
+		<include refid="where_fragement"></include>
+	</select>
+	
+	<select id="queryList" resultMap="memberBasicMapper" >
+		<include refid="selectAllColumns"/>
+		<include refid="where_fragement" />
+		<if test="page!=null">
+			<include refid="pagination_tail" />
+		</if>
+	</select>
+	
+	<select id="querycorandsupList" resultMap="memberBasicMapper1" >
+		select record.id,record.summary,record.deal_in_Area_code,record.corporation_name,record.corporation_name,record.picture_url, record.deal_in_id,ps.name,ps.pic,ps.price_min,ps.unit  from
+		(select member_id id,summary,corporation_name,picture_url,deal_in_id,deal_in_Area_code from member_basic
+		 <if test="page!=null">
+			<include refid="pagination_tail" />
+		</if>
+		) record
+		inner JOIN pro_supply ps ON record.id=ps.member_id 
+	</select>
+	<select id="queryMoreList" resultMap="memberBasicMapper" parameterType="java.util.Map">
+		select * from member_basic record
+		LEFT JOIN member_hot m ON record.member_id=m.member_id 
+		where  m.status = #{status} and m.web_category_code=#{webCategoryCode}
+	</select>
+</mapper>

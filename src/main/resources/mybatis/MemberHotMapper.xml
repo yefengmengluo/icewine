@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wangku.dpw.dao.MemberHotDao">
+	<resultMap id="memberHotMapper" type="com.wangku.dpw.domain.MemberHot">
+			<result property="memberId" column="member_id" />
+			<result property="siteId" column="site_id" />
+			<result property="originSiteId" column="origin_site_id" />
+			<result property="webCategoryCode" column="web_category_code" />
+			<result property="sort" column="sort" />
+			<result property="status" column="status" />
+			<result property="addTime" column="add_time" />
+			<result property="times" column="times" />
+	</resultMap>
+	
+	<select id="queryById" resultMap="memberHotMapper" >
+		select * from member_hot
+		where id = #{id}
+	</select>
+
+	<sql id="count_Tail">
+		select count(1) from member_hot record
+	</sql>
+
+	<sql id="pagination_tail">
+	  limit #{page.pageOffset} , #{page.pageSize}
+	</sql>
+
+	<sql id="selectAllColumns">
+		<![CDATA[
+		SELECT
+			 member_id, 
+			 site_id, 
+			 origin_site_id, 
+			 web_category_code, 
+			 sort, 
+			 status, 
+			 add_time, 
+			 times 
+			FROM member_hot record
+		]]>
+	</sql>
+
+	<sql id="where_fragement">
+		where 1=1
+		<if test="entity!=null">
+				<if test = "entity.memberId != null and entity.memberId != ''">
+					<![CDATA[ and record.member_id  = #{entity.memberId ]]>
+				</if>
+				<if test = "entity.siteId != null and entity.siteId != ''">
+					<![CDATA[ and record.site_id  = #{entity.siteId ]]>
+				</if>
+				<if test = "entity.originSiteId != null and entity.originSiteId != ''">
+					<![CDATA[ and record.origin_site_id  = #{entity.originSiteId ]]>
+				</if>
+				<if test = "entity.webCategoryCode != null and entity.webCategoryCode != ''">
+					<![CDATA[ and record.web_category_code  = #{entity.webCategoryCode ]]>
+				</if>
+				<if test = "entity.sort != null and entity.sort != ''">
+					<![CDATA[ and record.sort  = #{entity.sort ]]>
+				</if>
+				<if test = "entity.status != null and entity.status != ''">
+					<![CDATA[ and record.status  = #{entity.status ]]>
+				</if>
+				<if test = "entity.addTime != null and entity.addTime != ''">
+					<![CDATA[ and record.add_time  = #{entity.addTime ]]>
+				</if>
+				<if test = "entity.times != null and entity.times != ''">
+					<![CDATA[ and record.times  = #{entity.times ]]>
+				</if>
+		</if>
+	</sql>
+
+	<insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="com.wangku.dpw.domain.MemberHot">
+		insert into member_hot(
+				member_id,
+				site_id,
+				origin_site_id,
+				web_category_code,
+				sort,
+				status,
+				add_time,
+				times
+		)values(
+				#{memberId},
+				#{siteId},
+				#{originSiteId},
+				#{webCategoryCode},
+				#{sort},
+				#{status},
+				#{addTime},
+				#{times}
+		)
+	</insert>
+	
+	<update id="update">
+		update member_hot record set
+				<if test = "memberId != null and memberId != ''">
+					,record.member_id = #{memberId}
+				</if>
+				<if test = "siteId != null and siteId != ''">
+					,record.site_id = #{siteId}
+				</if>
+				<if test = "originSiteId != null and originSiteId != ''">
+					,record.origin_site_id = #{originSiteId}
+				</if>
+				<if test = "webCategoryCode != null and webCategoryCode != ''">
+					,record.web_category_code = #{webCategoryCode}
+				</if>
+				<if test = "sort != null and sort != ''">
+					,record.sort = #{sort}
+				</if>
+				<if test = "status != null and status != ''">
+					,record.status = #{status}
+				</if>
+				<if test = "addTime != null and addTime != ''">
+					,record.add_time = #{addTime}
+				</if>
+				<if test = "times != null and times != ''">
+					,record.times = #{times}
+				</if>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from member_hot
+		<if test=" codes != null and codes.size() > 0 ">
+			where id in
+			<foreach collection="codes" open="(" separator="," close=")" item="code">
+				#{code}
+			</foreach>
+		</if>
+		<if test=" codes == null or codes.size() == 0 ">
+			where 1 = 3
+		</if>
+	</delete>
+	
+	<select id="queryCount" resultType="long">
+		<include refid="count_Tail"></include>
+		<include refid="where_fragement"></include>
+	</select>
+	
+	<select id="queryList" resultMap="memberHotMapper" >
+		<include refid="selectAllColumns"/>
+		<include refid="where_fragement" />
+		<if test="page!=null">
+			<include refid="pagination_tail" />
+		</if>
+	</select>
+</mapper>

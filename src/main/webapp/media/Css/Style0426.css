@@ -1,0 +1,24 @@
+@charset "utf-8";
+/**
+* Description: common
+* Developers: WANGJUN
+* Time:2013 04
+**/
+/*RESET
+-------------------------------------------------------------- */
+
+/*CLEARFIX
+-------------------------------------------------------------- */
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.clearfix { display: inline-block; }
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/*FONT
+-------------------------------------------------------------- */
+
+
+/*POP
+-------------------------------------------------------------- */
+.pop table td input{ margin:20px 0 0 60px; }
+
+.btn01{ width:100px; height:38px; line-height:38px; background:url(../Images/v1/iMage007.gif) left top no-repeat;cursor:pointer; border:none; color:#fff; font-weight:bold; font-size:14px; vertical-align:middle; display:inline-block;}

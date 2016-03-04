@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wangku.dpw.dao.ProPurchaseDao">
+	<resultMap id="proPurchaseMapper" type="com.wangku.dpw.domain.ProPurchase">
+			<result property="id" column="id" />
+			<result property="memberId" column="member_id" />
+			<result property="title" column="title" />
+			<result property="picture" column="picture" />
+			<result property="summary" column="summary" />
+			<result property="deliveryAddr" column="delivery_addr" />
+			<result property="supplierAddr" column="supplier_addr" />
+			<result property="requirement" column="requirement" />
+			<result property="linkman" column="linkman" />
+			<result property="tel" column="tel" />
+			<result property="showContact" column="show_contact" />
+			<result property="endTime" column="end_time" />
+			<result property="addTime" column="add_time" />
+			<result property="modifyTime" column="modify_time" />
+			<result property="quoteTimes" column="quote_times" />
+			<result property="status" column="status" />
+			<result property="siteId" column="site_id" />
+			<result property="times" column="times" />
+			<result property="source" column="source" />
+			<result property="purchaseAmount" column="purchase_amount" />
+			<result property="purchaseAmountUnit" column="purchase_amount_unit" />
+			<result property="invoiceRequest" column="invoice_request" />
+			<result property="sampleRequest" column="sample_request" />
+			<result property="telAreaCode" column="tel_area_code" />
+			<result property="telFixedNumber" column="tel_fixed_number" />
+			<result property="dataType" column="data_type" />
+			<result property="isPush" column="is_push" />
+			<result property="pushCount" column="push_count" />
+			<result property="isContact" column="is_contact" />
+			<result property="purQuantity" column="pur_quantity" />
+			<result property="unit" column="unit" />
+			<result property="unitPrice" column="unit_price" />
+			<result property="categoryCode" column="category_code" />
+			<result property="code" column="code" />
+			<association property="member" javaType="com.wangku.dpw.domain.Member">  
+          		<result property="memberId" column="member_id" />
+		   		<result property="linkMan" column="link_man" /> 
+            </association>
+            <association property="memberBasic" javaType="com.wangku.dpw.domain.MemberBasic">  
+      		<result property="memberId" column="member_id" />
+			<result property="corporationName" column="corporation_name" />
+			<result property="url" column="url" />
+			<result property="siteId" column="site_id" />
+			<result property="addTime" column="add_time" />
+			<result property="modifyTime" column="modify_time" />
+			<result property="logo" column="logo" />
+			<result property="fax" column="fax" />
+			<result property="enrollId" column="enroll_id" />
+			<result property="dealInId" column="deal_in_id" />
+			<result property="categoryCode" column="category_code" />
+			<result property="summary" column="summary" />
+			<result property="pictureUrl" column="picture_url" />
+			<result property="regNumber" column="reg_number" />
+			<result property="helpId" column="help_id" />
+			<result property="enName" column="en_name" />
+			<result property="accreditNumber" column="accredit_number" />
+			<result property="status" column="status" />
+			<result property="icp" column="icp" />
+			<result property="artificialPerson" column="artificial_person" />
+			<result property="trafficUrl" column="traffic_url" />
+			<result property="trafficInfo" column="traffic_Info" />
+			<result property="dealInAddress" column="deal_in_address" />
+			<result property="dealInAreaCode" column="deal_in_Area_code" />
+			<result property="times" column="times" />
+			<result property="flag" column="flag" />
+			<result property="orgWeb" column="org_web" />
+        </association> 
+            <association property="proPurchaseQuote" javaType="com.wangku.dpw.domain.ProPurchaseQuote">  
+          		<result property="id" column="id" />
+			<result property="purId" column="pur_id" />
+			<result property="toMemberId" column="to_member_id" />
+			<result property="totalPrice" column="total_price" />
+			<result property="perPrice" column="per_price" />
+			<result property="linkman" column="linkman" />
+			<result property="tel" column="tel" />
+			<result property="isHaveInvoice" column="is_have_invoice" />
+			<result property="nvoiceRate" column="nvoice_rate" />
+			<result property="message" column="message" />
+			<result property="isFinalist" column="is_finalist" />
+			<result property="isRead" column="is_read" />
+			<result property="isFromDelete" column="is_from_delete" />
+			<result property="isToDelete" column="is_to_delete" />
+			<result property="addTime" column="add_time" />
+			<result property="modifyTime" column="modify_time" />
+			<result property="fromMemberId" column="from_member_id" />
+			<result property="addFile" column="add_file" />
+			<result property="status" column="status" />
+			<result property="dataSource" column="data_source" />
+            </association> 
+	</resultMap>
+	
+	
+	<select id="queryById" resultMap="proPurchaseMapper" >
+		select * from pro_purchase record
+		LEFT  JOIN member m ON record.member_id=m.member_id
+		LEFT  JOIN member_basic mb ON record.member_id=mb.member_id  
+		where id = #{id}
+	</select>
+	
+	 <!-- 查询采购列表页推荐单单数据-->
+    <select id="querySingle" resultMap="proPurchaseMapper" parameterType="java.util.Map">
+		select * from pro_purchase 
+		where status = #{status} and category_code = #{categoryCode}   
+	</select>
+
+	<sql id="count_Tail">
+		select count(1) from pro_purchase record
+	</sql>
+
+	<sql id="pagination_tail">
+	  limit #{page.pageOffset} , #{page.pageSize}
+	</sql>
+
+	<sql id="selectAllColumns">
+		<![CDATA[
+		SELECT
+			 id, 
+			 member_id, 
+			 title, 
+			 picture, 
+			 summary, 
+			 delivery_addr, 
+			 supplier_addr, 
+			 requirement, 
+			 linkman, 
+			 tel, 
+			 show_contact, 
+			 end_time, 
+			 add_time, 
+			 modify_time, 
+			 quote_times, 
+			 status, 
+			 site_id, 
+			 times, 
+			 source, 
+			 purchase_amount, 
+			 purchase_amount_unit, 
+			 invoice_request, 
+			 sample_request, 
+			 tel_area_code, 
+			 tel_fixed_number, 
+			 data_type, 
+			 is_push, 
+			 push_count, 
+			 is_contact ,
+			  pur_quantity, 
+			 unit, 
+			 unit_price, 
+			 category_code, 
+			 code 
+			FROM pro_purchase record
+		]]>
+	</sql>
+
+	<sql id="where_fragement">
+		where 1=1
+		<if test="entity!=null">
+				<if test = "entity.id != null and entity.id != ''">
+					<![CDATA[ and record.id  = #{entity.id} ]]>
+				</if>
+				<if test = "entity.memberId != null and entity.memberId != ''">
+					<![CDATA[ and record.member_id  = #{entity.memberId} ]]>
+				</if>
+				<if test = "entity.title != null and entity.title != ''">
+					<![CDATA[ and record.title like '%${entity.title}%']]>
+				</if>
+				<if test = "entity.picture != null and entity.picture != ''">
+					<![CDATA[ and record.picture  = #{entity.picture} ]]>
+				</if>
+				<if test = "entity.summary != null and entity.summary != ''">
+					<![CDATA[ and record.summary  = #{entity.summary} ]]>
+				</if>
+				<if test = "entity.deliveryAddr != null and entity.deliveryAddr != ''">
+					<![CDATA[ and record.delivery_addr  = #{entity.deliveryAddr} ]]>
+				</if>
+				<if test = "entity.supplierAddr != null and entity.supplierAddr != ''">
+					<![CDATA[ and record.supplier_addr  = #{entity.supplierAddr} ]]>
+				</if>
+				<if test = "entity.requirement != null and entity.requirement != ''">
+					<![CDATA[ and record.requirement  = #{entity.requirement }]]>
+				</if>
+				<if test = "entity.linkman != null and entity.linkman != ''">
+					<![CDATA[ and record.linkman  = #{entity.linkman} ]]>
+				</if>
+				<if test = "entity.tel != null and entity.tel != ''">
+					<![CDATA[ and record.tel  = #{entity.tel }]]>
+				</if>
+				<if test = "entity.showContact != null and entity.showContact != ''">
+					<![CDATA[ and record.show_contact  = #{entity.showContact }]]>
+				</if>
+				<if test = "entity.endTime != null and entity.endTime != ''">
+					<![CDATA[ and record.end_time  = #{entity.endTime} ]]>
+				</if>
+				<if test = "entity.addTime != null and entity.addTime != ''">
+					<![CDATA[ and record.add_time  = #{entity.addTime} ]]>
+				</if>
+				<if test = "entity.modifyTime != null and entity.modifyTime != ''">
+					<![CDATA[ and record.modify_time  = #{entity.modifyTime} ]]>
+				</if>
+				<if test = "entity.quoteTimes != null and entity.quoteTimes != ''">
+					<![CDATA[ and record.quote_times  = #{entity.quoteTimes} ]]>
+				</if>
+				<if test = "entity.status != null and entity.status != ''">
+					<![CDATA[ and record.status  = #{entity.status} ]]>
+				</if>
+				<if test = "entity.siteId != null and entity.siteId != ''">
+					<![CDATA[ and record.site_id  = #{entity.siteId} ]]>
+				</if>
+				<if test = "entity.times != null and entity.times != ''">
+					<![CDATA[ and record.times  = #{entity.times }]]>
+				</if>
+				<if test = "entity.source != null and entity.source != ''">
+					<![CDATA[ and record.source  = #{entity.source }]]>
+				</if>
+				<if test = "entity.purchaseAmount != null and entity.purchaseAmount != ''">
+					<![CDATA[ and record.purchase_amount  = #{entity.purchaseAmount }]]>
+				</if>
+				<if test = "entity.purchaseAmountUnit != null and entity.purchaseAmountUnit != ''">
+					<![CDATA[ and record.purchase_amount_unit  = #{entity.purchaseAmountUnit }]]>
+				</if>
+				<if test = "entity.invoiceRequest != null and entity.invoiceRequest != ''">
+					<![CDATA[ and record.invoice_request  = #{entity.invoiceRequest} ]]>
+				</if>
+				<if test = "entity.sampleRequest != null and entity.sampleRequest != ''">
+					<![CDATA[ and record.sample_request  = #{entity.sampleRequest }]]>
+				</if>
+				<if test = "entity.telAreaCode != null and entity.telAreaCode != ''">
+					<![CDATA[ and record.tel_area_code  = #{entity.telAreaCode} ]]>
+				</if>
+				<if test = "entity.telFixedNumber != null and entity.telFixedNumber != ''">
+					<![CDATA[ and record.tel_fixed_number  = #{entity.telFixedNumber} ]]>
+				</if>
+				<if test = "entity.dataType != null and entity.dataType != ''">
+					<![CDATA[ and record.data_type  = #{entity.dataType} ]]>
+				</if>
+				<if test = "entity.isPush != null and entity.isPush != ''">
+					<![CDATA[ and record.is_push  = #{entity.isPush} ]]>
+				</if>
+				<if test = "entity.pushCount != null and entity.pushCount != ''">
+					<![CDATA[ and record.push_count  = #{entity.pushCount }]]>
+				</if>
+				<if test = "entity.isContact != null and entity.isContact != ''">
+					<![CDATA[ and record.is_contact  = #{entity.isContact }]]>
+				</if>
+			    <if test = "entity.purQuantity != null and entity.purQuantity != ''">
+					<![CDATA[ and record.pur_quantity  = #{entity.purQuantity }]]>
+				</if>
+				<if test = "entity.unit != null and entity.unit != ''">
+					<![CDATA[ and record.unit  = #{entity.unit} ]]>
+				</if>
+				<if test = "entity.unitPrice != null and entity.unitPrice != ''">
+					<![CDATA[ and record.unit_price  = #{entity.unitPrice} ]]>
+				</if>
+				<if test = "entity.categoryCode != null and entity.categoryCode != ''">
+					<![CDATA[ and record.category_code  = #{entity.categoryCode }]]>
+				</if>
+				<if test = "entity.code != null and entity.code != ''">
+					<![CDATA[ and record.code  = #{entity.code} ]]>
+				</if> 
+		</if>
+	</sql>
+
+	<insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="com.wangku.dpw.domain.ProPurchase">
+		insert into pro_purchase(
+				id,
+				member_id,
+				title,
+				picture,
+				summary,
+				delivery_addr,
+				supplier_addr,
+				requirement,
+				linkman,
+				tel,
+				show_contact,
+				end_time,
+				add_time,
+				modify_time,
+				quote_times,
+				status,
+				site_id,
+				times,
+				source,
+				purchase_amount,
+				purchase_amount_unit,
+				invoice_request,
+				sample_request,
+				tel_area_code,
+				tel_fixed_number,
+				data_type,
+				is_push,
+				push_count,
+				is_contact,
+				pur_quantity,
+				unit,
+				unit_price,
+				category_code,
+				code
+		)values(
+				#{id},
+				#{memberId},
+				#{title},
+				#{picture},
+				#{summary},
+				#{deliveryAddr},
+				#{supplierAddr},
+				#{requirement},
+				#{linkman},
+				#{tel},
+				#{showContact},
+				#{endTime},
+				#{addTime},
+				#{modifyTime},
+				#{quoteTimes},
+				#{status},
+				#{siteId},
+				#{times},
+				#{source},
+				#{purchaseAmount},
+				#{purchaseAmountUnit},
+				#{invoiceRequest},
+				#{sampleRequest},
+				#{telAreaCode},
+				#{telFixedNumber},
+				#{dataType},
+				#{isPush},
+				#{pushCount},
+				#{isContact},
+				#{purQuantity},
+				#{unit},
+				#{unitPrice},
+				#{categoryCode},
+				#{code}
+		)
+	</insert>
+	
+	<update id="update">
+		update pro_purchase record set
+				<if test = "id != null and id != ''">
+					record.id = #{id}
+				</if>
+				<if test = "memberId != null and memberId != ''">
+					,record.member_id = #{memberId}
+				</if>
+				<if test = "title != null and title != ''">
+					,record.title = #{title}
+				</if>
+				<if test = "picture != null and picture != ''">
+					,record.picture = #{picture}
+				</if>
+				<if test = "summary != null and summary != ''">
+					,record.summary = #{summary}
+				</if>
+				<if test = "deliveryAddr != null and deliveryAddr != ''">
+					,record.delivery_addr = #{deliveryAddr}
+				</if>
+				<if test = "supplierAddr != null and supplierAddr != ''">
+					,record.supplier_addr = #{supplierAddr}
+				</if>
+				<if test = "requirement != null and requirement != ''">
+					,record.requirement = #{requirement}
+				</if>
+				<if test = "linkman != null and linkman != ''">
+					,record.linkman = #{linkman}
+				</if>
+				<if test = "tel != null and tel != ''">
+					,record.tel = #{tel}
+				</if>
+				<if test = "showContact != null and showContact != ''">
+					,record.show_contact = #{showContact}
+				</if>
+				<if test = "endTime != null and endTime != ''">
+					,record.end_time = #{endTime}
+				</if>
+				<if test = "addTime != null and addTime != ''">
+					,record.add_time = #{addTime}
+				</if>
+				<if test = "modifyTime != null and modifyTime != ''">
+					,record.modify_time = #{modifyTime}
+				</if>
+				<if test = "quoteTimes != null and quoteTimes != ''">
+					,record.quote_times = #{quoteTimes}
+				</if>
+				<if test = "status != null and status != ''">
+					,record.status = #{status}
+				</if>
+				<if test = "siteId != null and siteId != ''">
+					,record.site_id = #{siteId}
+				</if>
+				<if test = "times != null and times != ''">
+					,record.times = #{times}
+				</if>
+				<if test = "source != null and source != ''">
+					,record.source = #{source}
+				</if>
+				<if test = "purchaseAmount != null and purchaseAmount != ''">
+					,record.purchase_amount = #{purchaseAmount}
+				</if>
+				<if test = "purchaseAmountUnit != null and purchaseAmountUnit != ''">
+					,record.purchase_amount_unit = #{purchaseAmountUnit}
+				</if>
+				<if test = "invoiceRequest != null and invoiceRequest != ''">
+					,record.invoice_request = #{invoiceRequest}
+				</if>
+				<if test = "sampleRequest != null and sampleRequest != ''">
+					,record.sample_request = #{sampleRequest}
+				</if>
+				<if test = "telAreaCode != null and telAreaCode != ''">
+					,record.tel_area_code = #{telAreaCode}
+				</if>
+				<if test = "telFixedNumber != null and telFixedNumber != ''">
+					,record.tel_fixed_number = #{telFixedNumber}
+				</if>
+				<if test = "dataType != null and dataType != ''">
+					,record.data_type = #{dataType}
+				</if>
+				<if test = "isPush != null and isPush != ''">
+					,record.is_push = #{isPush}
+				</if>
+				<if test = "pushCount != null and pushCount != ''">
+					,record.push_count = #{pushCount}
+				</if>
+				<if test = "isContact != null and isContact != ''">
+					,record.is_contact = #{isContact}
+				</if>
+				<if test = "purQuantity != null and purQuantity != ''">
+					,record.pur_quantity = #{purQuantity}
+				</if>
+				<if test = "unit != null and unit != ''">
+					,record.unit = #{unit}
+				</if>
+				<if test = "unitPrice != null and unitPrice != ''">
+					,record.unit_price = #{unitPrice}
+				</if>
+				<if test = "categoryCode != null and categoryCode != ''">
+					,record.category_code = #{categoryCode}
+				</if>
+				<if test = "code != null and code != ''">
+					,record.code = #{code}
+				</if>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from pro_purchase
+		<if test=" codes != null and codes.size() > 0 ">
+			where id in
+			<foreach collection="codes" open="(" separator="," close=")" item="code">
+				#{code}
+			</foreach>
+		</if>
+		<if test=" codes == null or codes.size() == 0 ">
+			where 1 = 3
+		</if>
+	</delete>
+	
+	<select id="queryCount" resultType="long">
+		<include refid="count_Tail"></include>
+		<include refid="where_fragement"></include>
+	</select>
+	
+	<select id="queryList" resultMap="proPurchaseMapper" >
+		SELECT * FROM pro_purchase record 
+			LEFT  JOIN member m ON record.member_id=m.member_id 
+			LEFT  JOIN member_basic mb ON record.member_id=mb.member_id  
+		 
+		<include refid="where_fragement" />
+		<if test="page!=null">
+			<include refid="pagination_tail" />
+		</if>
+	</select>
+	<update id="batchUpdateProduct">
+		update pro_purchase record set
+				<if test = "entity.status != null and entity.status != ''">
+					record.status = #{entity.status}
+				</if>
+			where 1=1 
+			and record.id in 
+			<foreach collection="ids" open="(" separator="," close=")" item="id1">
+				#{id1}
+			</foreach>
+	</update>
+	
+	
+	<!-- 查询采购中的更多的方法 -->
+	<select id="queryMoreList" resultMap="proPurchaseMapper" parameterType="java.util.Map">
+		select * from pro_purchase 
+		where  category_code = #{categoryCode}
+	</select>
+	
+</mapper>

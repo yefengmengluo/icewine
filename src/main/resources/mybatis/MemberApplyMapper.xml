@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wangku.dpw.dao.MemberApplyDao">
+	<resultMap id="memberApplyMapper" type="com.wangku.dpw.domain.MemberApply">
+			<result property="memberId" column="member_id" />
+			<result property="applyInfo" column="apply_info" />
+			<result property="refuseCause" column="refuse_cause" />
+			<result property="addTime" column="add_time" />
+			<result property="modifyTime" column="modify_time" />
+			<result property="siteId" column="site_id" />
+	</resultMap>
+	
+	<select id="queryById" resultMap="memberApplyMapper" >
+		select * from member_apply
+		where id = #{id}
+	</select>
+
+	<sql id="count_Tail">
+		select count(1) from member_apply record
+	</sql>
+
+	<sql id="pagination_tail">
+	  limit #{page.pageOffset} , #{page.pageSize}
+	</sql>
+
+	<sql id="selectAllColumns">
+		<![CDATA[
+		SELECT
+			 member_id, 
+			 apply_info, 
+			 refuse_cause, 
+			 add_time, 
+			 modify_time, 
+			 site_id 
+			FROM member_apply record
+		]]>
+	</sql>
+
+	<sql id="where_fragement">
+		where 1=1
+		<if test="entity!=null">
+				<if test = "entity.memberId != null and entity.memberId != ''">
+					<![CDATA[ and record.member_id  = #{entity.memberId ]]>
+				</if>
+				<if test = "entity.applyInfo != null and entity.applyInfo != ''">
+					<![CDATA[ and record.apply_info  = #{entity.applyInfo ]]>
+				</if>
+				<if test = "entity.refuseCause != null and entity.refuseCause != ''">
+					<![CDATA[ and record.refuse_cause  = #{entity.refuseCause ]]>
+				</if>
+				<if test = "entity.addTime != null and entity.addTime != ''">
+					<![CDATA[ and record.add_time  = #{entity.addTime ]]>
+				</if>
+				<if test = "entity.modifyTime != null and entity.modifyTime != ''">
+					<![CDATA[ and record.modify_time  = #{entity.modifyTime ]]>
+				</if>
+				<if test = "entity.siteId != null and entity.siteId != ''">
+					<![CDATA[ and record.site_id  = #{entity.siteId ]]>
+				</if>
+		</if>
+	</sql>
+
+	<insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="com.wangku.dpw.domain.MemberApply">
+		insert into member_apply(
+				member_id,
+				apply_info,
+				refuse_cause,
+				add_time,
+				modify_time,
+				site_id
+		)values(
+				#{memberId},
+				#{applyInfo},
+				#{refuseCause},
+				#{addTime},
+				#{modifyTime},
+				#{siteId}
+		)
+	</insert>
+	
+	<update id="update">
+		update member_apply record set
+				<if test = "memberId != null and memberId != ''">
+					,record.member_id = #{memberId}
+				</if>
+				<if test = "applyInfo != null and applyInfo != ''">
+					,record.apply_info = #{applyInfo}
+				</if>
+				<if test = "refuseCause != null and refuseCause != ''">
+					,record.refuse_cause = #{refuseCause}
+				</if>
+				<if test = "addTime != null and addTime != ''">
+					,record.add_time = #{addTime}
+				</if>
+				<if test = "modifyTime != null and modifyTime != ''">
+					,record.modify_time = #{modifyTime}
+				</if>
+				<if test = "siteId != null and siteId != ''">
+					,record.site_id = #{siteId}
+				</if>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from member_apply
+		<if test=" codes != null and codes.size() > 0 ">
+			where id in
+			<foreach collection="codes" open="(" separator="," close=")" item="code">
+				#{code}
+			</foreach>
+		</if>
+		<if test=" codes == null or codes.size() == 0 ">
+			where 1 = 3
+		</if>
+	</delete>
+	
+	<select id="queryCount" resultType="long">
+		<include refid="count_Tail"></include>
+		<include refid="where_fragement"></include>
+	</select>
+	
+	<select id="queryList" resultMap="memberApplyMapper" >
+		<include refid="selectAllColumns"/>
+		<include refid="where_fragement" />
+		<if test="page!=null">
+			<include refid="pagination_tail" />
+		</if>
+	</select>
+</mapper>

@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wangku.dpw.dao.ImgImagesDao">
+	<resultMap id="imgImagesMapper" type="com.wangku.dpw.domain.ImgImages">
+			<result property="id" column="id" />
+			<result property="siteId" column="site_id" />
+			<result property="albumId" column="album_id" />
+			<result property="originalIdScale" column="original_id_scale" />
+			<result property="imgName" column="img_name" />
+			<result property="originalName" column="original_name" />
+			<result property="comments" column="comments" />
+			<result property="imgPath" column="img_path" />
+			<result property="imgWidth" column="img_width" />
+			<result property="imgHeight" column="img_height" />
+			<result property="imgSize" column="img_size" />
+			<result property="imgType" column="img_type" />
+			<result property="checkStatus" column="check_status" />
+			<result property="masterIp" column="master_ip" />
+			<result property="userId" column="user_id" />
+			<result property="uploadTime" column="upload_time" />
+			<result property="imgSourceUrl" column="img_source_url" />
+			<result property="delFlag" column="del_flag" />
+			<result property="uploadIp" column="upload_ip" />
+			<result property="userType" column="user_type" />
+			<result property="imgSourceType" column="img_source_type" />
+			<result property="fromSource" column="from_source" />
+			<result property="isCut" column="is_cut" />
+			<result property="isWatermarked" column="is_watermarked" />
+	</resultMap>
+	
+	<select id="queryById" resultMap="imgImagesMapper" >
+		select * from img_images
+		where id = #{id}
+	</select>
+   
+   <select id="queryByList" resultMap="imgImagesMapper" >
+		select * from img_images
+			where id = #{id}
+	</select>
+   
+	<sql id="count_Tail">
+		select count(1) from img_images record
+	</sql>
+
+	<sql id="pagination_tail">
+	  limit #{page.pageOffset} , #{page.pageSize}
+	</sql>
+
+	<sql id="selectAllColumns">
+		<![CDATA[
+		SELECT
+			 id, 
+			 site_id, 
+			 album_id, 
+			 original_id_scale, 
+			 img_name, 
+			 original_name, 
+			 comments, 
+			 img_path, 
+			 img_width, 
+			 img_height, 
+			 img_size, 
+			 img_type, 
+			 check_status, 
+			 master_ip, 
+			 user_id, 
+			 upload_time, 
+			 img_source_url, 
+			 del_flag, 
+			 upload_ip, 
+			 user_type, 
+			 img_source_type, 
+			 from_source, 
+			 is_cut, 
+			 is_watermarked 
+			FROM img_images record
+		]]>
+	</sql>
+
+	<sql id="where_fragement">
+		where 1=1
+		<if test="entity!=null">
+				<if test = "entity.id != null and entity.id != ''">
+					<![CDATA[ and record.id  = #{entity.id} ]]>
+				</if>
+				<if test = "entity.siteId != null and entity.siteId != ''">
+					<![CDATA[ and record.site_id  = #{entity.siteId} ]]>
+				</if>
+				<if test = "entity.albumId != null and entity.albumId != ''">
+					<![CDATA[ and record.album_id  = #{entity.albumId} ]]>
+				</if>
+				<if test = "entity.originalIdScale != null and entity.originalIdScale != ''">
+					<![CDATA[ and record.original_id_scale  = #{entity.originalIdScale} ]]>
+				</if>
+				<if test = "entity.imgName != null and entity.imgName != ''">
+					<![CDATA[ and record.img_name  = #{entity.imgName} ]]>
+				</if>
+				<if test = "entity.originalName != null and entity.originalName != ''">
+					<![CDATA[ and record.original_name  like  '%${entity.originalName}%' ]]>
+				</if>                                          
+				<if test = "entity.comments != null and entity.comments != ''">
+					<![CDATA[ and record.comments  = #{entity.comments} ]]>
+				</if>
+				<if test = "entity.imgPath != null and entity.imgPath != ''">
+					<![CDATA[ and record.img_path  = #{entity.imgPath} ]]>
+				</if>
+				<if test = "entity.imgWidth != null and entity.imgWidth != ''">
+					<![CDATA[ and record.img_width  = #{entity.imgWidth} ]]>
+				</if>
+				<if test = "entity.imgHeight != null and entity.imgHeight != ''">
+					<![CDATA[ and record.img_height  = #{entity.imgHeight} ]]>
+				</if>
+				<if test = "entity.imgSize != null and entity.imgSize != ''">
+					<![CDATA[ and record.img_size  = #{entity.imgSize} ]]>
+				</if>
+				<if test = "entity.imgType != null and entity.imgType != ''">
+					<![CDATA[ and record.img_type  = #{entity.imgType} ]]>
+				</if>
+				<if test = "entity.checkStatus != null and entity.checkStatus != ''">
+					<![CDATA[ and record.check_status  = #{entity.checkStatus} ]]>
+				</if>
+				<if test = "entity.masterIp != null and entity.masterIp != ''">
+					<![CDATA[ and record.master_ip  = #{entity.masterIp} ]]>
+				</if>
+				<if test = "entity.userId != null and entity.userId != ''">
+					<![CDATA[ and record.user_id  = #{entity.userId }]]>
+				</if>
+				<if test = "entity.uploadTime != null and entity.uploadTime != ''">
+					<![CDATA[ and record.upload_time  = #{entity.uploadTime} ]]>
+				</if>
+				<if test = "entity.imgSourceUrl != null and entity.imgSourceUrl != ''">
+					<![CDATA[ and record.img_source_url  = #{entity.imgSourceUrl} ]]>
+				</if>
+				<if test = "entity.delFlag != null and entity.delFlag != ''">
+					<![CDATA[ and record.del_flag  = #{entity.delFlag} ]]>
+				</if>
+				<if test = "entity.uploadIp != null and entity.uploadIp != ''">
+					<![CDATA[ and record.upload_ip  = #{entity.uploadIp} ]]>
+				</if>
+				<if test = "entity.userType != null and entity.userType != ''">
+					<![CDATA[ and record.user_type  = #{entity.userType} ]]>
+				</if>
+				<if test = "entity.imgSourceType != null and entity.imgSourceType != ''">
+					<![CDATA[ and record.img_source_type  = #{entity.imgSourceType} ]]>
+				</if>
+				<if test = "entity.fromSource != null and entity.fromSource != ''">
+					<![CDATA[ and record.from_source  = #{entity.fromSource} ]]>
+				</if>
+				<if test = "entity.isCut != null and entity.isCut != ''">
+					<![CDATA[ and record.is_cut  = #{entity.isCut }]]>
+				</if>
+				<if test = "entity.isWatermarked != null and entity.isWatermarked != ''">
+					<![CDATA[ and record.is_watermarked  = #{entity.isWatermarked} ]]>
+				</if>
+		</if>
+	</sql>
+
+	<insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="com.wangku.dpw.domain.ImgImages">
+		insert into img_images(
+				id,
+				site_id,
+				album_id,
+				original_id_scale,
+				img_name,
+				original_name,
+				comments,
+				img_path,
+				img_width,
+				img_height,
+				img_size,
+				img_type,
+				check_status,
+				master_ip,
+				user_id,
+				upload_time,
+				img_source_url,
+				del_flag,
+				upload_ip,
+				user_type,
+				img_source_type,
+				from_source,
+				is_cut,
+				is_watermarked
+		)values(
+				#{id},
+				#{siteId},
+				#{albumId},
+				#{originalIdScale},
+				#{imgName},
+				#{originalName},
+				#{comments},
+				#{imgPath},
+				#{imgWidth},
+				#{imgHeight},
+				#{imgSize},
+				#{imgType},
+				#{checkStatus},
+				#{masterIp},
+				#{userId},
+				#{uploadTime},
+				#{imgSourceUrl},
+				#{delFlag},
+				#{uploadIp},
+				#{userType},
+				#{imgSourceType},
+				#{fromSource},
+				#{isCut},
+				#{isWatermarked}
+		)
+	</insert>
+	
+	<update id="update">
+		update img_images record set
+				<if test = "id != null and id != ''">
+					record.id = #{id}
+				</if>
+				<if test = "siteId != null and siteId != ''">
+					,record.site_id = #{siteId}
+				</if>
+				<if test = "albumId != null and albumId != ''">
+					,record.album_id = #{albumId}
+				</if>
+				<if test = "originalIdScale != null and originalIdScale != ''">
+					,record.original_id_scale = #{originalIdScale}
+				</if>
+				<if test = "imgName != null and imgName != ''">
+					,record.img_name = #{imgName}
+				</if>
+				<if test = "originalName != null and originalName != ''">
+					,record.original_name = #{originalName}
+				</if>
+				<if test = "comments != null and comments != ''">
+					,record.comments = #{comments}
+				</if>
+				<if test = "imgPath != null and imgPath != ''">
+					,record.img_path = #{imgPath}
+				</if>
+				<if test = "imgWidth != null and imgWidth != ''">
+					,record.img_width = #{imgWidth}
+				</if>
+				<if test = "imgHeight != null and imgHeight != ''">
+					,record.img_height = #{imgHeight}
+				</if>
+				<if test = "imgSize != null and imgSize != ''">
+					,record.img_size = #{imgSize}
+				</if>
+				<if test = "imgType != null and imgType != ''">
+					,record.img_type = #{imgType}
+				</if>
+				<if test = "checkStatus != null and checkStatus != ''">
+					,record.check_status = #{checkStatus}
+				</if>
+				<if test = "masterIp != null and masterIp != ''">
+					,record.master_ip = #{masterIp}
+				</if>
+				<if test = "userId != null and userId != ''">
+					,record.user_id = #{userId}
+				</if>
+				<if test = "uploadTime != null and uploadTime != ''">
+					,record.upload_time = #{uploadTime}
+				</if>
+				<if test = "imgSourceUrl != null and imgSourceUrl != ''">
+					,record.img_source_url = #{imgSourceUrl}
+				</if>
+				<if test = "delFlag != null and delFlag != ''">
+					,record.del_flag = #{delFlag}
+				</if>
+				<if test = "uploadIp != null and uploadIp != ''">
+					,record.upload_ip = #{uploadIp}
+				</if>
+				<if test = "userType != null and userType != ''">
+					,record.user_type = #{userType}
+				</if>
+				<if test = "imgSourceType != null and imgSourceType != ''">
+					,record.img_source_type = #{imgSourceType}
+				</if>
+				<if test = "fromSource != null and fromSource != ''">
+					,record.from_source = #{fromSource}
+				</if>
+				<if test = "isCut != null and isCut != ''">
+					,record.is_cut = #{isCut}
+				</if>
+				<if test = "isWatermarked != null and isWatermarked != ''">
+					,record.is_watermarked = #{isWatermarked}
+				</if>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from img_images
+		<if test=" codes != null and codes.size() > 0 ">
+			where id in
+			<foreach collection="codes" open="(" separator="," close=")" item="code">
+				#{code}
+			</foreach>
+		</if>
+		<if test=" codes == null or codes.size() == 0 ">
+			where 1 = 3
+		</if>
+	</delete>
+	
+	<select id="queryCount" resultType="long" useCache="true">
+		<include refid="count_Tail"></include>
+		<include refid="where_fragement"></include>
+	</select>
+	
+	<select id="queryList" resultMap="imgImagesMapper" useCache="true">
+		<include refid="selectAllColumns"/>
+		<include refid="where_fragement" />
+		<if test="page!=null">
+			<include refid="pagination_tail" />
+		</if>
+	</select>
+	<cache flushInterval="60000" eviction="FIFO" readOnly="false" size="256"></cache>
+</mapper>

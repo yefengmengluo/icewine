@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wangku.dpw.dao.SysAreaDao">
+	<resultMap id="sysAreaMapper" type="com.wangku.dpw.domain.SysArea">
+			<result property="id" column="id" />
+			<result property="name" column="name" />
+			<result property="areaCode" column="area_code" />
+			<result property="areaCodeLen" column="area_code_len" />
+			<result property="realCode" column="real_code" />
+			<result property="postcode" column="postcode" />
+			<result property="initials" column="initials" />
+			<result property="spell" column="spell" />
+			<result property="status" column="status" />
+			<result property="sort" column="sort" />
+			<result property="addTime" column="add_time" />
+			<result property="updateTime" column="update_time" />
+	</resultMap>
+	
+	<select id="queryById" resultMap="sysAreaMapper" >
+		select * from sys_area
+		where id = #{id}
+	</select>
+
+	<sql id="count_Tail">
+		select count(1) from sys_area record
+	</sql>
+
+	<sql id="pagination_tail">
+	  limit #{page.pageOffset} , #{page.pageSize}
+	</sql>
+
+	<sql id="selectAllColumns">
+		<![CDATA[
+		SELECT
+			 id, 
+			 name, 
+			 area_code, 
+			 area_code_len, 
+			 real_code, 
+			 postcode, 
+			 initials, 
+			 spell, 
+			 status, 
+			 sort, 
+			 add_time, 
+			 update_time 
+			FROM sys_area record
+		]]>
+	</sql>
+
+	<sql id="where_fragement">
+		where 1=1
+		<if test="entity!=null">
+				<if test = "entity.id != null and entity.id != ''">
+					<![CDATA[ and record.id  = #{entity.id} ]]>
+				</if>
+				<if test = "entity.name != null and entity.name != ''">
+					<![CDATA[ and record.name  = #{entity.name} ]]>
+				</if>
+				<if test = "entity.areaCode != null and entity.areaCode != ''">
+					<![CDATA[ and record.area_code  = #{entity.areaCode} ]]>
+				</if>
+				<if test = "entity.areaCodeLen != null and entity.areaCodeLen != ''">
+					<![CDATA[ and record.area_code_len  = #{entity.areaCodeLen} ]]>
+				</if>
+				<if test = "entity.realCode != null and entity.realCode != ''">
+					<![CDATA[ and record.real_code  = #{entity.realCode} ]]>
+				</if>
+				<if test = "entity.postcode != null and entity.postcode != ''">
+					<![CDATA[ and record.postcode  = #{entity.postcode }]]>
+				</if>
+				<if test = "entity.initials != null and entity.initials != ''">
+					<![CDATA[ and record.initials  = #{entity.initials }]]>
+				</if>
+				<if test = "entity.spell != null and entity.spell != ''">
+					<![CDATA[ and record.spell  = #{entity.spell }]]>
+				</if>
+				<if test = "entity.status != null and entity.status != ''">
+					<![CDATA[ and record.status  = #{entity.status }]]>
+				</if>
+				<if test = "entity.sort != null and entity.sort != ''">
+					<![CDATA[ and record.sort  = #{entity.sort }]]>
+				</if>
+				<if test = "entity.addTime != null and entity.addTime != ''">
+					<![CDATA[ and record.add_time  = #{entity.addTime }]]>
+				</if>
+				<if test = "entity.updateTime != null and entity.updateTime != ''">
+					<![CDATA[ and record.update_time  = #{entity.updateTime }]]>
+				</if>
+		</if>
+	</sql>
+
+	<insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="com.wangku.dpw.domain.SysArea">
+		insert into sys_area(
+				id,
+				name,
+				area_code,
+				area_code_len,
+				real_code,
+				postcode,
+				initials,
+				spell,
+				status,
+				sort,
+				add_time,
+				update_time
+		)values(
+				#{id},
+				#{name},
+				#{areaCode},
+				#{areaCodeLen},
+				#{realCode},
+				#{postcode},
+				#{initials},
+				#{spell},
+				#{status},
+				#{sort},
+				#{addTime},
+				#{updateTime}
+		)
+	</insert>
+	
+	<update id="update">
+		update sys_area record set
+				<if test = "id != null and id != ''">
+					record.id = #{id}
+				</if>
+				<if test = "name != null and name != ''">
+					,record.name = #{name}
+				</if>
+				<if test = "areaCode != null and areaCode != ''">
+					,record.area_code = #{areaCode}
+				</if>
+				<if test = "areaCodeLen != null and areaCodeLen != ''">
+					,record.area_code_len = #{areaCodeLen}
+				</if>
+				<if test = "realCode != null and realCode != ''">
+					,record.real_code = #{realCode}
+				</if>
+				<if test = "postcode != null and postcode != ''">
+					,record.postcode = #{postcode}
+				</if>
+				<if test = "initials != null and initials != ''">
+					,record.initials = #{initials}
+				</if>
+				<if test = "spell != null and spell != ''">
+					,record.spell = #{spell}
+				</if>
+				<if test = "status != null and status != ''">
+					,record.status = #{status}
+				</if>
+				<if test = "sort != null and sort != ''">
+					,record.sort = #{sort}
+				</if>
+				<if test = "addTime != null and addTime != ''">
+					,record.add_time = #{addTime}
+				</if>
+				<if test = "updateTime != null and updateTime != ''">
+					,record.update_time = #{updateTime}
+				</if>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from sys_area
+		<if test=" codes != null and codes.size() > 0 ">
+			where id in
+			<foreach collection="codes" open="(" separator="," close=")" item="code">
+				#{code}
+			</foreach>
+		</if>
+		<if test=" codes == null or codes.size() == 0 ">
+			where 1 = 3
+		</if>
+	</delete>
+	
+	<select id="queryCount" resultType="long">
+		<include refid="count_Tail"></include>
+		<include refid="where_fragement"></include>
+	</select>
+	
+	<select id="queryList" resultMap="sysAreaMapper" >
+		<include refid="selectAllColumns"/>
+		<include refid="where_fragement" />
+		<if test="page!=null">
+			<include refid="pagination_tail" />
+		</if>
+	</select>
+
+	<!-- 查詢地址三級聯動 -->
+	<!-- 根据编码和编码长度查询地址信息 -->
+	<select id="cascadeShow" resultMap="sysAreaMapper" >
+		<include refid="selectAllColumns"/> where
+		area_code like #{areaCode}"%"
+		and area_code_len = #{areaCodeLen}
+	</select>
+	<!-- 地址全名称处理 -->
+	<select id="addressFullNameHaddle" resultType="string">
+		select CONCAT(a.name,if(a.name=b.name,'',b.name),c.name) fullName
+		FROM sys_area a,sys_area b,sys_area c 
+		WHERE a.area_code = left(#{areaCode},6)  and b.area_code = left(#{areaCode},9)  and c.area_code =#{areaCode}
+	</select>
+</mapper>

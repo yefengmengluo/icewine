@@ -1,0 +1,81 @@
+/* 发送询价 */
+.b-enquiry{position:fixed;left:20%;top:20%;background:#fff;z-index:1000000;display:none;margin:0; padding:0;}
+.Ma-box{ width:800px; overflow:hidden; border:1px #DFDFDF solid;}
+.Ma-title{height:48px;line-height:48px;color:#444; background:#f0f0f0; border-bottom:1px #DFDFDF solid; }
+.Ma-title h3{float:left;font-size:14px; padding-left:15px;}
+.Ma-message{ padding:40px 0 40px 100px; font-size:14px; line-height:36px;}
+.Ma-list{ width:800px; margin:auto; padding:20px 0;}
+.Ma-list table td{ line-height:60px;}
+.Ma-list table td img{ margin-bottom:0px; margin-left:5px;}
+.Ma-red2{ font-size:12px; color:#dc0705; margin-bottom:10px;  margin-left:5px;}
+.Ma-asked{ display:block; width:440px; height:56px; padding:10px;color:#b3b3b3; border:1px #dfdfdf solid; font-size:12px;}
+.input1{width:450px; height:28px; line-height:28px; padding-left:10px; border:1px #dfdfdf solid; color:#b3b3b3;}
+.input2{width:100px; height:28px; line-height:28px; padding-left:10px; border:1px #dfdfdf solid; color:#b3b3b3;}
+.Ma-hui{color:#b3b3b3;}
+.Ma-hui p { color:#B3B3B3;}
+.Ma-red{ font-size:12px; color:#dc0705;}
+.btn{ background:url(../Images/iMage08.jpg) no-repeat; width:145px; height:34px; line-height:34px; font-size:14px; color:#FFFFFF; text-align:center; font-weight:bold; border:none;}
+/*弹窗快速报价单*/
+.position{background:url(../images/po_bj.png) repeat;position:absolute;left:0;top:0; width:100%;z-index:99999;display:none; margin:0; padding:0;}
+.b-priceTable{width:598px;height:653px;background:#fff; position:fixed;left:30%;top:20%;z-index:100000;box-shadow:10px #dfdfdf;-moz-box-shadow:10px #dfdfdf;display:none;overflow:hidden; margin:0; padding:0;}
+.priceTable-h50{height:50px;background:#f0f0f0;line-height:50px;padding:0 15px;}
+.priceTable-h50 h3{float:left;}
+.b-close{float:right;display:block;height:50px;background:url(../Images/v1/iMage027.jpg) no-repeat left center;width:20px;}
+.b-close img{margin-top:10px;}
+
+.auoted_pop{ margin:10px 10px 0; overflow:hidden; width:578px; }
+.auoted_popcon2{border:1px solid #ccc; }
+.auoted_popt{ height:194px; padding:15px 17px 0 13px; overflow:auto; border-bottom:1px dashed #ccc;}
+.auoted_228{ width:228px;float:left;}
+.auoted_line{ line-height:38px; height:38px;}
+.auoted_mt12{ margin-left:12px;}
+.auoted_mt14{ margin-right:14px;}
+.text-w110{ width:110px;}
+.text-w37{ width:37px; height:24px;  border:none; color:#ccc;}
+.auoted_w57{ height:26px; width:57px; border:1px solid #ccc;padding:1px 2px; outline:none; background:#fff;}
+.select .auotedslt-input{ float:left; height:24px; line-height:24px; color:#ccc; font-size:12px; background:#fff;}
+.select .auotedslt-btn{ float:left; height:6px; width:9px; background:url(../images/pop_icon1.jpg) no-repeat;text-decoration:none; margin-top:8px;}
+.auoted_line .select .slt-option{ display:none; position:absolute; left:-1px; top:28px; border:1px solid #b5b5b5; background:#fff; width:61px;}
+.auoted_mt4{margin-top:4px;}
+.auoted_popbot{ padding:24px 17px 14px 13px;}
+.auotedyh-add_92{ width:92px; text-align:right; display:inline-block; margin-right:25px;}
+.auotedyh-add_92 i{ margin-right:3px;}
+.auoted_popbot p{ margin-bottom:12px;}
+.text-w237{ width:237px;}
+.textarea_w393{ height:124px; width:393px; border:1px solid #cfcfcf; resize:none; overflow:auto; _margin-left:-3px;}
+.auoted_mtop12{ margin-top:12px;}
+.over_hidden{ overflow:hidden;}
+.auoted .album_top{ width:100%;}
+.auoted_spr{float:right;  margin-right:32px; font-weight:normal;}
+.auoted_red{ color:red;}
+.yh-h2_2{ text-align:left;}
+.fb{ font-weight:bold;}
+.text-bg{background:#044985;width:58px;text-align:center;line-height:20px;border:1px solid #7f9db9;display:inline-block;}
+.yh-xg_a { position:relative; width:58px; margin:0 auto}
+.text-bg a{color:#ffffff;display:block;}
+.over-list{position:absolute;left:0; top:22px;text-align:center;z-index:100;border-left:1px solid #7f9db9;border-right:1px solid #7f9db9; width:58px}
+.over-list a{display:inline-block;color:#044985;background:#ffffff;width:58px;height:21px;border-bottom:1px solid #7f9db9;line-height:21px;}
+.auoted_mbot14{ margin-bottom:14px;}
+
+.auoted_popw57{ width:57px; height:26px; float:left;}
+.auoted_popt_even{ background:#f6f6f6}
+.b-priceTableBtn{padding-left:110px;}
+.b-priceTableBtn input{width:97px;height:25px;margin-right:10px;background-image:url(../Images/v1/iMage010.png);overflow:hidden;border:0;background-color:none;flaot:left;line-height:25px;text-align:center;font-size:14px;margin-top:20px;float:right;}
+.b-priceTableBtn1{background-position:-255px -122px;float:left;color:#fff;}
+.b-priceTableBtn2{background-position:-362px -122px;float:left;color:#444;}
+
+a.tck_btn {
+    background: url("../Images/iMage08.jpg") no-repeat scroll 0 0 transparent;
+    border: medium none;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    width: 145px;
+}
+
+

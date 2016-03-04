@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wangku.dpw.dao.AdvertiseDao">
+	<resultMap id="advertiseMapper" type="com.wangku.dpw.domain.Advertise">
+			<result property="id" column="id" />
+			<result property="title" column="title" />
+			<result property="biref" column="biref" />
+			<result property="img" column="img" />
+			<result property="adType" column="ad_type" />
+			<result property="flag" column="flag" />
+			<result property="content" column="content" />
+			<result property="addTime" column="add_time" />
+			<result property="imgUrl" column="img_url" />
+			<result property="nature" column="nature" />
+			<result property="summary" column="summary" />
+			<result property="replyTime" column="reply_time" />
+	</resultMap>
+	
+	<select id="queryById" resultMap="advertiseMapper" >
+		select * from advertise
+		where id = #{id}
+	</select>
+   
+   	<select id="queryFlag" resultMap="advertiseMapper" >
+		select * from advertise
+		where flag = #{flag}
+	</select>
+   
+	<sql id="count_Tail">
+		select count(1) from advertise record
+	</sql>
+
+	<sql id="pagination_tail">
+	  limit #{page.pageOffset} , #{page.pageSize}
+	</sql>
+
+	<sql id="selectAllColumns">
+		<![CDATA[
+		SELECT
+			 id, 
+			 title, 
+			 biref, 
+			 img, 
+			 ad_type, 
+			 flag, 
+			 content, 
+			 add_time, 
+			 img_url, 
+			 nature, 
+			 summary, 
+			 reply_time 
+			FROM advertise record
+		]]>
+	</sql>
+
+	<sql id="where_fragement">
+		where 1=1
+		<if test="entity!=null">
+				<if test = "entity.id != null and entity.id != ''">
+					<![CDATA[ and record.id  = #{entity.id} ]]>
+				</if>
+				<if test = "entity.title != null and entity.title != ''">
+					<![CDATA[ and record.title  = #{entity.title} ]]>
+				</if>
+				<if test = "entity.biref != null and entity.biref != ''">
+					<![CDATA[ and record.biref  = #{entity.biref} ]]>
+				</if>
+				<if test = "entity.img != null and entity.img != ''">
+					<![CDATA[ and record.img  = #{entity.img} ]]>
+				</if>
+				<if test = "entity.adType != null and entity.adType != ''">
+					<![CDATA[ and record.ad_type  = #{entity.adType} ]]>
+				</if>
+				<if test = "entity.flag != null and entity.flag != ''">
+					<![CDATA[ and record.flag  = #{entity.flag} ]]>
+				</if>
+				<if test = "entity.content != null and entity.content != ''">
+					<![CDATA[ and record.content  = #{entity.content} ]]>
+				</if>
+				<if test = "entity.addTime != null and entity.addTime != ''">
+					<![CDATA[ and record.add_time  = #{entity.addTime }]]>
+				</if>
+				<if test = "entity.imgUrl != null and entity.imgUrl != ''">
+					<![CDATA[ and record.img_url  = #{entity.imgUrl} ]]>
+				</if>
+				<if test = "entity.nature != null and entity.nature != ''">
+					<![CDATA[ and record.nature  = #{entity.nature} ]]>
+				</if>
+				<if test = "entity.summary != null and entity.summary != ''">
+					<![CDATA[ and record.summary  = #{entity.summary} ]]>
+				</if>
+				<if test = "entity.replyTime != null and entity.replyTime != ''">
+					<![CDATA[ and record.reply_time  = #{entity.replyTime} ]]>
+				</if>
+		</if>
+	</sql>
+
+	<insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="com.wangku.dpw.domain.Advertise">
+		insert into advertise(
+				id,
+				title,
+				biref,
+				img,
+				ad_type,
+				flag,
+				content,
+				add_time,
+				img_url,
+				nature,
+				summary,
+				reply_time
+		)values(
+				#{id},
+				#{title},
+				#{biref},
+				#{img},
+				#{adType},
+				#{flag},
+				#{content},
+				#{addTime},
+				#{imgUrl},
+				#{nature},
+				#{summary},
+				#{replyTime}
+		)
+	</insert>
+	
+	<update id="update">
+		update advertise record set
+				<if test = "id != null and id != ''">
+					record.id = #{id}
+				</if>
+				<if test = "title != null and title != ''">
+					,record.title = #{title}
+				</if>
+				<if test = "biref != null and biref != ''">
+					,record.biref = #{biref}
+				</if>
+				<if test = "img != null and img != ''">
+					,record.img = #{img}
+				</if>
+				<if test = "adType != null and adType != ''">
+					,record.ad_type = #{adType}
+				</if>
+				<if test = "flag != null and flag != ''">
+					,record.flag = #{flag}
+				</if>
+				<if test = "content != null and content != ''">
+					,record.content = #{content}
+				</if>
+				<if test = "addTime != null and addTime != ''">
+					,record.add_time = #{addTime}
+				</if>
+				<if test = "imgUrl != null and imgUrl != ''">
+					,record.img_url = #{imgUrl}
+				</if>
+				<if test = "nature != null and nature != ''">
+					,record.nature = #{nature}
+				</if>
+				<if test = "summary != null and summary != ''">
+					,record.summary = #{summary}
+				</if>
+				<if test = "replyTime != null and replyTime != ''">
+					,record.reply_time = #{replyTime}
+				</if>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from advertise
+		<if test=" codes != null and codes.size() > 0 ">
+			where id in
+			<foreach collection="codes" open="(" separator="," close=")" item="code">
+				#{code}
+			</foreach>
+		</if>
+		<if test=" codes == null or codes.size() == 0 ">
+			where 1 = 3
+		</if>
+	</delete>
+	
+	<select id="queryCount" resultType="long" useCache="true">
+		<include refid="count_Tail"></include>
+		<include refid="where_fragement"></include>
+	</select>
+	
+	<select id="queryList" resultMap="advertiseMapper" useCache="true">
+		<include refid="selectAllColumns"/>
+		<include refid="where_fragement" />
+		<if test="page!=null">
+			<include refid="pagination_tail" />
+		</if>
+	</select>
+	<cache flushInterval="60000" eviction="FIFO" readOnly="false" size="256"></cache>
+</mapper>

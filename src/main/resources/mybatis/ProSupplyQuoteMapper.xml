@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wangku.dpw.dao.ProSupplyQuoteDao">
+	<resultMap id="proSupplyQuoteMapper" type="com.wangku.dpw.domain.ProSupplyQuote">
+			<result property="id" column="id" />
+			<result property="supId" column="sup_id" />
+			<result property="title" column="title" />
+			<result property="subject" column="subject" />
+			<result property="corpName" column="corp_name" />
+			<result property="fromMemberId" column="from_member_id" />
+			<result property="toMemberId" column="to_member_id" />
+			<result property="email" column="email" />
+			<result property="tel" column="tel" />
+			<result property="mobile" column="mobile" />
+			<result property="isRead" column="is_read" />
+			<result property="isFromDelete" column="is_from_delete" />
+			<result property="isToDelete" column="is_to_delete" />
+			<result property="replyContent" column="reply_content" />
+			<result property="addTime" column="add_time" />
+			<result property="replyTime" column="reply_time" />
+			<result property="linkMan" column="link_man" />
+			<result property="typeId" column="type_id" />
+	</resultMap>
+	
+	<select id="queryById" resultMap="proSupplyQuoteMapper" >
+		select * from pro_supply_quote
+		where id = #{id}
+	</select>
+
+	<sql id="count_Tail">
+		select count(1) from pro_supply_quote record
+	</sql>
+
+	<sql id="pagination_tail">
+	  limit #{page.pageOffset} , #{page.pageSize}
+	</sql>
+
+	<sql id="selectAllColumns">
+		<![CDATA[
+		SELECT
+			 id, 
+			 sup_id, 
+			 title, 
+			 subject, 
+			 corp_name, 
+			 from_member_id, 
+			 to_member_id, 
+			 email, 
+			 tel, 
+			 mobile, 
+			 is_read, 
+			 is_from_delete, 
+			 is_to_delete, 
+			 reply_content, 
+			 add_time, 
+			 reply_time, 
+			 link_man, 
+			 type_id 
+			FROM pro_supply_quote record
+		]]>
+	</sql>
+
+	<sql id="where_fragement">
+		where 1=1
+		<if test="entity!=null">
+				<if test = "entity.id != null and entity.id != ''">
+					<![CDATA[ and record.id  = #{entity.id ]]>
+				</if>
+				<if test = "entity.supId != null and entity.supId != ''">
+					<![CDATA[ and record.sup_id  = #{entity.supId ]]>
+				</if>
+				<if test = "entity.title != null and entity.title != ''">
+					<![CDATA[ and record.title  = #{entity.title ]]>
+				</if>
+				<if test = "entity.subject != null and entity.subject != ''">
+					<![CDATA[ and record.subject  = #{entity.subject ]]>
+				</if>
+				<if test = "entity.corpName != null and entity.corpName != ''">
+					<![CDATA[ and record.corp_name  = #{entity.corpName ]]>
+				</if>
+				<if test = "entity.fromMemberId != null and entity.fromMemberId != ''">
+					<![CDATA[ and record.from_member_id  = #{entity.fromMemberId ]]>
+				</if>
+				<if test = "entity.toMemberId != null and entity.toMemberId != ''">
+					<![CDATA[ and record.to_member_id  = #{entity.toMemberId ]]>
+				</if>
+				<if test = "entity.email != null and entity.email != ''">
+					<![CDATA[ and record.email  = #{entity.email ]]>
+				</if>
+				<if test = "entity.tel != null and entity.tel != ''">
+					<![CDATA[ and record.tel  = #{entity.tel ]]>
+				</if>
+				<if test = "entity.mobile != null and entity.mobile != ''">
+					<![CDATA[ and record.mobile  = #{entity.mobile ]]>
+				</if>
+				<if test = "entity.isRead != null and entity.isRead != ''">
+					<![CDATA[ and record.is_read  = #{entity.isRead ]]>
+				</if>
+				<if test = "entity.isFromDelete != null and entity.isFromDelete != ''">
+					<![CDATA[ and record.is_from_delete  = #{entity.isFromDelete ]]>
+				</if>
+				<if test = "entity.isToDelete != null and entity.isToDelete != ''">
+					<![CDATA[ and record.is_to_delete  = #{entity.isToDelete ]]>
+				</if>
+				<if test = "entity.replyContent != null and entity.replyContent != ''">
+					<![CDATA[ and record.reply_content  = #{entity.replyContent ]]>
+				</if>
+				<if test = "entity.addTime != null and entity.addTime != ''">
+					<![CDATA[ and record.add_time  = #{entity.addTime ]]>
+				</if>
+				<if test = "entity.replyTime != null and entity.replyTime != ''">
+					<![CDATA[ and record.reply_time  = #{entity.replyTime ]]>
+				</if>
+				<if test = "entity.linkMan != null and entity.linkMan != ''">
+					<![CDATA[ and record.link_man  = #{entity.linkMan ]]>
+				</if>
+				<if test = "entity.typeId != null and entity.typeId != ''">
+					<![CDATA[ and record.type_id  = #{entity.typeId ]]>
+				</if>
+		</if>
+	</sql>
+
+	<insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="com.wangku.dpw.domain.ProSupplyQuote">
+		insert into pro_supply_quote(
+				id,
+				sup_id,
+				title,
+				subject,
+				corp_name,
+				from_member_id,
+				to_member_id,
+				email,
+				tel,
+				mobile,
+				is_read,
+				is_from_delete,
+				is_to_delete,
+				reply_content,
+				add_time,
+				reply_time,
+				link_man,
+				type_id
+		)values(
+				#{id},
+				#{supId},
+				#{title},
+				#{subject},
+				#{corpName},
+				#{fromMemberId},
+				#{toMemberId},
+				#{email},
+				#{tel},
+				#{mobile},
+				#{isRead},
+				#{isFromDelete},
+				#{isToDelete},
+				#{replyContent},
+				#{addTime},
+				#{replyTime},
+				#{linkMan},
+				#{typeId}
+		)
+	</insert>
+	
+	<update id="update">
+		update pro_supply_quote record set
+				<if test = "id != null and id != ''">
+					,record.id = #{id}
+				</if>
+				<if test = "supId != null and supId != ''">
+					,record.sup_id = #{supId}
+				</if>
+				<if test = "title != null and title != ''">
+					,record.title = #{title}
+				</if>
+				<if test = "subject != null and subject != ''">
+					,record.subject = #{subject}
+				</if>
+				<if test = "corpName != null and corpName != ''">
+					,record.corp_name = #{corpName}
+				</if>
+				<if test = "fromMemberId != null and fromMemberId != ''">
+					,record.from_member_id = #{fromMemberId}
+				</if>
+				<if test = "toMemberId != null and toMemberId != ''">
+					,record.to_member_id = #{toMemberId}
+				</if>
+				<if test = "email != null and email != ''">
+					,record.email = #{email}
+				</if>
+				<if test = "tel != null and tel != ''">
+					,record.tel = #{tel}
+				</if>
+				<if test = "mobile != null and mobile != ''">
+					,record.mobile = #{mobile}
+				</if>
+				<if test = "isRead != null and isRead != ''">
+					,record.is_read = #{isRead}
+				</if>
+				<if test = "isFromDelete != null and isFromDelete != ''">
+					,record.is_from_delete = #{isFromDelete}
+				</if>
+				<if test = "isToDelete != null and isToDelete != ''">
+					,record.is_to_delete = #{isToDelete}
+				</if>
+				<if test = "replyContent != null and replyContent != ''">
+					,record.reply_content = #{replyContent}
+				</if>
+				<if test = "addTime != null and addTime != ''">
+					,record.add_time = #{addTime}
+				</if>
+				<if test = "replyTime != null and replyTime != ''">
+					,record.reply_time = #{replyTime}
+				</if>
+				<if test = "linkMan != null and linkMan != ''">
+					,record.link_man = #{linkMan}
+				</if>
+				<if test = "typeId != null and typeId != ''">
+					,record.type_id = #{typeId}
+				</if>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from pro_supply_quote
+		<if test=" codes != null and codes.size() > 0 ">
+			where id in
+			<foreach collection="codes" open="(" separator="," close=")" item="code">
+				#{code}
+			</foreach>
+		</if>
+		<if test=" codes == null or codes.size() == 0 ">
+			where 1 = 3
+		</if>
+	</delete>
+	
+	<select id="queryCount" resultType="long">
+		<include refid="count_Tail"></include>
+		<include refid="where_fragement"></include>
+	</select>
+	
+	<select id="queryList" resultMap="proSupplyQuoteMapper" >
+		<include refid="selectAllColumns"/>
+		<include refid="where_fragement" />
+		<if test="page!=null">
+			<include refid="pagination_tail" />
+		</if>
+	</select>
+</mapper>

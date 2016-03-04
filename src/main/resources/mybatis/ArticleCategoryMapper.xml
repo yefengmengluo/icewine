@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wangku.dpw.dao.ArticleCategoryDao">
+	<resultMap id="articleCategoryMapper" type="com.wangku.dpw.domain.ArticleCategory">
+			<result property="id" column="id" />
+			<result property="platformType" column="platform_type" />
+			<result property="siteId" column="site_id" />
+			<result property="code" column="code" />
+			<result property="name" column="name" />
+			<result property="codeDepth" column="code_depth" />
+			<result property="dataStatus" column="data_status" />
+			<result property="sort" column="sort" />
+			<result property="isOpen" column="is_open" />
+	</resultMap>
+	
+	<select id="queryById" resultMap="articleCategoryMapper" >
+		select * from article_category
+		where id = #{id}
+	</select>
+
+	<sql id="count_Tail">
+		select count(1) from article_category record
+	</sql>
+
+	<sql id="pagination_tail">
+	  limit #{page.pageOffset} , #{page.pageSize}
+	</sql>
+
+	<sql id="selectAllColumns">
+		<![CDATA[
+		SELECT
+			 id, 
+			 platform_type, 
+			 site_id, 
+			 code, 
+			 name, 
+			 code_depth, 
+			 data_status, 
+			 sort, 
+			 is_open 
+			FROM article_category record
+		]]>
+	</sql>
+
+	<sql id="where_fragement">
+		where 1=1
+		<if test="entity!=null">
+				<if test = "entity.id != null and entity.id != ''">
+					<![CDATA[ and record.id  = #{entity.id }]]>
+				</if>
+				<if test = "entity.platformType != null and entity.platformType != ''">
+					<![CDATA[ and record.platform_type  = #{entity.platformType} ]]>
+				</if>
+				<if test = "entity.siteId != null and entity.siteId != ''">
+					<![CDATA[ and record.site_id  = #{entity.siteId} ]]>
+				</if>
+				<if test = "entity.code != null and entity.code != ''">
+					<![CDATA[ and record.code  = #{entity.code} ]]>
+				</if>
+				<if test = "entity.name != null and entity.name != ''">
+					<![CDATA[ and record.name  = #{entity.name} ]]>
+				</if>
+				<if test = "entity.codeDepth != null and entity.codeDepth != ''">
+					<![CDATA[ and record.code_depth  = #{entity.codeDepth }]]>
+				</if>
+				<if test = "entity.dataStatus != null and entity.dataStatus != ''">
+					<![CDATA[ and record.data_status  = #{entity.dataStatus }]]>
+				</if>
+				<if test = "entity.sort != null and entity.sort != ''">
+					<![CDATA[ and record.sort  = #{entity.sort} ]]>
+				</if>
+				<if test = "entity.isOpen != null and entity.isOpen != ''">
+					<![CDATA[ and record.is_open  = #{entity.isOpen }]]>
+				</if>
+		</if>
+	</sql>
+
+	<insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="com.wangku.dpw.domain.ArticleCategory">
+		insert into article_category(
+				id,
+				platform_type,
+				site_id,
+				code,
+				name,
+				code_depth,
+				data_status,
+				sort,
+				is_open
+		)values(
+				#{id},
+				#{platformType},
+				#{siteId},
+				#{code},
+				#{name},
+				#{codeDepth},
+				#{dataStatus},
+				#{sort},
+				#{isOpen}
+		)
+	</insert>
+	
+	<update id="update">
+		update article_category record set
+				<if test = "id != null and id != ''">
+					record.id = #{id}
+				</if>
+				<if test = "platformType != null and platformType != ''">
+					,record.platform_type = #{platformType}
+				</if>
+				<if test = "siteId != null and siteId != ''">
+					,record.site_id = #{siteId}
+				</if>
+				<if test = "code != null and code != ''">
+					,record.code = #{code}
+				</if>
+				<if test = "name != null and name != ''">
+					,record.name = #{name}
+				</if>
+				<if test = "codeDepth != null and codeDepth != ''">
+					,record.code_depth = #{codeDepth}
+				</if>
+				<if test = "dataStatus != null and dataStatus != ''">
+					,record.data_status = #{dataStatus}
+				</if>
+				<if test = "sort != null and sort != ''">
+					,record.sort = #{sort}
+				</if>
+				<if test = "isOpen != null and isOpen != ''">
+					,record.is_open = #{isOpen}
+				</if>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from article_category
+		<if test=" codes != null and codes.size() > 0 ">
+			where id in
+			<foreach collection="codes" open="(" separator="," close=")" item="code">
+				#{code}
+			</foreach>
+		</if>
+		<if test=" codes == null or codes.size() == 0 ">
+			where 1 = 3
+		</if>
+	</delete>
+	
+	<select id="queryCount" resultType="long" useCache="true">
+		<include refid="count_Tail"></include>
+		<include refid="where_fragement"></include>
+	</select>
+	
+	<select id="queryList" resultMap="articleCategoryMapper" useCache="true">
+		<include refid="selectAllColumns"/>
+		<include refid="where_fragement" />
+		<if test="page!=null">
+			<include refid="pagination_tail" />
+		</if>
+	</select>
+	<cache flushInterval="60000" eviction="FIFO" readOnly="false" size="256"></cache>
+</mapper>
